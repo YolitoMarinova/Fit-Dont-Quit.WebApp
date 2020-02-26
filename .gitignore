@@ -357,6 +357,3 @@ MigrationBackup/
 appsettings.Production.json
 *.min.css
 *.min.js
-/Data/FitDontQuit.Data.Models/*.csproj
-/Data/FitDontQuit.Data.Common/*.csproj
-*.csproj
