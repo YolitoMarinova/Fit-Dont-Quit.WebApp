@@ -24,6 +24,24 @@
         {
         }
 
+        public DbSet<Trainer> Trainers { get; set; }
+
+        public DbSet<Article> Articles { get; set; }
+
+        public DbSet<GroupTraining> GroupTrainings { get; set; }
+
+        public DbSet<Hall> Halls { get; set; }
+
+        public DbSet<Membership> Memberships { get; set; }
+
+        public DbSet<MembershipsServices> MembershipsServices { get; set; }
+
+        public DbSet<Service> Services { get; set; }
+
+        public DbSet<Profession> Professions { get; set; }
+
+        public DbSet<UsersGroupTrainings> UsersGroupTrainings { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
@@ -72,6 +90,12 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<MembershipsServices>()
+                .HasKey(ms => new { ms.MembershipId, ms.ServiceId });
+
+            builder.Entity<UsersGroupTrainings>()
+                .HasKey(ut => new { ut.UserId, ut.GroupTrainingId });
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)

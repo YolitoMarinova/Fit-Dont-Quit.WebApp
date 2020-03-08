@@ -16,7 +16,20 @@ namespace FitDontQuit.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.GroupTrainings = new HashSet<UsersGroupTrainings>();
         }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public int Age { get; set; }
+
+        public int MembershipId { get; set; }
+
+        public virtual Membership Membership { get; set; }
+
+        public virtual IEnumerable<UsersGroupTrainings> GroupTrainings { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
