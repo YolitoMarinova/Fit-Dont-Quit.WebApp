@@ -1,8 +1,9 @@
 ﻿namespace FitDontQuit.Data.Models
 {
-    using System.Collections.Generic;
-
     using FitDontQuit.Data.Common.Models;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using static FitDontQuit.Common.AttributesConstraints.Trainer;
 
     public class Trainer : BaseDeletableModel<int>
     {
@@ -12,12 +13,22 @@
             this.Articles = new HashSet<Article>();
         }
 
+        [Required]
+        [MaxLength(NameMaxLenght)]
         public string FirstName { get; set; }
 
+        [Required]
+        [MaxLength(NameMaxLenght)]
         public string LastName { get; set; }
 
+        [Range(MinimumAge, MaximumAge)]
+        public int Age { get; set; }
+
+        [Required]
+        [MaxLength(DescriptionMaxLenght)]
         public string Description { get; set; }
 
+        [Required]
         public string PhoneNumber { get; set; }
 
         public string InstagramUrl { get; set; }

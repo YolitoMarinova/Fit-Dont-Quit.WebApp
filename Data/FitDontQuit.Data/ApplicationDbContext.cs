@@ -40,6 +40,8 @@
 
         public DbSet<Profession> Professions { get; set; }
 
+        public DbSet<Period> Periods { get; set; }
+
         public DbSet<UsersGroupTrainings> UsersGroupTrainings { get; set; }
 
         public DbSet<Setting> Settings { get; set; }

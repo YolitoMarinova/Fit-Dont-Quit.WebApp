@@ -4,14 +4,16 @@ using FitDontQuit.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FitDontQuit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200309063451_DeleteUsersGroups")]
+    partial class DeleteUsersGroups
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,6 +105,9 @@ namespace FitDontQuit.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<int>("MembershipId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -137,6 +142,8 @@ namespace FitDontQuit.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
+                    b.HasIndex("MembershipId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -156,7 +163,6 @@ namespace FitDontQuit.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -172,9 +178,7 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrainerId")
                         .HasColumnType("int");
@@ -205,10 +209,12 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HallId")
+                    b.Property<int?>("HallId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HallIde")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -218,9 +224,7 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrainerId")
                         .HasColumnType("int");
@@ -259,9 +263,10 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
 
                     b.Property<int>("SeatsCount")
                         .HasColumnType("int");
@@ -286,6 +291,9 @@ namespace FitDontQuit.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -293,21 +301,20 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PeriodId")
+                    b.Property<int>("Period")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PeriodId");
 
                     b.ToTable("Memberships");
                 });
@@ -325,41 +332,6 @@ namespace FitDontQuit.Data.Migrations
                     b.HasIndex("ServiceId");
 
                     b.ToTable("MembershipsServices");
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.Period", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Days")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Months")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Years")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Periods");
                 });
 
             modelBuilder.Entity("FitDontQuit.Data.Models.Profession", b =>
@@ -382,58 +354,13 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Professions");
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.PurchasedMembership", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MembershipId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("MembershipId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PurchasedMembership");
                 });
 
             modelBuilder.Entity("FitDontQuit.Data.Models.Service", b =>
@@ -456,9 +383,7 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -509,9 +434,6 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -519,14 +441,10 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
@@ -538,15 +456,12 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProfessionId")
@@ -559,21 +474,6 @@ namespace FitDontQuit.Data.Migrations
                     b.HasIndex("ProfessionId");
 
                     b.ToTable("Trainers");
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.UsersGroupTrainings", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("GroupTrainingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "GroupTrainingId");
-
-                    b.HasIndex("GroupTrainingId");
-
-                    b.ToTable("UsersGroupTrainings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -680,6 +580,15 @@ namespace FitDontQuit.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("FitDontQuit.Data.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("FitDontQuit.Data.Models.Membership", "Membership")
+                        .WithMany("Users")
+                        .HasForeignKey("MembershipId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("FitDontQuit.Data.Models.Article", b =>
                 {
                     b.HasOne("FitDontQuit.Data.Models.Trainer", "Trainer")
@@ -693,22 +602,11 @@ namespace FitDontQuit.Data.Migrations
                 {
                     b.HasOne("FitDontQuit.Data.Models.Hall", "Hall")
                         .WithMany("GroupTrainings")
-                        .HasForeignKey("HallId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("HallId");
 
                     b.HasOne("FitDontQuit.Data.Models.Trainer", "Trainer")
                         .WithMany("GroupTrainings")
                         .HasForeignKey("TrainerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.Membership", b =>
-                {
-                    b.HasOne("FitDontQuit.Data.Models.Period", "Period")
-                        .WithMany("Memberships")
-                        .HasForeignKey("PeriodId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
@@ -728,41 +626,11 @@ namespace FitDontQuit.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FitDontQuit.Data.Models.PurchasedMembership", b =>
-                {
-                    b.HasOne("FitDontQuit.Data.Models.Membership", "Membership")
-                        .WithMany("Purchaseds")
-                        .HasForeignKey("MembershipId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("FitDontQuit.Data.Models.ApplicationUser", "User")
-                        .WithMany("PurchasedMemberships")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("FitDontQuit.Data.Models.Trainer", b =>
                 {
                     b.HasOne("FitDontQuit.Data.Models.Profession", "Profession")
                         .WithMany("Trainers")
                         .HasForeignKey("ProfessionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.UsersGroupTrainings", b =>
-                {
-                    b.HasOne("FitDontQuit.Data.Models.GroupTraining", "GroupTraining")
-                        .WithMany()
-                        .HasForeignKey("GroupTrainingId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("FitDontQuit.Data.Models.ApplicationUser", "User")
-                        .WithMany("GroupTrainings")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

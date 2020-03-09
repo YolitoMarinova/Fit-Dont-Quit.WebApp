@@ -1,8 +1,11 @@
 ﻿namespace FitDontQuit.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class UsersGroupTrainings
     {
-        public int UserId { get; set; }
+        [Required]
+        public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 

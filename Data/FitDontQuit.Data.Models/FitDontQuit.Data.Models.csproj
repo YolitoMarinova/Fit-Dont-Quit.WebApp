@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\FitDontQuit.Common\FitDontQuit.Common.csproj" />
     <ProjectReference Include="..\FitDontQuit.Data.Common\FitDontQuit.Data.Common.csproj" />
   </ItemGroup>
   
