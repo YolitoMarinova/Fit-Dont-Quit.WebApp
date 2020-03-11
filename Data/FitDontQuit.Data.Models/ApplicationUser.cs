@@ -1,10 +1,13 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 namespace FitDontQuit.Data.Models
 {
-    using FitDontQuit.Data.Common.Models;
-    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using FitDontQuit.Data.Common.Models;
+    using Microsoft.AspNetCore.Identity;
+
+    using static FitDontQuit.Common.AttributesConstraints.User;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -18,11 +21,13 @@ namespace FitDontQuit.Data.Models
             this.PurchasedMemberships = new HashSet<PurchasedMembership>();
         }
 
+        [Required]
+        [MaxLength(NameMaxLenght)]
         public string FirstName { get; set; }
 
+        [Required]
+        [MaxLength(NameMaxLenght)]
         public string LastName { get; set; }
-
-        public int Age { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

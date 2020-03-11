@@ -9,9 +9,6 @@
 
             public const int NameMinLenght = 2;
             public const int NameMaxLenght = 50;
-
-            public const int MinimumAge = 16;
-            public const int MaximumAge = 120;
         }
 
         public static class Article
