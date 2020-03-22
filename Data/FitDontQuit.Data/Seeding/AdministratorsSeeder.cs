@@ -3,10 +3,9 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using FitDontQuit.Data.Models;
+
     using Microsoft.AspNetCore.Identity;
 
-    using Microsoft.Extensions.DependencyInjection;
     public class AdministratorsSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
@@ -21,7 +20,7 @@
                 return;
             }
 
-            dbContext.UserRoles.Add(new IdentityUserRole<string>
+            await dbContext.UserRoles.AddAsync(new IdentityUserRole<string>
             {
                 RoleId = role.Id,
                 UserId = user.Id,
