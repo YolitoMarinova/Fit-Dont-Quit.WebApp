@@ -44,9 +44,4 @@
     <ProjectReference Include="..\FitDontQuit.Web.Infrastructure\FitDontQuit.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\FitDontQuit.Web.ViewModels\FitDontQuit.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
-    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
-  </ItemGroup>
 </Project>
