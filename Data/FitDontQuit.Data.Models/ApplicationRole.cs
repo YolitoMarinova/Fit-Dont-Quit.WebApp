@@ -1,9 +1,10 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 namespace FitDontQuit.Data.Models
 {
+    using System;
+
     using FitDontQuit.Data.Common.Models;
     using Microsoft.AspNetCore.Identity;
-    using System;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

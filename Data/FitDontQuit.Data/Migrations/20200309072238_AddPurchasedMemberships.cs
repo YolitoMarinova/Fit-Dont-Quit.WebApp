@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace FitDontQuit.Data.Migrations
+﻿namespace FitDontQuit.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddPurchasedMemberships : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +21,7 @@ namespace FitDontQuit.Data.Migrations
                     UserId = table.Column<string>(nullable: false),
                     MembershipId = table.Column<int>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false)
+                    EndDate = table.Column<DateTime>(nullable: false),
                 },
                 constraints: table =>
                 {

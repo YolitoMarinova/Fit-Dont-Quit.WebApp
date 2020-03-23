@@ -1,8 +1,10 @@
 ﻿namespace FitDontQuit.Data.Models
 {
-    using FitDontQuit.Data.Common.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Data.Common.Models;
+
     using static FitDontQuit.Common.AttributesConstraints.GroupTraining;
 
     public class GroupTraining : BaseDeletableModel<int>

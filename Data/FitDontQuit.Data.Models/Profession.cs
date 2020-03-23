@@ -1,8 +1,10 @@
 ﻿namespace FitDontQuit.Data.Models
 {
-    using FitDontQuit.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Data.Common.Models;
+
     using static FitDontQuit.Common.AttributesConstraints.Profession;
 
     public class Profession : BaseDeletableModel<int>

@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace FitDontQuit.Data.Migrations
+﻿namespace FitDontQuit.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class UpdateModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -170,7 +171,7 @@ namespace FitDontQuit.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Years = table.Column<int>(nullable: false),
                     Months = table.Column<int>(nullable: false),
-                    Days = table.Column<int>(nullable: false)
+                    Days = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -182,7 +183,7 @@ namespace FitDontQuit.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    GroupTrainingId = table.Column<int>(nullable: false)
+                    GroupTrainingId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {

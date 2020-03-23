@@ -1,9 +1,8 @@
 ﻿namespace FitDontQuit.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace FitDontQuit.Data.Migrations
+﻿namespace FitDontQuit.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -81,7 +82,7 @@ namespace FitDontQuit.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
-                    TrainerId = table.Column<int>(nullable: false)
+                    TrainerId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -107,7 +108,7 @@ namespace FitDontQuit.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     Number = table.Column<int>(nullable: false),
                     SeatsCount = table.Column<int>(nullable: false),
-                    IsFree = table.Column<bool>(nullable: false)
+                    IsFree = table.Column<bool>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -128,7 +129,7 @@ namespace FitDontQuit.Data.Migrations
                     Price = table.Column<decimal>(nullable: false),
                     Period = table.Column<int>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false)
+                    EndDate = table.Column<DateTime>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -145,7 +146,7 @@ namespace FitDontQuit.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -163,7 +164,7 @@ namespace FitDontQuit.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false)
+                    Price = table.Column<decimal>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -185,7 +186,7 @@ namespace FitDontQuit.Data.Migrations
                     DateTime = table.Column<DateTime>(nullable: false),
                     HallIde = table.Column<int>(nullable: false),
                     HallId = table.Column<int>(nullable: true),
-                    TrainerId = table.Column<int>(nullable: false)
+                    TrainerId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -209,7 +210,7 @@ namespace FitDontQuit.Data.Migrations
                 columns: table => new
                 {
                     MembershipId = table.Column<int>(nullable: false),
-                    ServiceId = table.Column<int>(nullable: false)
+                    ServiceId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
@@ -234,7 +235,7 @@ namespace FitDontQuit.Data.Migrations
                 {
                     UserId = table.Column<int>(nullable: false),
                     GroupTrainingId = table.Column<int>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true)
+                    UserId1 = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

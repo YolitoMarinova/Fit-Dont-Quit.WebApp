@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace FitDontQuit.Data.Migrations
+﻿namespace FitDontQuit.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class Changes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

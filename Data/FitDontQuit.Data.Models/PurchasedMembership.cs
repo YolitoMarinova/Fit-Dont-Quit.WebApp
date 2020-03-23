@@ -1,11 +1,10 @@
-﻿using FitDontQuit.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace FitDontQuit.Data.Models
+﻿namespace FitDontQuit.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Data.Common.Models;
+
     public class PurchasedMembership : BaseDeletableModel<int>
     {
         [Required]

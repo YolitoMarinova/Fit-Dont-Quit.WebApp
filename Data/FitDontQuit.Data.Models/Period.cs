@@ -1,9 +1,10 @@
 ﻿namespace FitDontQuit.Data.Models
 {
-    using FitDontQuit.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Data.Common.Models;
 
     using static FitDontQuit.Common.AttributesConstraints.Period;
 
