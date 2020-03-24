@@ -1,11 +1,20 @@
 ﻿namespace FitDontQuit.Services.Data
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Models.Halls;
 
     public interface IHallsService
     {
-        Task AddAsync(string hallModel);
+        Task CreateAsync(HallServiceModel hallModel);
 
-        Task UpdateAsync(int id);
+        Task EditAsync(int id, HallServiceModel hallModel);
+
+        IEnumerable<T> GettAll<T>();
+
+        T GetById<T>(int id);
+
+        Task Delete(HallServiceModel hall);
     }
 }

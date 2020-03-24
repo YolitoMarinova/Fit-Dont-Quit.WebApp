@@ -22,6 +22,7 @@
     <ProjectReference Include="..\..\Data\FitDontQuit.Data.Common\FitDontQuit.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FitDontQuit.Data.Models\FitDontQuit.Data.Models.csproj" />
     <ProjectReference Include="..\FitDontQuit.Services.Mapping\FitDontQuit.Services.Mapping.csproj" />
+    <ProjectReference Include="..\FitDontQuit.Services.Models\FitDontQuit.Services.Models.csproj" />
   </ItemGroup>
 
 </Project>
