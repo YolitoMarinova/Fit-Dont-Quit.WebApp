@@ -29,6 +29,7 @@
                               new SettingsSeeder(),
                               new UsersSeeder(),
                               new AdministratorsSeeder(),
+                              new TrainersSeeder(),
                           };
 
             foreach (var seeder in seeders)
