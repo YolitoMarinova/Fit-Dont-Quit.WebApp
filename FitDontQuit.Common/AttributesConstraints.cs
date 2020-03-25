@@ -39,13 +39,13 @@
 
         public static class Period
         {
-            public const int MinYearsValue = 1;
+            public const int MinYearsValue = 0;
             public const int MaxYearsValue = 10;
 
-            public const int MinMonthsValue = 1;
+            public const int MinMonthsValue = 0;
             public const int MaxMonthsValue = 12;
 
-            public const int MinDaysValue = 1;
+            public const int MinDaysValue = 0;
             public const int MaxDaysValue = 31;
         }
 

@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using FitDontQuit.Data.Common.Models;
+    using FitDontQuit.Data.Models.Enums;
 
     using static FitDontQuit.Common.AttributesConstraints.Membership;
 
@@ -23,9 +24,7 @@
         [Range(MinPriceValue, MaxPriceValue)]
         public decimal Price { get; set; }
 
-        public int PeriodId { get; set; }
-
-        public virtual Period Period { get; set; }
+        public Duration Duration { get; set; }
 
         public virtual IEnumerable<MembershipsServices> Services { get; set; }
 
