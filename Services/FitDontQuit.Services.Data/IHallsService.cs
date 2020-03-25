@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using FitDontQuit.Data.Models;
+
     using FitDontQuit.Services.Models.Halls;
 
     public interface IHallsService
@@ -15,6 +15,6 @@
 
         T GetById<T>(int id);
 
-        Task Delete(HallServiceModel hall);
+        Task DeleteAsync(int id);
     }
 }

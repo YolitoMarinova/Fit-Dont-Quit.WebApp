@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+
     using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Halls;
@@ -10,7 +11,7 @@
 
     public class HallInputModel : IMapTo<HallServiceModel>, IMapFrom<Hall>
     {
-        [Required]
+        [Required(ErrorMessage ="Please write hall name.")]
         [StringLength(NameMaxLenght, ErrorMessage = "Name should be maximum 100 symbols.")]
         public string Name { get; set; }
 

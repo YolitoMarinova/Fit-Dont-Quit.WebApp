@@ -1,14 +1,13 @@
 ﻿namespace FitDontQuit.Services.Data
 {
-    using System;
-    using System.Threading.Tasks;
-
-    using FitDontQuit.Services.Mapping;
-    using FitDontQuit.Data.Common.Repositories;
-    using FitDontQuit.Data.Models;
-    using FitDontQuit.Services.Models.Halls;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Data.Common.Repositories;
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Halls;
 
     public class HallsService : IHallsService
     {
@@ -50,19 +49,15 @@
             hall.Name = hallModel.Name;
             hall.SeatsCount = hallModel.SeatsCount;
 
-            this.hallsRepository.Update(hall);
             await this.hallsRepository.SaveChangesAsync();
         }
 
-        public async Task Delete(HallServiceModel hallModel)
+        public async Task DeleteAsync(int id)
         {
-            var hall = new Hall
-            {
-                Name = hallModel.Name,
-                SeatsCount = hallModel.SeatsCount,
-            };
+            var hall = this.hallsRepository.All().FirstOrDefault(h => h.Id == id);
 
             this.hallsRepository.Delete(hall);
+            await this.hallsRepository.SaveChangesAsync();
         }
     }
 }

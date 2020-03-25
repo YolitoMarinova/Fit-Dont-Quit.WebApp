@@ -1,7 +1,7 @@
 ﻿namespace FitDontQuit.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
-    using FitDontQuit.Data.Models;
+
     using FitDontQuit.Services.Data;
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Halls;
@@ -23,14 +23,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(HallInputModel createHallInputModel)
+        public async Task<IActionResult> Create(HallInputModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(createHallInputModel);
+                return this.View(inputModel);
             }
 
-            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceModel>(createHallInputModel);
+            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceModel>(inputModel);
             await this.hallsService.CreateAsync(hallServiceModel);
 
             return this.RedirectToAction("All");
@@ -62,9 +62,16 @@
             return this.RedirectToAction("All");
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var hall = this.hallsService.GetById<HallInputModel>(id);
 
+            if (hall == null)
+            {
+                return this.NotFound();
+            }
+
+            await this.hallsService.DeleteAsync(id);
 
             return this.RedirectToAction("All");
         }

@@ -1,11 +1,10 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FitDontQuit.Web.ViewModels.Administration.Halls
+﻿namespace FitDontQuit.Web.ViewModels.Administration.Halls
 {
+    using System;
+
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+
     public class HallViewModel : IMapFrom<Hall>
     {
         public int Id { get; set; }

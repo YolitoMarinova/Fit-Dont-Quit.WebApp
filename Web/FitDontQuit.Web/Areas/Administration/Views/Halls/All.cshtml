@@ -20,21 +20,21 @@
     <tbody>
         @foreach (var hall in Model)
         {
-            <tr>
-                <th scope="row">@counter</th>
-                <td>@hall.Name</td>
-                <td>@hall.SeatsCount</td>
-                <td>@hall.CreatedOn.ToLocalTime()</td>
-                @if (hall.ModifiedOn<hall.CreatedOn)
-                {
-                    <td>-</td>
-                }
-                else
-                {
-                    <td>@hall.ModifiedOn.ToLocalTime()</td>
-                }
-                <td><a asp-area="Administration" asp-controller="Halls" asp-action="Edit" asp-route-id="@hall.Id"><img src="~/icons/edit.png" /></a> / <a asp-area="Administration" asp-controller="Halls" asp-action="Delete" asp-route="@hall.Id"><img src="~/icons/rubbish.png" /></a></td>
-            </tr>
+        <tr>
+            <th scope="row">@counter</th>
+            <td>@hall.Name</td>
+            <td>@hall.SeatsCount</td>
+            <td>@hall.CreatedOn.ToLocalTime()</td>
+            @if (hall.ModifiedOn < hall.CreatedOn)
+            {
+                <td>-</td>
+            }
+            else
+            {
+                <td>@hall.ModifiedOn.ToLocalTime()</td>
+            }
+            <td><a asp-area="Administration" asp-controller="Halls" asp-action="Edit" asp-route-id="@hall.Id"><img src="~/icons/edit.png" /></a> / <a asp-area="Administration" asp-controller="Halls" asp-action="Delete" asp-route-id="@hall.Id"><img src="~/icons/rubbish.png" /></a></td>
+        </tr>
 
             counter++;
         }
