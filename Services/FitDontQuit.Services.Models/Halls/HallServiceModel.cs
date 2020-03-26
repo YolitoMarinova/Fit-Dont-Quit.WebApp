@@ -3,7 +3,7 @@
     using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
 
-    public class HallServiceModel : IMapTo<Hall>, IMapFrom<Hall>
+    public class HallServiceModel
     {
         public string Name { get; set; }
 

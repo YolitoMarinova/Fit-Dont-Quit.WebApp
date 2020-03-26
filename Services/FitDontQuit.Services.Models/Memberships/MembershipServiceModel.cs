@@ -4,7 +4,7 @@
     using FitDontQuit.Data.Models.Enums;
     using FitDontQuit.Services.Mapping;
 
-    public class MembershipServiceModel : IMapTo<Membership>
+    public class MembershipServiceModel
     {
         public string Name { get; set; }
 

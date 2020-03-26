@@ -1,0 +1,23 @@
+﻿@model FitDontQuit.Web.ViewModels.Administration.Services.ServiceInputModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form method="post" asp-action="Edit">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <hr />
+    <input type="submit" class="btn btn-primary" />
+</form>
