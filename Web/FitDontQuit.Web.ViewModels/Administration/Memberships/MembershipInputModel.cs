@@ -17,7 +17,7 @@
         [MaxLength(NameMaxLenght)]
         public string Name { get; set; }
 
-        [Range(MinPriceValue, MaxPriceValue)]
+        [Range(MinPriceValue, MaxPriceValue, ErrorMessage = "Price shoul'd be more than zero!")]
         public decimal Price { get; set; }
 
         public Duration Duration { get; set; }

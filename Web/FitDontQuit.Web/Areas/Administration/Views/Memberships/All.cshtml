@@ -1,4 +1,5 @@
-﻿@model IEnumerable<FitDontQuit.Web.ViewModels.Administration.Memberships.MembershipViewModel>
+﻿@using static FitDontQuit.Common.EnumHelper
+@model IEnumerable<FitDontQuit.Web.ViewModels.Administration.Memberships.MembershipViewModel>
 @{int counter = 1; }
 @{
     this.ViewData["Title"] = "All memberships";
@@ -25,7 +26,7 @@
                 <th scope="row">@counter</th>
                 <td>@membership.Name</td>
                 <td>@membership.Price</td>
-                <td>@membership.Duration</td>
+                <td>@membership.Duration.GetDisplayName()</td>
                 <td>@membership.CreatedOn.ToLocalTime()</td>
                 @if (membership.ModifiedOn < membership.CreatedOn)
                 {

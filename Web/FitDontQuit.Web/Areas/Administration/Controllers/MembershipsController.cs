@@ -1,16 +1,17 @@
-﻿using FitDontQuit.Data.Models.Enums;
-using FitDontQuit.Services.Data;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.Memberships;
-using FitDontQuit.Web.ViewModels.Administration.Memberships;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FitDontQuit.Web.Areas.Administration.Controllers
+﻿namespace FitDontQuit.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Data.Models.Enums;
+    using FitDontQuit.Services.Data;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Memberships;
+    using FitDontQuit.Web.ViewModels.Administration.Memberships;
+    using Microsoft.AspNetCore.Mvc;
+
+    using static FitDontQuit.Common.EnumHelper;
+
     public class MembershipsController : AdministrationController
     {
         private readonly IMembershipsService membershipsService;
@@ -48,6 +49,8 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
 
         public IActionResult Edit(int id)
         {
+            var name = Duration.SevenDays.GetDisplayName();
+
             var membership = this.membershipsService.GetById<MembershipInputModel>(id);
             var durations = (Duration[])Enum.GetValues(typeof(Duration));
 
