@@ -6,48 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
 
+    <!--From template-->
+    <meta name="description" content="Gutim Template">
+    <meta name="keywords" content="Gutim, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+
+    <!--Icon links-->
+    <link rel="apple-touch-icon" sizes="57x57" href="~/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon-16x16.png">
+    <link rel="manifest" href="~/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--END-->
+
     <environment names="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+        <!--CSS from template-->
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/owl.carousel.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/magnific-popup.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/slicknav.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
+        <!--END-->
     </environment>
     <environment names="Staging,Production">
         <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+        <!--CSS from template-->
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/owl.carousel.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/magnific-popup.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/slicknav.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
+        <!--END-->
     </environment>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header-section bg-dark">
+        <div class="container">
+            <div class="logo">
+                <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/android-icon-48x48.png" alt=""></a>
             </div>
-        </nav>
+            <div class="nav-menu">
+                <nav class="mainmenu mobile-menu">
+                    <ul>
+                        <li><a class="active" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a href="./classes.html">Classes</a></li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./gallery.html">Gallery</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                    </ul>
+                </nav>
+                @*<a href="#" class="primary-btn signup-btn">Sign Up Today</a>*@
+            </div>
+            <div class="partial-login">
+                <nav class="mainmenu">
+                    <partial name="_LoginPartial" />
+                </nav>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+
+
     </header>
 
-    <div class="container">
+    <section class="hero-section set-bg">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
         </main>
-    </div>
+    </section>
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -61,6 +113,15 @@
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <!--From template-->
+        <script src="~/js/jquery-3.3.1.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+        <script src="~/js/mixitup.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.slicknav.js" asp-append-version="true"></script>
+        <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
+        <script src="~/js/main.js" asp-append-version="true"></script>
+        <!--END-->
     </environment>
     <environment names="Staging,Production">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
@@ -68,8 +129,16 @@
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <!--From template-->
+        <script src="~/js/jquery-3.3.1.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+        <script src="~/js/mixitup.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.slicknav.js" asp-append-version="true"></script>
+        <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
+        <script src="~/js/main.js" asp-append-version="true"></script>
+        <!--END-->
     </environment>
-
     @this.RenderSection("Scripts", required: false)
 </body>
 </html>

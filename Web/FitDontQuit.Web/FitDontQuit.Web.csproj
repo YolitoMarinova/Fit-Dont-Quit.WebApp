@@ -44,4 +44,11 @@
     <ProjectReference Include="..\FitDontQuit.Web.Infrastructure\FitDontQuit.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\FitDontQuit.Web.ViewModels\FitDontQuit.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\favicon.ico">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
