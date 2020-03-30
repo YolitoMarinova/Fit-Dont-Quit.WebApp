@@ -18,14 +18,14 @@
         }
         <li>
             <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
-                <button type="submit" class="btn btn-secondary btn-lg active">Logout</button>
+                <button type="submit" class="logout btn-logout">Logout</button>
             </form>
         </li>
     }
     else
     {
         <li>
-            <a class="primary-btn" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li>
             <a asp-area="Identity" asp-page="/Account/Login">Login</a>
