@@ -75,10 +75,12 @@
                 <nav class="mainmenu mobile-menu">
                     <ul>
                         <li><a class="active" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a href="./gallery.html">Memberships</a></li>
                         <li><a href="./classes.html">Classes</a></li>
                         <li><a href="./blog.html">Blog</a></li>
                         <li><a href="./gallery.html">Gallery</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contacts">Contacts</a></li>
+                        <li><a href="./gallery.html">About us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -91,10 +93,8 @@
         </div>
     </header>
 
-    <div class="container" style="padding-top:100px">
-        <partial name="_CookieConsentPartial" />
-            @this.RenderBody()
-    </div>
+    <partial name="_CookieConsentPartial" />
+    @this.RenderBody()
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -132,7 +132,7 @@
             <div class="copyright-text">
                 <ul>
                     <li><a href="#">Term&Use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
                 </ul>
                 <p>&copy;<p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

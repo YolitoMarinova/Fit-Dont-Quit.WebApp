@@ -193,9 +193,9 @@ ul, ol {
         color: white;
     }
 
-.logout {
+/*.logout {
     border-radius: 15px;
-    background-color: #adb5bd; /* Green */
+    background-color: #adb5bd;
     border: none;
     color: #e9ecef;
     padding: 3px 6px;
@@ -216,7 +216,7 @@ ul, ol {
     .btn-logout:hover {
         background-color: #ff6838;
         color: white;
-    }
+    }*/
 
 .primary-btn {
     display: inline-block;
@@ -368,6 +368,31 @@ ul, ol {
             padding: 28px 0;
         }
 
+            .partial-login .mainmenu ul li a.logout {
+                border-radius: 50px;
+                background-color: #6c757d;
+                box-shadow: 0 5px 0 #495057;
+                color: white;
+                padding: 0.5em 0.9em;
+                position: relative;
+                text-decoration: none;
+            }
+
+                .partial-login .mainmenu ul li a.logout:hover {
+                    background-color: #f67831;
+                    box-shadow: 0 5px 0 #eb3c5a;
+                    cursor: pointer;
+                }
+
+                .partial-login .mainmenu ul li a.logout:active {
+                    box-shadow: none;
+                    top: 3px;
+                }
+
+                .partial-login .mainmenu ul li a.logout:after {
+                    position: relative;
+                }
+
             .partial-login .mainmenu ul li a.register {
                 border-radius: 50px;
                 background-color: #ff6838;
@@ -481,9 +506,8 @@ ul, ol {
 
 .login-section {
     background: #f5f4f4;
-    padding-top: 170px;
-    margin-top: -135px;
-    margin-bottom: -135px;
+    padding-top: 250px;
+    margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
 
@@ -514,9 +538,8 @@ ul, ol {
 
 .register-section {
     background: #f5f4f4;
-    padding-top: 170px;
-    margin-top: -135px;
-    margin-bottom: -135px;
+    padding-top: 250px;
+    margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
 
