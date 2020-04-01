@@ -1,13 +1,13 @@
 ﻿namespace FitDontQuit.Web.Controllers
 {
     using System.Diagnostics;
-
     using FitDontQuit.Web.ViewModels;
 
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+
         public IActionResult Index()
         {
             return this.View();
