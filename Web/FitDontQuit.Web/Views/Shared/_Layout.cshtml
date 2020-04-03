@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap"
           rel="stylesheet">
 
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
     <!--Icon links-->
     <link rel="apple-touch-icon" sizes="57x57" href="~/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="~/apple-icon-60x60.png">
@@ -45,6 +47,7 @@
         <link href="~/css/owl.carousel.min.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/magnific-popup.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/slicknav.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/loginslicknav.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
         <!--END-->
     </environment>
@@ -57,6 +60,7 @@
         <link href="~/css/owl.carousel.min.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/magnific-popup.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/slicknav.min.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/loginslicknav.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
         <!--END-->
     </environment>
@@ -65,7 +69,6 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
     <header class="header-section bg-dark">
         <div class="container">
             <div class="logo">
@@ -84,12 +87,17 @@
                     </ul>
                 </nav>
             </div>
+            <div id="mobile-menu-wrap"></div>
             <div class="partial-login">
                 <nav class="mainmenu">
-                    <partial name="_LoginPartial" />
+                    <div class="dropdown">
+                        <button class="dropbtn dropbtn-button"><i class="fa fa-user-circle"></i></button>
+                        <div class="dropdown-content">
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
                 </nav>
             </div>
-            <div id="mobile-menu-wrap"></div>
         </div>
     </header>
 

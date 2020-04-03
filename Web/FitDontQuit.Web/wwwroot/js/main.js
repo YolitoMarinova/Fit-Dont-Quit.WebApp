@@ -21,11 +21,11 @@
         /*------------------
             Gallery filter
         --------------------*/
-        $('.gallery-controls li').on('click', function() {
+        $('.gallery-controls li').on('click', function () {
             $('.gallery-controls li').removeClass('active');
             $(this).addClass('active');
         });
-        if($('.gallery-filter').length > 0 ) {
+        if ($('.gallery-filter').length > 0) {
             var containerEl = document.querySelector('.gallery-filter');
             var mixer = mixitup(containerEl);
         }
@@ -51,10 +51,10 @@
     /*------------------
 		Menu Hover
 	--------------------*/
-    $(".header-section .nav-menu .mainmenu ul li").on('mousehover', function() {
+    $(".header-section .nav-menu .mainmenu ul li").on('mousehover', function () {
         $(this).addClass('active');
     });
-    $(".header-section .nav-menu .mainmenu ul li").on('mouseleave', function() {
+    $(".header-section .nav-menu .mainmenu ul li").on('mouseleave', function () {
         $('.header-section .nav-menu .mainmenu ul li').removeClass('active');
     });
 
@@ -104,13 +104,13 @@
         About Counter Up
     --------------------*/
     $('.count').each(function () {
-        $(this).prop('Counter',0).animate({
-        Counter: $(this).text()
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
         }, {
             duration: 4000,
             easing: 'swing',
             step: function (now) {
-            $(this).text(Math.ceil(now));
+                $(this).text(Math.ceil(now));
             }
         });
     });
@@ -118,20 +118,20 @@
     /*------------------
        Schedule Filter
     --------------------*/
-    $('.nav-controls ul li').on('click', function() {
+    $('.nav-controls ul li').on('click', function () {
         var tsfilter = $(this).data('tsfilter');
         $('.nav-controls ul li').removeClass('active');
         $(this).addClass('active');
-        
-        if(tsfilter == 'all') {
+
+        if (tsfilter == 'all') {
             $('.schedule-table').removeClass('filtering');
             $('.ts-item').removeClass('show');
         } else {
             $('.schedule-table').addClass('filtering');
         }
-        $('.ts-item').each(function(){
+        $('.ts-item').each(function () {
             $(this).removeClass('show');
-            if($(this).data('tsmeta') == tsfilter) {
+            if ($(this).data('tsmeta') == tsfilter) {
                 $(this).addClass('show');
             }
         });
