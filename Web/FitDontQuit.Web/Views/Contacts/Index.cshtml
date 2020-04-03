@@ -1,4 +1,5 @@
-﻿@{
+﻿@model FitDontQuit.Web.ViewModels.Contacts.ContactsInputModel
+@{
 this.ViewData["Title"] = "Contacts";
 }
 
@@ -23,7 +24,7 @@ this.ViewData["Title"] = "Contacts";
 <section class="contact-section spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="contact-info">
                     <h4>Contacts Us</h4>
                     <div class="contact-address">
@@ -51,25 +52,25 @@ this.ViewData["Title"] = "Contacts";
                             </div>
                             <div class="cw-text">
                                 <h5>Mail</h5>
-                                <p>contact@fitdontquit.com</p>
+                                <p>fitness.fitdontquit@gmail.com</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-7">
                 <div class="contact-form">
                     <h4>Leave A Comment</h4>
-                    <form action="#">
+                    <form asp-action="SendEmail" asp-controller="Contacts" method="post">
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Your name">
+                                <input type="text" name="Name" placeholder="Your name">
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Your email">
+                                <input type="text" name="Email" placeholder="Your email" value="@Model.Email">
                             </div>
                             <div class="col-lg-12">
-                                <textarea placeholder="Your messages"></textarea>
+                                <textarea name="Content" placeholder="Your messages"></textarea>
                                 <button type="submit">Send Message</button>
                             </div>
                         </div>

@@ -26,6 +26,7 @@
                 LastName = "Marinova",
                 UserName = "Yolito",
                 Email = "marinova.m.y@gmail.com",
+                EmailConfirmed = true,
             };
 
             var secondUser = new ApplicationUser
@@ -34,6 +35,7 @@
                 LastName = "Filchev",
                 UserName = "Gochko91",
                 Email = "gosho@gcb.com",
+                EmailConfirmed = true,
             };
 
             var thirdUser = new ApplicationUser
@@ -42,6 +44,7 @@
                 LastName = "Marinova",
                 UserName = "Zlati",
                 Email = "zlatito@pop.com",
+                EmailConfirmed = true,
             };
 
             await SeedUserAsync(userManager, firstUser);
