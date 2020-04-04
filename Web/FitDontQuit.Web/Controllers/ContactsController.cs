@@ -20,7 +20,7 @@ namespace FitDontQuit.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            if (this.User != null)
+            if (this.User.Identity.IsAuthenticated == true)
             {
                 var user = await this.userManager.GetUserAsync(this.User);
                 var email = await this.userManager.GetEmailAsync(user);
