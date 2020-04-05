@@ -5,11 +5,11 @@
     ViewData["Title"] = "Log in";
 }
 
-<section class="login-section">
+<section class="user-section">
 <div class="row">
     <div class="col-md-5">
         <section>
-            <form class="login-form" id="account" method="post">
+            <form class="user-form" id="account" method="post">
                 <h4>Use a local account to log in.</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
@@ -46,7 +46,7 @@
         </section>
     </div>
     <div class="col-md-7 col-md-offset-2">
-        <section class="login-form">
+        <section class="user-form">
             <h4>Use another service to log in.</h4>
             <hr />
             @{

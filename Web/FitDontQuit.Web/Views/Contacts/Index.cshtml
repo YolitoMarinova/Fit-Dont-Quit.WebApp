@@ -1,4 +1,5 @@
-﻿@model FitDontQuit.Web.ViewModels.Contacts.ContactsInputModel
+﻿@using static FitDontQuit.Common.GlobalConstants
+@model FitDontQuit.Web.ViewModels.Contacts.ContactsInputModel
 @{
 this.ViewData["Title"] = "Contacts";
 }
@@ -34,7 +35,7 @@ this.ViewData["Title"] = "Contacts";
                             </div>
                             <div class="cw-text">
                                 <h5>Our Location</h5>
-                                <p>Street Random Plovdiv</p>
+                                <p>@FitnessAdress</p>
                             </div>
                         </div>
                         <div class="ca-widget">
@@ -43,7 +44,7 @@ this.ViewData["Title"] = "Contacts";
                             </div>
                             <div class="cw-text">
                                 <h5>Phone:</h5>
-                                <p>+359 855 555 555</p>
+                                <p>@FitnessPhoneNumber</p>
                             </div>
                         </div>
                         <div class="ca-widget">
@@ -52,7 +53,7 @@ this.ViewData["Title"] = "Contacts";
                             </div>
                             <div class="cw-text">
                                 <h5>Mail</h5>
-                                <p>fitness.fitdontquit@gmail.com</p>
+                                <p>@FitnessEmail</p>
                             </div>
                         </div>
                     </div>

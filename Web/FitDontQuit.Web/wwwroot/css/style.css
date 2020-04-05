@@ -481,10 +481,10 @@ ul, ol {
         opacity: 1;
     }
 
-.dropbtn-button:hover {
-    background-color: #ff3300;
-    color: white;
-}
+    .dropbtn-button:hover {
+        background-color: #ff3300;
+        color: white;
+    }
 
 
 .dropdown {
@@ -502,7 +502,7 @@ ul, ol {
     z-index: 1;
 }
 
-    .dropdown-content ul li{
+    .dropdown-content ul li {
         color: black;
         margin: 5px 10px 10px !important;
         padding: 12px 16px !important;
@@ -510,15 +510,14 @@ ul, ol {
         display: block;
     }
 
-        .dropdown-content ul li a.register{
+        .dropdown-content ul li a.register {
             margin: 5px 0;
             margin-left: 0px !important;
-            
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 
 .nav-menu {
@@ -572,95 +571,56 @@ ul, ol {
     display: none;
 }
 
-.loginslicknav_menu {
-    display: none;
-}
-
 /*----------------------
-    Login Page
+    User Section
 ----------------------*/
 
-.login-section {
+.user-section {
     background: #f5f4f4;
     padding-top: 250px;
     margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
 
-    .login-section a {
+    .user-section a {
         color: orangered;
     }
 
-        .login-section a.label {
+        .user-section a.label {
             margin-left: 16px;
         }
 
-    .login-section .login-form {
+    .user-section .user-form {
         margin-left: 25px;
         margin-right: 25px;
     }
 
-    .login-section .custom-button {
-        margin-left: 16px;
-    }
+.btn.btn-secondary {
+    color: white;
+    padding: 10px 20px;
+    opacity: 0.5;
+}
 
-    .login-section label.remember-me {
-        margin-left: 16px;
-    }
+.user-section label.remember-me {
+    margin-left: 16px;
+}
+
+.user-section h3.user, h5.user {
+    text-align: left;
+    padding-left: 415px;
+}
 
 /*----------------------
-    Register Page
+    Admin Section
 ----------------------*/
 
-.register-section {
+.admin-section {
     background: #f5f4f4;
     padding-top: 250px;
     margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
 
-    .register-section a {
-        color: orangered;
-    }
-
-    .register-section .register-form {
-        margin-left: 25px;
-        margin-right: 25px;
-    }
-
-    .register-section .lgn-button {
-        margin-left: 16px;
-    }
-
-/*-------------------------
-  Account Manage Section
-------------------------*/
-
-.account-section {
-    background: #f5f4f4;
-    padding-top: 250px;
-    margin: -135px 300px -135px;
-    padding-bottom: 170px;
-    padding-left: 100px;
-    padding-right: 50px;
-}
-
-    .account-section h3.account, h5.account {
-        text-align: left;
-        padding-left: 400px;
-    }
-
-    .account-section a {
-        color: #ff4500ab;
-    }
-
-        .account-section a.label {
-            margin-left: 16px;
-        }
-
-    .account-section .custom-button {
-        margin-left: 16px;
-    }
 
 /*---------------------
   Hero Section
@@ -2181,6 +2141,7 @@ ul, ol {
         max-width: 1170px;
     }
 }
+
 /* Medium Device: 1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2312,6 +2273,7 @@ ul, ol {
         margin-bottom: 30px;
     }
 }
+
 /* Tablet Device: 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2368,9 +2330,11 @@ ul, ol {
         height: auto;
     }
 }
+
 /* Large Mobile: 480px */
 
 @media only screen and (max-width: 767px) {
+
     .slicknav_menu {
         float: left;
         display: block;
@@ -2498,9 +2462,11 @@ ul, ol {
             margin: 0 5px;
         }
 }
+
 /* Small Mobile: 320px */
 
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 598x) {
+    
     .hero-text h1 {
         font-size: 42px;
     }

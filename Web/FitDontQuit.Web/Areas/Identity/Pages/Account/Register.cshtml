@@ -4,11 +4,11 @@
     ViewData["Title"] = "Register";
 }
 
-<section class="register-section">
+<section class="user-section">
     <div class="row">
         <div class="col-md-6">
             <section>
-                <form class="register-form" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <form class="user-form" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                     <h4>Create a new account.</h4>
                     <hr />
                     <div asp-validation-summary="All" class="text-danger"></div>
@@ -42,12 +42,12 @@
                         <input asp-for="Input.ConfirmPassword" class="form-control" />
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                     </div>
-                    <button type="submit" class="lgn lgn-button">Register</button>
+                    <button type="submit" class="custom custom-button">Register</button>
                 </form>
             </section>
         </div>
         <div class="col-md-6 col-md-offset-2">
-            <section class="register-form">
+            <section class="user-form">
                 <h4>Use another service to register.</h4>
                 <hr />
                 @{

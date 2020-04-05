@@ -1,12 +1,15 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Messaging;
-using FitDontQuit.Web.ViewModels.Contacts;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace FitDontQuit.Web.Controllers
+﻿namespace FitDontQuit.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Messaging;
+    using FitDontQuit.Web.ViewModels.Contacts;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
+    using static FitDontQuit.Common.GlobalConstants;
+
     public class ContactsController : BaseController
     {
         private readonly IEmailSender emailSender;
@@ -36,7 +39,7 @@ namespace FitDontQuit.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> SendEmail(ContactsInputModel inputModel)
         {
-            await this.emailSender.SendEmailAsync(inputModel.Email, inputModel.Name, "fitness.fitdontquit@gmail.com", "Contact request", inputModel.Content);
+            await this.emailSender.SendEmailAsync(inputModel.Email, inputModel.Name, FitnessEmail, "Contact request", inputModel.Content);
 
             return this.RedirectToAction("Index");
         }

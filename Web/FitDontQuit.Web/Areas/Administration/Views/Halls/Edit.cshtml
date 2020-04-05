@@ -1,20 +1,21 @@
 ﻿@model FitDontQuit.Web.ViewModels.Administration.Halls.HallInputModel
 
+    <section class="admin-section">
+        <h1>Edit</h1>
 
-<h1>Edit</h1>
+        <form method="post" asp-action="Edit">
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-<form method="post" asp-action="Edit">
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-
-    <div>
-        <label asp-for="SeatsCount"></label>
-        <input asp-for="SeatsCount" class="form-control" />
-        <span asp-validation-for="SeatsCount" class="text-danger"></span>
-    </div>
-    <hr />
-    <input type="submit" class="btn btn-primary" />
-</form>
+            <div>
+                <label asp-for="SeatsCount"></label>
+                <input asp-for="SeatsCount" class="form-control" />
+                <span asp-validation-for="SeatsCount" class="text-danger"></span>
+            </div>
+            <hr />
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </section>

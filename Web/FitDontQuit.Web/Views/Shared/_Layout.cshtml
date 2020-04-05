@@ -1,4 +1,5 @@
-﻿@using FitDontQuit.Common
+﻿@using static FitDontQuit.Common.GlobalConstants;
+@using FitDontQuit.Common
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,23 +112,23 @@
                 <div class="col-md-4">
                     <div class="contact-option">
                         <span>Phone</span>
-                        <p>(123) 118 9999 - (123) 118 9999</p>
+                        <p>@FitnessPhoneNumber</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="contact-option">
                         <span>Address</span>
-                        <p>72 Kangnam, 45 Opal Point Suite 391</p>
+                        <p>@FitnessAdress</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="contact-option">
                         <span>Email</span>
-                        <p>contactcompany@Gutim.com</p>
+                        <p>@FitnessEmail</p>
                     </div>
                 </div>
             </div>
-            <div class="subscribe-option set-bg" data-setbg="../../img/footer-signup.jpg">
+            <div class="subscribe-option set-bg" data-setbg="../../../img/footer-signup.jpg">
                 <div class="so-text">
                     <h4>Subscribe To Our Mailing List</h4>
                     <p>Sign up to receive the latest information </p>

@@ -4,42 +4,44 @@
     this.ViewData["Title"] = "All services";
 }
 
-<h1>@this.ViewData["Title"]</h1>
+    <section class="admin-section">
+        <h1>@this.ViewData["Title"]</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Created on</th>
-            <th scope="col">Modified on</th>
-            <th scope="col">Edit/Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var service in Model)
-        {
-            <tr>
-                <th scope="row">@counter</th>
-                <td>@service.Name</td>
-                <td>@service.Price</td>
-                <td>@service.CreatedOn.ToLocalTime()</td>
-                @if (service.ModifiedOn < service.CreatedOn)
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Created on</th>
+                    <th scope="col">Modified on</th>
+                    <th scope="col">Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var service in Model)
                 {
-                    <td>-</td>
-                }
-                else
-                {
-                    <td>@service.ModifiedOn.ToLocalTime()</td>
-                }
-                <td><a asp-area="Administration" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id"><img src="~/icons/edit.png" /></a> / <a asp-area="Administration" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id"><img src="~/icons/rubbish.png" /></a></td>
-            </tr>
+                    <tr>
+                        <th scope="row">@counter</th>
+                        <td>@service.Name</td>
+                        <td>@service.Price</td>
+                        <td>@service.CreatedOn.ToLocalTime()</td>
+                        @if (service.ModifiedOn < service.CreatedOn)
+                        {
+                            <td>-</td>
+                        }
+                        else
+                        {
+                            <td>@service.ModifiedOn.ToLocalTime()</td>
+                        }
+                        <td><a asp-area="Administration" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id"><img src="~/icons/edit.png" /></a> / <a asp-area="Administration" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id"><img src="~/icons/rubbish.png" /></a></td>
+                    </tr>
 
-            counter++;
-        }
-    </tbody>
-</table>
+                    counter++;
+                }
+            </tbody>
+        </table>
 
-<a class="btn btn-dark" asp-area="Administration" asp-controller="Services" asp-action="Create">Create service</a>
-<a class="btn btn-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Back to dashboard</a>
+        <a class="btn btn-dark" asp-area="Administration" asp-controller="Services" asp-action="Create">Create service</a>
+        <a class="btn btn-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Back to dashboard</a>
+    </section>
