@@ -13,8 +13,7 @@
     {
         public Membership()
         {
-            this.Services = new HashSet<MembershipsServices>();
-            this.Purchaseds = new HashSet<PurchasedMembership>();
+            this.Purchases = new HashSet<PurchasedMembership>();
         }
 
         [Required]
@@ -26,8 +25,6 @@
 
         public Duration Duration { get; set; }
 
-        public virtual IEnumerable<MembershipsServices> Services { get; set; }
-
-        public virtual IEnumerable<PurchasedMembership> Purchaseds { get; set; }
+        public virtual IEnumerable<PurchasedMembership> Purchases { get; set; }
     }
 }

@@ -30,7 +30,7 @@
                 return this.View(inputModel);
             }
 
-            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceModel>(inputModel);
+            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceInputModel>(inputModel);
             await this.hallsService.CreateAsync(hallServiceModel);
 
             return this.RedirectToAction("All");
@@ -56,7 +56,7 @@
                 return this.View(hallModel);
             }
 
-            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceModel>(hallModel);
+            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceInputModel>(hallModel);
             await this.hallsService.EditAsync(id, hallServiceModel);
 
             return this.RedirectToAction("All");
@@ -64,6 +64,7 @@
 
         public async Task<IActionResult> Delete(int id)
         {
+            //TO DO: Add Find Method
             var hall = this.hallsService.GetById<HallInputModel>(id);
 
             if (hall == null)

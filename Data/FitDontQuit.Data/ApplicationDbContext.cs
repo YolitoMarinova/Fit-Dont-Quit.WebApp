@@ -34,9 +34,11 @@
 
         public DbSet<Membership> Memberships { get; set; }
 
-        public DbSet<MembershipsServices> MembershipsServices { get; set; }
+        public DbSet<PurchasedMembership> PurchasedMemberships { get; set; }
 
         public DbSet<Service> Services { get; set; }
+
+        public DbSet<PurchasedServices> PurchasedServices { get; set; }
 
         public DbSet<Profession> Professions { get; set; }
 
@@ -90,9 +92,6 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
-
-            builder.Entity<MembershipsServices>()
-                .HasKey(ms => new { ms.MembershipId, ms.ServiceId });
 
             builder.Entity<UsersGroupTrainings>()
                 .HasKey(ut => new { ut.UserId, ut.GroupTrainingId });

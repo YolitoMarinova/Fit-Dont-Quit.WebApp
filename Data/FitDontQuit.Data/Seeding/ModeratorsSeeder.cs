@@ -8,12 +8,12 @@
 
     using static FitDontQuit.Common.GlobalConstants;
 
-    public class TrainersSeeder : ISeeder
+    public class ModeratorsSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             var user = dbContext.Users.FirstOrDefault(u => u.FirstName == "Georgi");
-            var role = dbContext.Roles.FirstOrDefault(r => r.Name == TrainerRoleName);
+            var role = dbContext.Roles.FirstOrDefault(r => r.Name == ModeratorRoleName);
 
             var exist = dbContext.UserRoles.Any(ur => ur.UserId == user.Id && ur.RoleId == role.Id);
 

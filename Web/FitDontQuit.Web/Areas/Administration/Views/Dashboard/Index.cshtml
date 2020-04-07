@@ -3,10 +3,10 @@
     this.ViewData["Title"] = "Admin dashboard";
 }
 
-<h1>@this.ViewData["Title"]</h1>
-
-<section class="admin-section">
-    <a class="btn btn-dark" asp-area="Administration" asp-controller="Halls" asp-action="All">All halls</a>
-    <a class="btn btn-dark" asp-area="Administration" asp-controller="Memberships" asp-action="All">All memberships</a>
-    <a class="btn btn-dark" asp-area="Administration" asp-controller="Services" asp-action="All">All services</a>
-</section>
+    <section class="admin-section">
+        <h1>@this.ViewData["Title"]</h1>
+        <a class="btn btn-dark" asp-area="Administration" asp-controller="Halls" asp-action="All">All halls</a>
+        <a class="btn btn-dark" asp-area="Administration" asp-controller="Memberships" asp-action="All">All memberships</a>
+        <a class="btn btn-dark" asp-area="Administration" asp-controller="Services" asp-action="All">All services</a>
+        <a class="btn btn-dark" asp-area="Administration" asp-controller="Professions" asp-action="All">All professions</a>
+    </section>

@@ -11,7 +11,7 @@
     {
         public Service()
         {
-            this.Memberships = new HashSet<MembershipsServices>();
+            this.PurchasedServices = new HashSet<PurchasedServices>();
         }
 
         [Required]
@@ -21,6 +21,6 @@
         [Range(MinPriceValue, MaxPriceValue)]
         public decimal Price { get; set; }
 
-        public virtual IEnumerable<MembershipsServices> Memberships { get; set; }
+        public IEnumerable<PurchasedServices> PurchasedServices { get; set; }
     }
 }

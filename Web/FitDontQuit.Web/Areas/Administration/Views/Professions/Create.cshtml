@@ -1,0 +1,18 @@
+﻿@model FitDontQuit.Web.ViewModels.Administration.Professions.ProfessionInputModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<section class="admin-section">
+    <h1>CreateProfessionViewModel</h1>
+
+    <form method="post" asp-action="Create">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <hr />
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</section>

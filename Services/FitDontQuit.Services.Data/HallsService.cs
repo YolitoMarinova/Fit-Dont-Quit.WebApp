@@ -18,7 +18,7 @@
             this.hallsRepository = hallsRepository;
         }
 
-        public async Task CreateAsync(HallServiceModel hallModel)
+        public async Task CreateAsync(HallServiceInputModel hallModel)
         {
             var hall = new Hall
             {
@@ -30,24 +30,19 @@
             await this.hallsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GettAll<T>()
-        {
-            var halls = this.hallsRepository.All().To<T>().ToList();
-
-            return halls;
-        }
-
-        public T GetById<T>(int id)
-        {
-            return this.hallsRepository.All().Where(h => h.Id == id).To<T>().FirstOrDefault();
-        }
-
-        public async Task EditAsync(int id, HallServiceModel hallModel)
+        public async Task EditAsync(int id, HallServiceInputModel hallModel)
         {
             var hall = this.hallsRepository.All().Where(h => h.Id == id).FirstOrDefault();
 
-            hall.Name = hallModel.Name;
-            hall.SeatsCount = hallModel.SeatsCount;
+            if (hall.Name != hallModel.Name)
+            {
+                hall.Name = hallModel.Name;
+            }
+
+            if (hall.SeatsCount != hallModel.SeatsCount)
+            {
+                hall.SeatsCount = hallModel.SeatsCount;
+            }
 
             await this.hallsRepository.SaveChangesAsync();
         }
@@ -58,6 +53,24 @@
 
             this.hallsRepository.Delete(hall);
             await this.hallsRepository.SaveChangesAsync();
+        }
+
+        public T GetById<T>(int id)
+        {
+            var hall = this.hallsRepository.All().Where(h => h.Id == id).To<HallServiceOutputModel>().FirstOrDefault();
+
+            var hallT = AutoMapperConfig.MapperInstance.Map<T>(hall);
+
+            return hallT;
+        }
+
+        public IEnumerable<T> GettAll<T>()
+        {
+            var halls = this.hallsRepository.All().To<HallServiceOutputModel>();
+
+            var hallsT = halls.To<T>().ToList();
+
+            return hallsT;
         }
     }
 }

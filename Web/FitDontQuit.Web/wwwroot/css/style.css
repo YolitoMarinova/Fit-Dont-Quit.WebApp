@@ -576,6 +576,7 @@ ul, ol {
 ----------------------*/
 
 .user-section {
+    height: 100%;
     background: #f5f4f4;
     padding-top: 250px;
     margin: -135px 150px -135px;
@@ -615,6 +616,7 @@ ul, ol {
 ----------------------*/
 
 .admin-section {
+    height: 100%;
     background: #f5f4f4;
     padding-top: 250px;
     margin: -135px 150px -135px;

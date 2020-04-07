@@ -4,14 +4,16 @@ using FitDontQuit.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FitDontQuit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200407131621_RemoveMembershipsServices")]
+    partial class RemoveMembershipsServices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -382,44 +384,7 @@ namespace FitDontQuit.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PurchasedMemberships");
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.PurchasedServices", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ServiceId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PurchasedServices");
+                    b.ToTable("PurchasedMembership");
                 });
 
             modelBuilder.Entity("FitDontQuit.Data.Models.Service", b =>
@@ -693,28 +658,13 @@ namespace FitDontQuit.Data.Migrations
             modelBuilder.Entity("FitDontQuit.Data.Models.PurchasedMembership", b =>
                 {
                     b.HasOne("FitDontQuit.Data.Models.Membership", "Membership")
-                        .WithMany("Purchases")
+                        .WithMany("Purchaseds")
                         .HasForeignKey("MembershipId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FitDontQuit.Data.Models.ApplicationUser", "User")
                         .WithMany("PurchasedMemberships")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.PurchasedServices", b =>
-                {
-                    b.HasOne("FitDontQuit.Data.Models.Service", "Service")
-                        .WithMany("PurchasedServices")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("FitDontQuit.Data.Models.ApplicationUser", "User")
-                        .WithMany("PurchasedServices")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();

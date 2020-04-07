@@ -3,13 +3,13 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using FitDontQuit.Services.Models.Halls;
+    using FitDontQuit.Services.Models.Professions;
 
-    public interface IHallsService
+    public interface IProfessionsService
     {
-        Task CreateAsync(HallServiceInputModel hallModel);
+        Task CreateAsync(ProfessionServiceModel professionModel);
 
-        Task EditAsync(int id, HallServiceInputModel hallModel);
+        Task EditAsync(int id, ProfessionServiceModel professionModel);
 
         IEnumerable<T> GettAll<T>();
 

@@ -8,7 +8,7 @@
 
         public const string UserRoleName = "User";
 
-        public const string TrainerRoleName = "Trainer";
+        public const string ModeratorRoleName = "Moderator";
 
         public const string FitnessPhoneNumber = "+359 855 555 555";
 
