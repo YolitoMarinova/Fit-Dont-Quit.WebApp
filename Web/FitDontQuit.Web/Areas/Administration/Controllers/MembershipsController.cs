@@ -41,7 +41,7 @@
                 return this.View(inputModel);
             }
 
-            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceModel>(inputModel);
+            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceInputModel>(inputModel);
             await this.membershipsService.CreateAsync(membershipServiceModel);
 
             return this.RedirectToAction("All");
@@ -73,7 +73,7 @@
                 return this.View(membershipModel);
             }
 
-            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceModel>(membershipModel);
+            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceInputModel>(membershipModel);
             await this.membershipsService.EditAsync(id, membershipServiceModel);
 
             return this.RedirectToAction("All");

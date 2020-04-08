@@ -35,30 +35,26 @@
         {
             var article = this.articlesRepository.All().Where(a => a.Id == id).FirstOrDefault();
 
-            if (article.Title != articleModel.Title)
-            {
-                article.Title = articleModel.Title;
-            }
-
-            if (article.Content != articleModel.Content)
-            {
-                article.Content = articleModel.Content;
-            }
-
-            if (article.TrainerId != articleModel.TrainerId)
-            {
-                article.TrainerId = articleModel.TrainerId;
-            }
+            article.Title = articleModel.Title;
+            article.Content = articleModel.Content;
+            article.TrainerId = articleModel.TrainerId;
 
             await this.articlesRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var article = this.articlesRepository.All().FirstOrDefault(a => a.Id == id);
 
+            if (article == null)
+            {
+                return false;
+            }
+
             this.articlesRepository.Delete(article);
             await this.articlesRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public T GetById<T>(int id)

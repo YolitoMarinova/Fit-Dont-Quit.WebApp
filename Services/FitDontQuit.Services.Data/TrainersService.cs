@@ -19,7 +19,7 @@ namespace FitDontQuit.Services.Data
             this.trainersRepository = trainersRepository;
         }
 
-        public async Task CreateAsync(TrainerServiceModel trainerModel)
+        public async Task CreateAsync(TrainerServiceInputModel trainerModel)
         {
             var trainer = new Trainer
             {
@@ -37,15 +37,7 @@ namespace FitDontQuit.Services.Data
             await this.trainersRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            var trainer = this.trainersRepository.All().FirstOrDefault(t => t.Id == id);
-
-            this.trainersRepository.Delete(trainer);
-            await this.trainersRepository.SaveChangesAsync();
-        }
-
-        public async Task EditAsync(int id, TrainerServiceModel trainerModel)
+        public async Task EditAsync(int id, TrainerServiceInputModel trainerModel)
         {
             var trainer = this.trainersRepository.All().Where(t => t.Id == id).FirstOrDefault();
 
@@ -56,21 +48,42 @@ namespace FitDontQuit.Services.Data
             trainer.ImageUrl = trainerModel.ImageUrl;
             trainer.InstagramUrl = trainerModel.InstagramUrl;
             trainer.PhoneNumber = trainerModel.PhoneNumber;
-            trainer.FirstName = trainerModel.FirstName;
+            trainer.ProfessionId = trainerModel.ProfessionId;
 
             await this.trainersRepository.SaveChangesAsync();
         }
 
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var trainer = this.trainersRepository.All().FirstOrDefault(t => t.Id == id);
+
+            if (trainer == null)
+            {
+                return false;
+            }
+
+            this.trainersRepository.Delete(trainer);
+            await this.trainersRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         public T GetById<T>(int id)
         {
-            return this.trainersRepository.All().Where(t => t.Id == id).To<T>().FirstOrDefault();
+            var trainer = this.trainersRepository.All().Where(t => t.Id == id).To<TrainerServiceOutputModel>().FirstOrDefault();
+
+            var trainerT = AutoMapperConfig.MapperInstance.Map<T>(trainer);
+
+            return trainerT;
         }
 
         public IEnumerable<T> GettAll<T>()
         {
-            var trainers = this.trainersRepository.All().To<T>().ToList();
+            var trainers = this.trainersRepository.All().To<TrainerServiceOutputModel>();
 
-            return trainers;
+            var trainersT = trainers.To<T>().ToList();
+
+            return trainersT;
         }
     }
 }

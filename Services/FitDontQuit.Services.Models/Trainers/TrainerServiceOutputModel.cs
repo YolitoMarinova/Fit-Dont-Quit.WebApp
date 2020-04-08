@@ -1,7 +1,14 @@
 ﻿namespace FitDontQuit.Services.Models.Trainers
 {
-    public class TrainerServiceModel
+    using System;
+
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+
+    public class TrainerServiceOutputModel : IMapFrom<Trainer>
     {
+        public int Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -17,5 +24,9 @@
         public int Age { get; set; }
 
         public int ProfessionId { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime ModifiedOn { get; set; }
     }
 }

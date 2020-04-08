@@ -18,7 +18,7 @@
             this.servicesRepository = servicesRepository;
         }
 
-        public async Task CreateAsync(ServiceServiceModel serviceModel)
+        public async Task CreateAsync(ServiceServiceInputModel serviceModel)
         {
             var service = new Service
             {
@@ -30,34 +30,47 @@
             await this.servicesRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task EditAsync(int id, ServiceServiceInputModel serviceModel)
         {
-            var service = this.servicesRepository.All().FirstOrDefault(s => s.Id == id);
+            var service = this.servicesRepository.All().Where(s => s.Id == id).FirstOrDefault();
 
-            this.servicesRepository.Delete(service);
+            service.Name = serviceModel.Name;
+            service.Price = serviceModel.Price;
+
             await this.servicesRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, ServiceServiceModel serviceModel)
+        public async Task<bool> DeleteAsync(int id)
         {
-            var services = this.servicesRepository.All().Where(s => s.Id == id).FirstOrDefault();
+            var service = this.servicesRepository.All().FirstOrDefault(s => s.Id == id);
 
-            services.Name = serviceModel.Name;
-            services.Price = serviceModel.Price;
+            if (service == null)
+            {
+                return false;
+            }
 
+            this.servicesRepository.Delete(service);
             await this.servicesRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public T GetById<T>(int id)
         {
-            return this.servicesRepository.All().Where(s => s.Id == id).To<T>().FirstOrDefault();
+            var service = this.servicesRepository.All().Where(s => s.Id == id).To<ServiceServiceOutputModel>().FirstOrDefault();
+
+            var serviceT = AutoMapperConfig.MapperInstance.Map<T>(service);
+
+            return serviceT;
         }
 
         public IEnumerable<T> GettAll<T>()
         {
-            var services = this.servicesRepository.All().To<T>().ToList();
+            var services = this.servicesRepository.All().To<ServiceServiceOutputModel>();
 
-            return services;
+            var servicesT = services.To<T>().ToList();
+
+            return servicesT;
         }
     }
 }

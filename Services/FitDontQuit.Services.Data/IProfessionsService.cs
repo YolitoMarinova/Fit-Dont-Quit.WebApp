@@ -7,14 +7,14 @@
 
     public interface IProfessionsService
     {
-        Task CreateAsync(ProfessionServiceModel professionModel);
+        Task CreateAsync(ProfessionServiceInputModel professionModel);
 
-        Task EditAsync(int id, ProfessionServiceModel professionModel);
+        Task EditAsync(int id, ProfessionServiceInputModel professionModel);
 
         IEnumerable<T> GettAll<T>();
 
         T GetById<T>(int id);
 
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }

@@ -7,14 +7,14 @@
 
     public interface IServicesService
     {
-        Task CreateAsync(ServiceServiceModel serviceModel);
+        Task CreateAsync(ServiceServiceInputModel serviceModel);
 
-        Task EditAsync(int id, ServiceServiceModel serviceModel);
+        Task EditAsync(int id, ServiceServiceInputModel serviceModel);
 
         IEnumerable<T> GettAll<T>();
 
         T GetById<T>(int id);
 
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }

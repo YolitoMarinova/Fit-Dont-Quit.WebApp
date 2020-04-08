@@ -18,7 +18,7 @@
             this.professionRepository = professionRepository;
         }
 
-        public async Task CreateAsync(ProfessionServiceModel professionModel)
+        public async Task CreateAsync(ProfessionServiceInputModel professionModel)
         {
             var profession = new Profession { Name = professionModel.Name };
 
@@ -26,15 +26,7 @@
             await this.professionRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            var profession = this.professionRepository.All().FirstOrDefault(p => p.Id == id);
-
-            this.professionRepository.Delete(profession);
-            await this.professionRepository.SaveChangesAsync();
-        }
-
-        public async Task EditAsync(int id, ProfessionServiceModel professionModel)
+        public async Task EditAsync(int id, ProfessionServiceInputModel professionModel)
         {
             var profession = this.professionRepository.All().Where(p => p.Id == id).FirstOrDefault();
 
@@ -43,16 +35,38 @@
             await this.professionRepository.SaveChangesAsync();
         }
 
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var profession = this.professionRepository.All().FirstOrDefault(p => p.Id == id);
+
+            if (profession == null)
+            {
+                return false;
+            }
+
+            this.professionRepository.Delete(profession);
+            await this.professionRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         public T GetById<T>(int id)
         {
-            return this.professionRepository.All().Where(p => p.Id == id).To<T>().FirstOrDefault();
+            var profession = this.professionRepository.All().Where(p => p.Id == id).To<ProfessionServiceOutputModel>().FirstOrDefault();
+
+            var professionT = AutoMapperConfig.MapperInstance.Map<T>(profession);
+
+            return professionT;
         }
 
         public IEnumerable<T> GettAll<T>()
         {
-            var professions = this.professionRepository.All().To<T>().ToList();
+            var professions = this.professionRepository.All().To<ProfessionServiceOutputModel>();
 
-            return professions;
+
+            var professionsT = professions.To<T>().ToList();
+
+            return professionsT;
         }
     }
 }

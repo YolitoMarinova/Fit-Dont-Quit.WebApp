@@ -7,14 +7,14 @@
 
     public interface IMembershipsService
     {
-        Task CreateAsync(MembershipServiceModel membershipModel);
+        Task CreateAsync(MembershipServiceInputModel membershipModel);
 
-        Task EditAsync(int id, MembershipServiceModel membershipModel);
+        Task EditAsync(int id, MembershipServiceInputModel membershipModel);
 
         IEnumerable<T> GettAll<T>();
 
         T GetById<T>(int id);
 
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }

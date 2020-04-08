@@ -18,7 +18,7 @@
             this.membershipRepository = membershipRepository;
         }
 
-        public async Task CreateAsync(MembershipServiceModel membershipModel)
+        public async Task CreateAsync(MembershipServiceInputModel membershipModel)
         {
             var membership = new Membership
             {
@@ -31,15 +31,7 @@
             await this.membershipRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            var membership = this.membershipRepository.All().FirstOrDefault(m => m.Id == id);
-
-            this.membershipRepository.Delete(membership);
-            await this.membershipRepository.SaveChangesAsync();
-        }
-
-        public async Task EditAsync(int id, MembershipServiceModel membershipModel)
+        public async Task EditAsync(int id, MembershipServiceInputModel membershipModel)
         {
             var membership = this.membershipRepository.All().Where(m => m.Id == id).FirstOrDefault();
 
@@ -50,16 +42,37 @@
             await this.membershipRepository.SaveChangesAsync();
         }
 
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var membership = this.membershipRepository.All().FirstOrDefault(m => m.Id == id);
+
+            if (membership == null)
+            {
+                return false;
+            }
+
+            this.membershipRepository.Delete(membership);
+            await this.membershipRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         public T GetById<T>(int id)
         {
-            return this.membershipRepository.All().Where(m => m.Id == id).To<T>().FirstOrDefault();
+            var membership = this.membershipRepository.All().Where(m => m.Id == id).To<MembershipServiceOutputModel>().FirstOrDefault();
+
+            var membershipT = AutoMapperConfig.MapperInstance.Map<T>(membership);
+
+            return membershipT;
         }
 
         public IEnumerable<T> GettAll<T>()
         {
-            var memberships = this.membershipRepository.All().To<T>().ToList();
+            var memberships = this.membershipRepository.All().To<MembershipServiceOutputModel>();
 
-            return memberships;
+            var membershipsT = memberships.To<T>().ToList();
+
+            return membershipsT;
         }
     }
 }

@@ -42,7 +42,7 @@
 
             if (hall == null)
             {
-                return this.NotFound();
+                return this.BadRequest();
             }
 
             return this.View(hall);
@@ -64,15 +64,12 @@
 
         public async Task<IActionResult> Delete(int id)
         {
-            //TO DO: Add Find Method
-            var hall = this.hallsService.GetById<HallInputModel>(id);
+            var result = await this.hallsService.DeleteAsync(id);
 
-            if (hall == null)
+            if (result != true)
             {
-                return this.NotFound();
+                return this.BadRequest();
             }
-
-            await this.hallsService.DeleteAsync(id);
 
             return this.RedirectToAction("All");
         }

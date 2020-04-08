@@ -2,10 +2,10 @@
 {
     using System;
 
-    using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Halls;
 
-    public class HallViewModel : IMapFrom<Hall>
+    public class HallViewModel : IMapFrom<HallServiceOutputModel>
     {
         public int Id { get; set; }
 

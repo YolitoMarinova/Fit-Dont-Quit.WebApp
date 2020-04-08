@@ -1,6 +1,6 @@
 ﻿namespace FitDontQuit.Services.Models.Services
 {
-    public class ServiceServiceModel
+    public class ServiceServiceInputModel
     {
         public string Name { get; set; }
 

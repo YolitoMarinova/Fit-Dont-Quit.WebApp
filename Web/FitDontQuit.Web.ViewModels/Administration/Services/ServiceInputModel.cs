@@ -3,13 +3,12 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Services;
 
     using static FitDontQuit.Common.AttributesConstraints.Service;
 
-    public class ServiceInputModel : IMapTo<ServiceServiceModel>, IMapFrom<Service>
+    public class ServiceInputModel : IMapTo<ServiceServiceInputModel>, IMapFrom<ServiceServiceOutputModel>
     {
         [Required]
         [MaxLength(NameMaxLenght)]

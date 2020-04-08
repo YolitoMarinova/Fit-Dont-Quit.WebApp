@@ -32,7 +32,7 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
                 return this.View(inputModel);
             }
 
-            var professionServiceModel = AutoMapperConfig.MapperInstance.Map<ProfessionServiceModel>(inputModel);
+            var professionServiceModel = AutoMapperConfig.MapperInstance.Map<ProfessionServiceInputModel>(inputModel);
             await this.professionsService.CreateAsync(professionServiceModel);
 
             return this.RedirectToAction("All");
@@ -58,7 +58,7 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
                 return this.View(professionModel);
             }
 
-            var professionServiceModel = AutoMapperConfig.MapperInstance.Map<ProfessionServiceModel>(professionModel);
+            var professionServiceModel = AutoMapperConfig.MapperInstance.Map<ProfessionServiceInputModel>(professionModel);
             await this.professionsService.EditAsync(id, professionServiceModel);
 
             return this.RedirectToAction("All");

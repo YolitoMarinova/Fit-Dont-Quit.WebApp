@@ -3,8 +3,9 @@
     using System;
 
     using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
 
-    public class ArticleServiceOutputModel
+    public class ArticleServiceOutputModel : IMapFrom<Article>
     {
         public int Id { get; set; }
 

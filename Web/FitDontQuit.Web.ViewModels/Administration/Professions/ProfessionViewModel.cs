@@ -2,10 +2,10 @@
 {
     using System;
 
-    using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Professions;
 
-    public class ProfessionViewModel : IMapFrom<Profession>
+    public class ProfessionViewModel : IMapFrom<ProfessionServiceOutputModel>
     {
         public int Id { get; set; }
 

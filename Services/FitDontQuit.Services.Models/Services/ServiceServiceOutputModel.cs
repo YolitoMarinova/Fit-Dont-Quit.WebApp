@@ -1,20 +1,17 @@
-﻿namespace FitDontQuit.Web.ViewModels.Administration.Memberships
+﻿namespace FitDontQuit.Services.Models.Services
 {
     using System;
 
-    using FitDontQuit.Data.Models.Enums;
+    using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
-    using FitDontQuit.Services.Models.Memberships;
 
-    public class MembershipViewModel : IMapFrom<MembershipServiceOutputModel>
+    public class ServiceServiceOutputModel : IMapFrom<Service>
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
         public decimal Price { get; set; }
-
-        public Duration Duration { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

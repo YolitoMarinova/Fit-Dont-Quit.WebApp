@@ -31,7 +31,7 @@
                 return this.View(inputModel);
             }
 
-            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceModel>(inputModel);
+            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceInputModel>(inputModel);
             await this.servicesService.CreateAsync(serviceServiceModel);
 
             return this.RedirectToAction("All");
@@ -57,7 +57,7 @@
                 return this.View(serviceModel);
             }
 
-            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceModel>(serviceModel);
+            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceInputModel>(serviceModel);
             await this.servicesService.EditAsync(id, serviceServiceModel);
 
             return this.RedirectToAction("All");

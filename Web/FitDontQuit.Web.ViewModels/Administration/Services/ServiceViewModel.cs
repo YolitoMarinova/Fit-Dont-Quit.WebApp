@@ -2,10 +2,10 @@
 {
     using System;
 
-    using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Services;
 
-    public class ServiceViewModel : IMapFrom<Service>
+    public class ServiceViewModel : IMapFrom<ServiceServiceOutputModel>
     {
         public int Id { get; set; }
 

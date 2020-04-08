@@ -37,40 +37,28 @@
         {
             var groupTraining = this.groupTrainingsRepository.All().Where(gt => gt.Id == id).FirstOrDefault();
 
-            if (groupTraining.Name != groupTrainingModel.Name)
-            {
-                groupTraining.Name = groupTrainingModel.Name;
-            }
-
-            if (groupTraining.Description != groupTrainingModel.Description)
-            {
-                groupTraining.Description = groupTrainingModel.Description;
-            }
-
-            if (groupTraining.DateTime != groupTrainingModel.DateTime)
-            {
-                groupTraining.DateTime = groupTrainingModel.DateTime;
-            }
-
-            if (groupTraining.HallId != groupTrainingModel.HallId)
-            {
-                groupTraining.HallId = groupTrainingModel.HallId;
-            }
-
-            if (groupTraining.TrainerId != groupTrainingModel.TrainerId)
-            {
-                groupTraining.TrainerId = groupTrainingModel.TrainerId;
-            }
+            groupTraining.Name = groupTrainingModel.Name;
+            groupTraining.Description = groupTrainingModel.Description;
+            groupTraining.DateTime = groupTrainingModel.DateTime;
+            groupTraining.HallId = groupTrainingModel.HallId;
+            groupTraining.TrainerId = groupTrainingModel.TrainerId;
 
             await this.groupTrainingsRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var groupTraining = this.groupTrainingsRepository.All().FirstOrDefault(gt => gt.Id == id);
 
+            if (groupTraining == null)
+            {
+                return false;
+            }
+
             this.groupTrainingsRepository.Delete(groupTraining);
             await this.groupTrainingsRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public T GetById<T>(int id)

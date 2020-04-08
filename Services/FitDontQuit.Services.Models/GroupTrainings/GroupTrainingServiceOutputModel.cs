@@ -2,7 +2,10 @@
 {
     using System;
 
-    public class GroupTrainingServiceOutputModel
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+
+    public class GroupTrainingServiceOutputModel : IMapFrom<GroupTraining>
     {
         public int Id { get; set; }
 

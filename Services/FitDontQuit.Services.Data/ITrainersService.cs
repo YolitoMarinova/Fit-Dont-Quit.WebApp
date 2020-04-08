@@ -8,14 +8,14 @@
 
     public interface ITrainersService
     {
-        Task CreateAsync(TrainerServiceModel trainerModel);
+        Task CreateAsync(TrainerServiceInputModel trainerModel);
 
-        Task EditAsync(int id, TrainerServiceModel trainerModel);
+        Task EditAsync(int id, TrainerServiceInputModel trainerModel);
 
         IEnumerable<T> GettAll<T>();
 
         T GetById<T>(int id);
 
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }

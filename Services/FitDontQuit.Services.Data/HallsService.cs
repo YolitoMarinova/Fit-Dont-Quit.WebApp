@@ -34,25 +34,25 @@
         {
             var hall = this.hallsRepository.All().Where(h => h.Id == id).FirstOrDefault();
 
-            if (hall.Name != hallModel.Name)
-            {
-                hall.Name = hallModel.Name;
-            }
-
-            if (hall.SeatsCount != hallModel.SeatsCount)
-            {
-                hall.SeatsCount = hallModel.SeatsCount;
-            }
+            hall.Name = hallModel.Name;
+            hall.SeatsCount = hallModel.SeatsCount;
 
             await this.hallsRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var hall = this.hallsRepository.All().FirstOrDefault(h => h.Id == id);
 
+            if (hall == null)
+            {
+                return false;
+            }
+
             this.hallsRepository.Delete(hall);
             await this.hallsRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public T GetById<T>(int id)
