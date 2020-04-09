@@ -71,7 +71,7 @@
                                 <span>@membership.VisitLimit.GetDisplayName()</span>
                             </li>
                         </ul>
-                        <a href="#" class="primary-btn membership-btn">Start Now</a>
+                        <a class="primary-btn membership-btn" asp-controller="PurchasedMemberships" asp-action="Buy" asp-route-id="@membership.Id">Start Now</a>
                     </div>
                 </div>
             }

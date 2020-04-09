@@ -7,16 +7,16 @@
         [Display(Name = "Without duration")]
         NoDuration = 0,
 
-        [Display(Name = "One year")]
-        OneYear = 1,
+        [Display(Name = "One week")]
+        SevenDays = 7,
 
-        [Display(Name = "Three months")]
-        ThreeMonths = 2,
+        [Display(Name = "One year")]
+        OneYear = 365,
 
         [Display(Name = "One month")]
-        OneMonth = 3,
+        OneMonth = 31,
 
-        [Display(Name = "One week")]
-        SevenDays = 4,
+        [Display(Name = "Three months")]
+        ThreeMonths = 93,
     }
 }
