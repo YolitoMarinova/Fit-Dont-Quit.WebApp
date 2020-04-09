@@ -1,0 +1,81 @@
+﻿@using static FitDontQuit.Common.EnumHelper
+@model IEnumerable<FitDontQuit.Web.ViewModels.Memberships.MembershipViewModel>
+@{ 
+    this.ViewData["Title"] = "Memberships";
+}
+
+<!-- Banner Section Begin -->
+<section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="banner-text">
+                    <h2>Get training today</h2>
+                    <p>
+                        We work with some of the best trainers in Bulgaria.<br />
+                        Find the best personal trainer for you.
+                    </p>
+                    <a class="primary-btn banner-btn" asp-controller="Trainers" asp-action="Index">Contact Now</a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <img class="membership-trainer" src="img/banner-person.png" alt="Trainer">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+<!-- Membership Section Begin -->
+<section class="membership-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>MEMBERSHIP PLANS</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var membership in Model)
+            {
+                <div class="col-lg-4">
+
+                    <div class="membership-item">
+                        <div class="mi-title">
+                            <h4>@membership.Name</h4>
+                            <div class="triangle"></div>
+                        </div>
+                        <h2 class="mi-price">@membership.Price BGN@*.<span>/01 mo</span>*@</h2>
+                        <ul>
+                            <li>
+                                <p>Duration</p>
+                                <span>@membership.Duration.GetDisplayName()</span>
+                            </li>
+                            <li>
+                                <p>Personal trainer</p>
+                                @if (membership.HaveATrainer == true)
+                                {
+                                    <span>Include in price</span>
+                                }
+                                else
+                                {
+                                    <span>Not include in price</span>
+                                }
+                            </li>
+                            <li>
+                                <p>Amount of people</p>
+                                <span>@membership.AmountOfPeopleLimit.GetDisplayName() person</span>
+                            </li>
+                            <li>
+                                <p>Number of visits</p>
+                                <span>@membership.VisitLimit.GetDisplayName()</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="primary-btn membership-btn">Start Now</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Membership Section End -->

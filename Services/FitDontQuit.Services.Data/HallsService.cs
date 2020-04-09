@@ -40,19 +40,12 @@
             await this.hallsRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var hall = this.hallsRepository.All().FirstOrDefault(h => h.Id == id);
 
-            if (hall == null)
-            {
-                return false;
-            }
-
             this.hallsRepository.Delete(hall);
             await this.hallsRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public T GetById<T>(int id)

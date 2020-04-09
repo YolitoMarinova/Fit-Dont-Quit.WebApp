@@ -18,6 +18,13 @@
             this.servicesService = servicesService;
         }
 
+        public IActionResult Index()
+        {
+            var services = this.servicesService.GettAll<ServiceViewModel>();
+
+            return this.View(services);
+        }
+
         public IActionResult Create()
         {
             return this.View();
@@ -34,7 +41,7 @@
             var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceInputModel>(inputModel);
             await this.servicesService.CreateAsync(serviceServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
@@ -60,12 +67,12 @@
             var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceInputModel>(serviceModel);
             await this.servicesService.EditAsync(id, serviceServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var service = this.servicesService.GetById<ServiceInputModel>(id);
+            var service = this.servicesService.GetById<ServiceDeleteModel>(id);
 
             if (service == null)
             {
@@ -74,14 +81,7 @@
 
             await this.servicesService.DeleteAsync(id);
 
-            return this.RedirectToAction("All");
-        }
-
-        public IActionResult All()
-        {
-            var services = this.servicesService.GettAll<ServiceViewModel>();
-
-            return this.View(services);
+            return this.RedirectToAction("Index");
         }
     }
 }

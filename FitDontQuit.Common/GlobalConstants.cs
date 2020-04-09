@@ -2,7 +2,7 @@
 {
     public static class GlobalConstants
     {
-        public const string SystemName = "FitDontQuit";
+        public const string SystemName = "Fit Dont Quit";
 
         public const string AdministratorRoleName = "Administrator";
 

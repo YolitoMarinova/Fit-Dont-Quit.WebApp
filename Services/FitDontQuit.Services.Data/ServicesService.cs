@@ -40,19 +40,12 @@
             await this.servicesRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var service = this.servicesRepository.All().FirstOrDefault(s => s.Id == id);
 
-            if (service == null)
-            {
-                return false;
-            }
-
             this.servicesRepository.Delete(service);
             await this.servicesRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public T GetById<T>(int id)

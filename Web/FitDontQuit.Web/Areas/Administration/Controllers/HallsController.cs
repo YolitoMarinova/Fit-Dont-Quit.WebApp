@@ -17,6 +17,13 @@
             this.hallsService = hallsService;
         }
 
+        public IActionResult Index()
+        {
+            var halls = this.hallsService.GettAll<HallViewModel>();
+
+            return this.View(halls);
+        }
+
         public IActionResult Create()
         {
             return this.View();
@@ -33,7 +40,7 @@
             var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceInputModel>(inputModel);
             await this.hallsService.CreateAsync(hallServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.Redirect("Index");
         }
 
         public IActionResult Edit(int id)
@@ -59,26 +66,21 @@
             var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceInputModel>(hallModel);
             await this.hallsService.EditAsync(id, hallServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await this.hallsService.DeleteAsync(id);
+            var hall = this.hallsService.GetById<HallDeleteModel>(id);
 
-            if (result != true)
+            if (hall == null)
             {
-                return this.BadRequest();
+                return this.NotFound();
             }
 
-            return this.RedirectToAction("All");
-        }
+            await this.hallsService.DeleteAsync(id);
 
-        public IActionResult All()
-        {
-            var halls = this.hallsService.GettAll<HallViewModel>();
-
-            return this.View(halls);
+            return this.RedirectToAction("Index");
         }
     }
 }

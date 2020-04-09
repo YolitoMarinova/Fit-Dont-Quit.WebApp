@@ -25,6 +25,12 @@
 
         public Duration Duration { get; set; }
 
+        public bool HaveATrainer { get; set; }
+
+        public AmountOfPeopleLimit AmountOfPeopleLimit { get; set; }
+
+        public VisitLimit VisitLimit { get; set; }
+
         public virtual IEnumerable<PurchasedMembership> Purchases { get; set; }
     }
 }

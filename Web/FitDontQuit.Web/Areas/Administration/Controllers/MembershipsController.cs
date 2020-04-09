@@ -10,8 +10,6 @@
     using FitDontQuit.Web.ViewModels.Administration.Memberships;
     using Microsoft.AspNetCore.Mvc;
 
-    using static FitDontQuit.Common.EnumHelper;
-
     public class MembershipsController : AdministrationController
     {
         private readonly IMembershipsService membershipsService;
@@ -21,13 +19,24 @@
             this.membershipsService = membershipsService;
         }
 
+        public IActionResult Index()
+        {
+            var memberships = this.membershipsService.GettAll<MembershipViewModel>();
+
+            return this.View(memberships);
+        }
+
         public IActionResult Create()
         {
             var durations = (Duration[])Enum.GetValues(typeof(Duration));
+            var peopleLimits = (AmountOfPeopleLimit[])Enum.GetValues(typeof(AmountOfPeopleLimit));
+            var visitsLimits = (VisitLimit[])Enum.GetValues(typeof(VisitLimit));
 
             var viewModel = new MembershipInputModel
             {
                 Durations = durations,
+                AmountOfPeopleLimits = peopleLimits,
+                VisitsLimits = visitsLimits,
             };
 
             return this.View(viewModel);
@@ -44,15 +53,15 @@
             var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceInputModel>(inputModel);
             await this.membershipsService.CreateAsync(membershipServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            var name = Duration.SevenDays.GetDisplayName();
-
             var membership = this.membershipsService.GetById<MembershipInputModel>(id);
             var durations = (Duration[])Enum.GetValues(typeof(Duration));
+            var peopleLimits = (AmountOfPeopleLimit[])Enum.GetValues(typeof(AmountOfPeopleLimit));
+            var visitsLimits = (VisitLimit[])Enum.GetValues(typeof(VisitLimit));
 
             if (membership == null)
             {
@@ -60,7 +69,8 @@
             }
 
             membership.Durations = durations;
-
+            membership.AmountOfPeopleLimits = peopleLimits;
+            membership.VisitsLimits = visitsLimits;
 
             return this.View(membership);
         }
@@ -76,12 +86,12 @@
             var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceInputModel>(membershipModel);
             await this.membershipsService.EditAsync(id, membershipServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var membership = this.membershipsService.GetById<MembershipInputModel>(id);
+            var membership = this.membershipsService.GetById<MembershipDeleteModel>(id);
 
             if (membership == null)
             {
@@ -90,14 +100,7 @@
 
             await this.membershipsService.DeleteAsync(id);
 
-            return this.RedirectToAction("All");
-        }
-
-        public IActionResult All()
-        {
-            var memberships = this.membershipsService.GettAll<MembershipViewModel>();
-
-            return this.View(memberships);
+            return this.RedirectToAction("Index");
         }
     }
 }

@@ -35,19 +35,12 @@
             await this.professionRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var profession = this.professionRepository.All().FirstOrDefault(p => p.Id == id);
 
-            if (profession == null)
-            {
-                return false;
-            }
-
             this.professionRepository.Delete(profession);
             await this.professionRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public T GetById<T>(int id)

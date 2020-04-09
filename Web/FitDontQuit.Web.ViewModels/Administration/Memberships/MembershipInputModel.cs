@@ -21,6 +21,16 @@
 
         public Duration Duration { get; set; }
 
+        public bool HaveATrainer { get; set; }
+
+        public AmountOfPeopleLimit AmountOfPeopleLimit { get; set; }
+
+        public VisitLimit VisitLimit { get; set; }
+
         public IEnumerable<Duration> Durations { get; set; }
+
+        public IEnumerable<AmountOfPeopleLimit> AmountOfPeopleLimits { get; set; }
+
+        public IEnumerable<VisitLimit> VisitsLimits { get; set; }
     }
 }

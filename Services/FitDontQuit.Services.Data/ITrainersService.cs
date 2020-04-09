@@ -16,6 +16,6 @@
 
         T GetById<T>(int id);
 
-        Task<bool> DeleteAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

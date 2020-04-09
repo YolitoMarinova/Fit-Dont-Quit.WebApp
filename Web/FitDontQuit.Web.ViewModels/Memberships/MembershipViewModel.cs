@@ -1,7 +1,5 @@
-﻿namespace FitDontQuit.Web.ViewModels.Administration.Memberships
+﻿namespace FitDontQuit.Web.ViewModels.Memberships
 {
-    using System;
-
     using FitDontQuit.Data.Models.Enums;
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Memberships;
@@ -21,9 +19,5 @@
         public AmountOfPeopleLimit AmountOfPeopleLimit { get; set; }
 
         public VisitLimit VisitLimit { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public DateTime ModifiedOn { get; set; }
     }
 }

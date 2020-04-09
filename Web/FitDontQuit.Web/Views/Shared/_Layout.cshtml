@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+    <title>@this.ViewData["Title"] | @GlobalConstants.SystemName</title>
 
     <!--From template-->
     <meta name="description" content="Gutim Template">
@@ -79,8 +79,9 @@
                 <nav class="mainmenu mobile-menu">
                     <ul>
                         <li><a class="active" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a href="./gallery.html">Memberships</a></li>
+                        <li><a asp-area="" asp-controller="Memberships" asp-action="Index">Memberships</a></li>
                         <li><a href="./classes.html">Classes</a></li>
+                        <li><a asp-controller="Trainers" asp-action="Index">Trainers</a></li>
                         <li><a href="./blog.html">Blog</a></li>
                         <li><a href="./gallery.html">Gallery</a></li>
                         <li><a asp-area="" asp-controller="Contacts" asp-action="Index">Contacts</a></li>

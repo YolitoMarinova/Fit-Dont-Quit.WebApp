@@ -46,19 +46,12 @@
             await this.groupTrainingsRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var groupTraining = this.groupTrainingsRepository.All().FirstOrDefault(gt => gt.Id == id);
 
-            if (groupTraining == null)
-            {
-                return false;
-            }
-
             this.groupTrainingsRepository.Delete(groupTraining);
             await this.groupTrainingsRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public T GetById<T>(int id)

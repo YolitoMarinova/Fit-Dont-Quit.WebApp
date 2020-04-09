@@ -42,19 +42,12 @@
             await this.articlesRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var article = this.articlesRepository.All().FirstOrDefault(a => a.Id == id);
 
-            if (article == null)
-            {
-                return false;
-            }
-
             this.articlesRepository.Delete(article);
             await this.articlesRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public T GetById<T>(int id)

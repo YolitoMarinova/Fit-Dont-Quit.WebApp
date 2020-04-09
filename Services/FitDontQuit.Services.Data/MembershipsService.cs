@@ -25,6 +25,9 @@
                 Name = membershipModel.Name,
                 Price = membershipModel.Price,
                 Duration = membershipModel.Duration,
+                HaveATrainer = membershipModel.HaveATrainer,
+                AmountOfPeopleLimit = membershipModel.AmountOfPeopleLimit,
+                VisitLimit = membershipModel.VisitLimit,
             };
 
             await this.membershipRepository.AddAsync(membership);
@@ -38,23 +41,19 @@
             membership.Name = membershipModel.Name;
             membership.Price = membershipModel.Price;
             membership.Duration = membershipModel.Duration;
+            membership.HaveATrainer = membershipModel.HaveATrainer;
+            membership.AmountOfPeopleLimit = membershipModel.AmountOfPeopleLimit;
+            membership.VisitLimit = membershipModel.VisitLimit;
 
             await this.membershipRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var membership = this.membershipRepository.All().FirstOrDefault(m => m.Id == id);
 
-            if (membership == null)
-            {
-                return false;
-            }
-
             this.membershipRepository.Delete(membership);
             await this.membershipRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public T GetById<T>(int id)

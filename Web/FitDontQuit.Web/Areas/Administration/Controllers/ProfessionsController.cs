@@ -19,6 +19,13 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
             this.professionsService = professionsService;
         }
 
+        public IActionResult Index()
+        {
+            var professions = this.professionsService.GettAll<ProfessionViewModel>();
+
+            return this.View(professions);
+        }
+
         public IActionResult Create()
         {
             return this.View();
@@ -35,7 +42,7 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
             var professionServiceModel = AutoMapperConfig.MapperInstance.Map<ProfessionServiceInputModel>(inputModel);
             await this.professionsService.CreateAsync(professionServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
@@ -61,12 +68,12 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
             var professionServiceModel = AutoMapperConfig.MapperInstance.Map<ProfessionServiceInputModel>(professionModel);
             await this.professionsService.EditAsync(id, professionServiceModel);
 
-            return this.RedirectToAction("All");
+            return this.RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var profession = this.professionsService.GetById<ProfessionInputModel>(id);
+            var profession = this.professionsService.GetById<ProfessionDeleteModel>(id);
 
             if (profession == null)
             {
@@ -75,14 +82,7 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
 
             await this.professionsService.DeleteAsync(id);
 
-            return this.RedirectToAction("All");
-        }
-
-        public IActionResult All()
-        {
-            var professions = this.professionsService.GettAll<ProfessionViewModel>();
-
-            return this.View(professions);
+            return this.RedirectToAction("Index");
         }
     }
 }

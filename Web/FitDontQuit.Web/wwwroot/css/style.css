@@ -33,7 +33,7 @@
 /*----------------------------------------*/
 
 html, body {
-    height: 100%;
+    height: 100% !important;
     font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
@@ -195,13 +195,13 @@ ul, ol {
 
 .primary-btn {
     display: inline-block;
-    font-size: 13px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 600;
     padding: 0 12px;
     color: #ffffff;
     text-align: center;
     width: 160px;
-    height: 40px;
+    height: 46px;
     border-left: 2px solid #eb3c5a;
     border-right: 2px solid #f67831;
     -webkit-box-sizing: border-box;
@@ -215,9 +215,9 @@ ul, ol {
     -webkit-transition-duration: 1000ms;
     -o-transition-duration: 1000ms;
     transition-duration: 1000ms;
-    position: static;
+    line-height: 45px;
+    position: relative;
     z-index: 1;
-    padding: 0px !important;
 }
 
     .primary-btn:after {
@@ -236,8 +236,7 @@ ul, ol {
         top: 0;
         left: 0;
         z-index: -1;
-        opacity: 0;
-        padding: 0px !important;
+        opacity: 1;
     }
 /* Preloder */
 
@@ -1086,10 +1085,14 @@ ul, ol {
         color: #ffffff;
         margin-bottom: 50px;
     }
+
+.banner-section img.membership-trainer {
+    padding-top: 50px;
+    width: 70%;
+}
 /*---------------------
   Membership Section
 -----------------------*/
-
 .membership-section {
     padding-bottom: 0;
 }
@@ -1104,6 +1107,7 @@ ul, ol {
     -webkit-box-shadow: 0px 15px 49px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 15px 49px rgba(0, 0, 0, 0.15);
     padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 
     .membership-item .mi-title {
@@ -2468,7 +2472,7 @@ ul, ol {
 /* Small Mobile: 320px */
 
 @media only screen and (max-width: 598x) {
-    
+
     .hero-text h1 {
         font-size: 42px;
     }

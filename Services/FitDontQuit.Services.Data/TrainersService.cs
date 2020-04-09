@@ -1,15 +1,14 @@
-﻿using FitDontQuit.Data.Common.Repositories;
-using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.Trainers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FitDontQuit.Services.Data
+﻿namespace FitDontQuit.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Data.Common.Repositories;
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Trainers;
+
     public class TrainersService : ITrainersService
     {
         private readonly IDeletableEntityRepository<Trainer> trainersRepository;
@@ -53,19 +52,12 @@ namespace FitDontQuit.Services.Data
             await this.trainersRepository.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             var trainer = this.trainersRepository.All().FirstOrDefault(t => t.Id == id);
 
-            if (trainer == null)
-            {
-                return false;
-            }
-
             this.trainersRepository.Delete(trainer);
             await this.trainersRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public T GetById<T>(int id)

@@ -3,30 +3,51 @@
 @{
     ViewData["Title"] = "Create";
     var durations = Model.Durations.ToList().Select(x => new SelectListItem(x.GetDisplayName(), x.ToString()));
+    var visitsLimits = Model.VisitsLimits.ToList().Select(x => new SelectListItem(x.GetDisplayName(), x.ToString()));
+    var peopleAmountLimits = Model.AmountOfPeopleLimits.ToList().Select(x => new SelectListItem(x.GetDisplayName(), x.ToString()));
 }
 
-    <section class="admin-section">
-        <h1>CreateMembershipViewModel</h1>
+<section class="admin-section">
+    <h1>CreateMembershipViewModel</h1>
 
-        <form method="post" asp-action="Create">
-            <div>
-                <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+    <form method="post" asp-action="Create">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-            <div>
-                <label asp-for="Price"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
+        <div>
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
 
-            <div>
-                <label asp-for="Duration"></label>
-                <select asp-for="Duration" asp-items="durations" class="form-control"></select>
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-            <hr />
-            <input type="submit" class="btn btn-primary" />
-        </form>
-    </section>
+        <div>
+            <label asp-for="HaveATrainer">Include a trainer</label><br />
+            <label><input asp-for="HaveATrainer" type="radio" value="true" />Yes</label><br />
+            <label><input asp-for="HaveATrainer" type="radio" value="false" />No</label><br />
+            <span asp-validation-for="HaveATrainer" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Duration"></label>
+            <select asp-for="Duration" asp-items="durations" class="form-control"></select>
+            <span asp-validation-for="Duration" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="AmountOfPeopleLimit">People limit</label>
+            <select asp-for="AmountOfPeopleLimit" asp-items="peopleAmountLimits" class="form-control"></select>
+            <span asp-validation-for="AmountOfPeopleLimit" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="VisitLimit">Visit limit</label>
+            <select asp-for="VisitLimit" asp-items="visitsLimits" class="form-control"></select>
+            <span asp-validation-for="VisitLimit" class="text-danger"></span>
+        </div>
+        <hr />
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</section>
