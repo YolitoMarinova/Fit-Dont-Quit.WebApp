@@ -1,0 +1,19 @@
+﻿@using FitDontQuit.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@{
+    this.ViewData["Title"] = "Thank you!";
+}
+<section class="thankYou-section" >
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Thank You @this.UserManager.GetUserName(this.User) for your purchase!</h1>
+        <p class="lead">Have a great time with us. Waiting for you in the gym.</p>
+        <hr>
+        <p>
+            Having trouble? <a asp-controller="Contacts" asp-action="Index">Contact us</a>
+        </p>
+        <p class="lead">
+            <a class="custom custom-button" asp-controller="Home" asp-action="Index">Continue to homepage</a>
+        </p>
+    </div>
+</section>

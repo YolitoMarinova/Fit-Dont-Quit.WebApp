@@ -622,6 +622,28 @@ ul, ol {
     padding-bottom: 170px;
 }
 
+/*------------------------
+    Buy section
+------------------------*/
+
+.buy-section {
+    background: #f5f4f4;
+    padding-top: 250px;
+    margin: -135px 150px -135px;
+    padding-bottom: 200px;
+}
+
+/*-----------------------
+    Thank You Section
+-----------------------*/
+
+.thankYou-section {
+    height: 1000px;
+    background: #e9ecef;
+    padding-top: 200px;
+    margin: -135px 150px -135px;
+    padding-bottom: 200px;
+}
 
 /*---------------------
   Hero Section
