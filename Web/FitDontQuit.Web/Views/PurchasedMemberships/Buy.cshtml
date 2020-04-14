@@ -1,12 +1,21 @@
-﻿@using static FitDontQuit.Common.EnumHelper
-@model FitDontQuit.Web.ViewModels.PurchasedMemberships.BuyViewModels
+﻿@using FitDontQuit.Data.Models
+@using FitDontQuit.Services.Data
+@using FitDontQuit.Web.ViewModels.Memberships
+@using Microsoft.AspNetCore.Identity
+@using static FitDontQuit.Common.EnumHelper
+@inject UserManager<ApplicationUser> UserManager
+@inject IMembershipsService  membershipService
+@model FitDontQuit.Web.ViewModels.PurchasedMemberships.BuyInputModel
 @{
     this.ViewData["Title"] = "Buy membership";
 
     var parametars = new Dictionary<string, string>
     {
-        { "userId", @Model.User.Id },
+        { "userId", @Model.UserId },
     };
+
+    ApplicationUser user = await this.UserManager.GetUserAsync(this.User);
+    PurchasedMembershipModel membership = this.membershipService.GetById<PurchasedMembershipModel>(@Model.MembershipId);
 }
 
 <section class="buy-section">
@@ -27,53 +36,47 @@
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
-                                <h6 class="my-0">@Model.Membership.Name</h6>
-                                <small class="text-muted">@Model.Membership.Duration.GetDisplayName()</small>
+                                <h6 class="my-0">@membership.Name</h6>
+                                <small class="text-muted">@membership.Duration.GetDisplayName()</small>
                             </div>
-                            <span class="text-muted">@Model.Membership.Price BGN</span>
+                            <span class="text-muted">@membership.Price BGN</span>
                         </li>
                     </ul>
                 </div>
             </div>
-                       
-            <form method="post" asp-action="Buy" asp-all-route-data="@parametars">
+
+            <form method="post" asp-controller="PurchasedMemberships" asp-action="Buy" asp-all-route-data="@parametars">
                 <div class="row mb-5">
-                        <div class="col-md-6">
-                            <label asp-for="StartDate"></label>
-                            <small class="text-muted"> (mm-dd-yyyy)</small>
-                            <input type="text" id="startDate" asp-for="StartDate" class="form-control" value="" autocomplete="off" />
-                            <span asp-validation-for="StartDate" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="EndDate"></label>
-                            <small class="text-muted"> (mm-dd-yyyy)</small>
-                            <input type="text" id="endDate" asp-for="EndDate" class="form-control" value="" readonly />
-                            <span asp-validation-for="EndDate" class="text-danger"></span>
-                        </div>
+                    <div class="col-md-6">
+                        <label asp-for="StartDate"></label>
+                        <small class="text-muted"> (mm-dd-yyyy)</small>
+                        <input type="text" id="startDate" asp-for="StartDate" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="EndDate"></label>
+                        <small class="text-muted"> (mm-dd-yyyy)</small>
+                        <input type="text" id="endDate" asp-for="EndDate" class="form-control" value="" readonly />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
                 </div>
 
-              
+
 
                 <div class="row mb-5">
                     <h4 class="col-md-12">Personal information</h4>
                     <div class="col-md-6 mb-3">
-                        <label asp-for="User.FirstName"></label>
-                        <input asp-for="User.FirstName" class="form-control" readonly />
-                        <span asp-validation-for="User.FirstName" class="text-danger"></span>
+                        <input class="form-control" value="@user.FirstName" disabled />
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label asp-for="User.LastName"></label>
-                        <input asp-for="User.LastName" class="form-control" readonly />
-                        <span asp-validation-for="User.LastName" class="text-danger"></span>
+                        <input class="form-control" value="@user.LastName" disabled />
                     </div>
                     <div class="col-md-12">
-                        <label asp-for="User.UserName"></label>
-                        <input asp-for="User.UserName" class="form-control" readonly />
-                        <span asp-validation-for="User.UserName" class="text-danger"></span>
+                        <input class="form-control" value="@user.UserName" disabled />
                     </div>
                 </div>
 
-               
+
 
                 <h4 class="mb-3">Payment</h4>
                 <div class="d-block my-3">
@@ -149,7 +152,7 @@
 
                         //newdate.setDate(newdate.getDate());
 
-                        var duration = @((int)Model.Membership.Duration);
+                        var duration = @((int)membership.Duration);
 
                         var day = newdate.getDate() + duration;
                         var month = newdate.getMonth() + 1;

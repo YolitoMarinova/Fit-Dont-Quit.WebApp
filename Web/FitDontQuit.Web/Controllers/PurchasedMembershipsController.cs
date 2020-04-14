@@ -1,20 +1,19 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Data;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.PurchasedMemberships;
-using FitDontQuit.Web.ViewModels.Memberships;
-using FitDontQuit.Web.ViewModels.PurchasedMemberships;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FitDontQuit.Web.Controllers
+﻿namespace FitDontQuit.Web.Controllers
 {
+    using System;
+    using System.Globalization;
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Data;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.PurchasedMemberships;
+    using FitDontQuit.Web.ViewModels.Memberships;
+    using FitDontQuit.Web.ViewModels.PurchasedMemberships;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     [Authorize]
     public class PurchasedMembershipsController : BaseController
     {
@@ -32,9 +31,9 @@ namespace FitDontQuit.Web.Controllers
             this.purchasedMembershipsService = purchasedMembershipsService;
         }
 
-        public async Task<IActionResult> Buy(int id)
+        public IActionResult Buy(int id)
         {
-            var user = await this.userManager.GetUserAsync(this.User);
+            var userId = this.userManager.GetUserId(this.User);
             var membership = this.membershipsService.GetById<PurchasedMembershipModel>(id);
 
             if (membership == null)
@@ -42,21 +41,26 @@ namespace FitDontQuit.Web.Controllers
                 return this.NotFound();
             }
 
-            var model = new BuyViewModels
+            var model = new BuyInputModel
             {
-                User = user,
-                Membership = membership,
+                UserId = userId,
+                MembershipId = id,
             };
+
+            this.ViewBag.id = id;
 
             return this.View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Buy(int id, string userId, BuyViewModels purchasedMembershipModel)
+        public async Task<IActionResult> Buy(int id, string userId, BuyInputModel purchasedMembershipModel)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest();
+                purchasedMembershipModel.MembershipId = id;
+                purchasedMembershipModel.UserId = userId;
+
+                return this.View(purchasedMembershipModel);
             }
 
             var membership = this.membershipsService.GetById<PurchasedMembershipModel>(id);
@@ -75,27 +79,24 @@ namespace FitDontQuit.Web.Controllers
 
             DateTime startDate;
 
-            if (DateTime.TryParse(purchasedMembershipModel.StartDate, culture, DateTimeStyles.None, out startDate))
-            {
-                //startDate = DateTime.Parse(purchasedMembershipModel.StartDate, culture);
-            }
-            else
+            if (!DateTime.TryParse(purchasedMembershipModel.StartDate, culture, DateTimeStyles.None, out startDate))
             {
                 return this.BadRequest();
             }
 
             DateTime endDate;
 
-            if (DateTime.TryParse(purchasedMembershipModel.EndDate, culture, DateTimeStyles.None, out endDate))
-            {
-                endDate = DateTime.Parse(purchasedMembershipModel.EndDate, culture);
-            }
-            else
+            if (!DateTime.TryParse(purchasedMembershipModel.EndDate, culture, DateTimeStyles.None, out endDate))
             {
                 return this.BadRequest();
             }
 
-            var purchase = new BuyInputModel
+            if (startDate.AddDays((int)membership.Duration) != endDate)
+            {
+                return this.BadRequest();
+            }
+
+            var purchase = new PurchasedMembershipInputServiceModel
             {
                 MembershipId = id,
                 UserId = userId,
