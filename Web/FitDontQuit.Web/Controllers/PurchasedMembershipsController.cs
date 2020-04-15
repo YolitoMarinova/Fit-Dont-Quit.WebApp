@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using FitDontQuit.Data.Models;
@@ -31,9 +32,17 @@
             this.purchasedMembershipsService = purchasedMembershipsService;
         }
 
-        public IActionResult Buy(int id)
+        public async Task<IActionResult> Buy(int id)
         {
-            var userId = this.userManager.GetUserId(this.User);
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var membershipByUser = this.purchasedMembershipsService.GetByUser(user);
+
+            if (membershipByUser != null)
+            {
+                return this.RedirectToAction("Renew");
+            }
+
             var membership = this.membershipsService.GetById<PurchasedMembershipModel>(id);
 
             if (membership == null)
@@ -43,7 +52,7 @@
 
             var model = new BuyInputModel
             {
-                UserId = userId,
+                UserId = user.Id,
                 MembershipId = id,
             };
 
@@ -55,6 +64,15 @@
         [HttpPost]
         public async Task<IActionResult> Buy(int id, string userId, BuyInputModel purchasedMembershipModel)
         {
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            var membershipByUser = this.purchasedMembershipsService.GetByUser(user);
+
+            if (membershipByUser != null)
+            {
+                return this.RedirectToAction("Renew");
+            }
+
             if (!this.ModelState.IsValid)
             {
                 purchasedMembershipModel.MembershipId = id;
@@ -109,6 +127,12 @@
             await this.purchasedMembershipsService.CreateAsync(serviceModel);
 
             return this.RedirectToAction("ThankYou");
+        }
+
+        //TO DO: Renew membership if already exist
+        public IActionResult Renew()
+        {
+            return this.View();
         }
 
         public IActionResult ThankYou()

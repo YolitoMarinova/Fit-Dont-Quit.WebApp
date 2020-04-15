@@ -2,10 +2,11 @@
 {
     using System;
 
+    using AutoMapper;
     using FitDontQuit.Data.Models;
     using FitDontQuit.Services.Mapping;
 
-    public class TrainerServiceOutputModel : IMapFrom<Trainer>
+    public class TrainerServiceOutputModel : IMapFrom<Trainer>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -25,8 +26,15 @@
 
         public int ProfessionId { get; set; }
 
+        public string ProfessionName { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime ModifiedOn { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Trainer, TrainerServiceOutputModel>().ForMember(x => x.ProfessionName, opt => opt.MapFrom(x => x.Profession.Name));
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace FitDontQuit.Web
 {
     using System.Reflection;
-
+    using CloudinaryDotNet;
     using FitDontQuit.Data;
     using FitDontQuit.Data.Common;
     using FitDontQuit.Data.Common.Repositories;
@@ -69,6 +69,15 @@
             services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<ITrainersService, TrainersService>();
             services.AddTransient<IPurchasedMembershipsService, PurchasedMembershipsService>();
+
+            Account account = new Account(
+                              this.configuration["Cloudinary:Name"],
+                              this.configuration["Cloudinary:ApiKey"],
+                              this.configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            services.AddSingleton(cloudinary);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

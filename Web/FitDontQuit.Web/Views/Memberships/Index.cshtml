@@ -1,33 +1,13 @@
 ﻿@using static FitDontQuit.Common.EnumHelper
 @model IEnumerable<FitDontQuit.Web.ViewModels.Memberships.MembershipViewModel>
-@{ 
+@{
     this.ViewData["Title"] = "Memberships";
 }
 
-<!-- Banner Section Begin -->
-<section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="banner-text">
-                    <h2>Get training today</h2>
-                    <p>
-                        We work with some of the best trainers in Bulgaria.<br />
-                        Find the best personal trainer for you.
-                    </p>
-                    <a class="primary-btn banner-btn" asp-controller="Trainers" asp-action="Index">Contact Now</a>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <img class="membership-trainer" src="img/banner-person.png" alt="Trainer">
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Banner Section End -->
+<partial name="BannerSectionPartial" />
 <!-- Membership Section Begin -->
 <section class="membership-section spad">
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
@@ -79,3 +59,34 @@
     </div>
 </section>
 <!-- Membership Section End -->
+<!-- Footer Banner Section Begin -->
+<section class="footer-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="footer-banner-item set-bg" data-setbg="../../img/footer-banner/footer-banner-1.jpg">
+                    <span>New member</span>
+                    <h2>7 days for free</h2>
+                    <p>Complete the training sessions with us, surely you will be happy</p>
+                    @if (this.User.Identity.IsAuthenticated == false)
+                    {
+                        <a asp-area="Identity" asp-controller="Account" asp-action="Register" class="primary-btn">Get Started</a>
+                    }
+                    else
+                    { 
+                    <a href="#">Get Started</a>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer-banner-item set-bg" data-setbg="../../img/footer-banner/footer-banner-2.jpg">
+                    <span>contact us</span>
+                    <h2>09 746 204</h2>
+                    <p>If you trust us on your journey they not disappoint you!</p>
+                    <a asp-controller="Contacts" asp-action="Index" class="primary-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer Banner Section End -->

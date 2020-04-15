@@ -1,0 +1,133 @@
+﻿@model FitDontQuit.Web.ViewModels.Trainers.AllTrainersViewModel
+@{
+    this.ViewData["Title"] = "About us";
+}
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="../../img/breadcrumb/classes-breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>About</h2>
+                    <div class="breadcrumb-option">
+                        <a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a>
+                        <span>About</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- About Section Begin -->
+<section class="about-section about-page spad">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-6 mt-4">
+                <div class="about-pic">
+                    <img src="../../img/about-pic.jpg" alt="">
+                    <a href="https://www.youtube.com/watch?v=SlPhMPnQ58k" class="play-btn video-popup">
+                        <img src="../../img/play.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <h2>Story About Us</h2>
+                    <p class="first-para">
+                        Our vision is to change the look of the sport in Bulgaria. For us, this is not an activity inherent only for the most devoted, but a part of modern life, for which everyone can find will and strength.
+                        The time spent in Fit Don't Quit is a time spent in caring for yourself. It becomes a way of life because it is fun, useful and meaningful.
+                    </p>
+                    <p class="second-para">
+                        The Lifestyle Club is both a stress-relieving home and a home where everyone can find support for their own purposes and dreams. Perhaps they are slimming or toughening, proper eating and meditation, and perhaps just relaxing in the warm pool or talking to a friend in the pause of an intense group workout.
+                        Your choice of development is inviolable. Our role is to do everything we can for you to do it in a light and pleasant way.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <h2>Story About Us</h2>
+                    <p class="first-para">
+                        Our vision is to change the look of the sport in Bulgaria. For us, this is not an activity inherent only for the most devoted, but a part of modern life, for which everyone can find will and strength.
+                        The time spent in Fit Don't Quit is a time spent in caring for yourself. It becomes a way of life because it is fun, useful and meaningful.
+                    </p>
+                    <p class="second-para">
+                        The Lifestyle Club is both a stress-relieving home and a home where everyone can find support for their own purposes and dreams. Perhaps they are slimming or toughening, proper eating and meditation, and perhaps just relaxing in the warm pool or talking to a friend in the pause of an intense group workout.
+                        Your choice of development is inviolable. Our role is to do everything we can for you to do it in a light and pleasant way.
+                    </p>
+                    <img src="../../img/about-signature.png" alt="">
+                    <div class="at-author">
+                        <h4>Lettie Chavez</h4>
+                        <span>CEO - Founder</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4">
+                <div class="about-pic">
+                    <img src="../../img/about-pic.jpg" alt="">
+                    <a href="https://www.youtube.com/watch?v=SlPhMPnQ58k" class="play-btn video-popup">
+                        <img src="../../img/play.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Section End -->
+<!-- About Counter Section Begin -->
+<div class="about-counter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="about-counter-text">
+                    <div class="single-counter">
+                        <h1 class="counter-num count">98</h1>
+                        <p>Programs</p>
+                    </div>
+                    <div class="single-counter">
+                        <h1 class="counter-num count">3</h1>
+                        <p>Locations</p>
+                    </div>
+                    <div class="single-counter">
+                        <h1 class="counter-num count">50</h1>
+                        <span>k+</span>
+                        <p>Members</p>
+                    </div>
+                    <div class="single-counter">
+                        <h1 class="counter-num count">34</h1>
+                        <p>Coaches</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Counter Section End -->
+<!-- Gym Award Section Begin -->
+<section class="gym-award spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="award-text">
+                    <h2>Best gym award</h2>
+                    <p>
+                        The Lifestyle Club is both a stress-relieving home and a home where everyone can find support for their own purposes and dreams. Perhaps they are slimming or toughening, proper eating and meditation, and perhaps just relaxing in the warm pool or talking to a friend in the pause of an intense group workout.
+                    </p>
+                    <p>
+                        Your choice of development is inviolable. Our role is to do everything we can for you to do it in a light and pleasant way.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <img src="../../img/award.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Gym Award Section End -->
+<partial name="BannerSectionPartial" />
+<partial name="TopThreeTrainersPartial" />

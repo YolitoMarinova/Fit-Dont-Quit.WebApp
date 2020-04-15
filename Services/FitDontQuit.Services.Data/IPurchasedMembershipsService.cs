@@ -1,4 +1,5 @@
-﻿using FitDontQuit.Services.Models.PurchasedMemberships;
+﻿using FitDontQuit.Data.Models;
+using FitDontQuit.Services.Models.PurchasedMemberships;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,5 +10,7 @@ namespace FitDontQuit.Services.Data
     public interface IPurchasedMembershipsService
     {
         Task CreateAsync(PurchasedMembershipInputServiceModel purchasedMembershipModel);
+
+        PurchaseUserViewModel GetByUser(ApplicationUser user);
     }
 }

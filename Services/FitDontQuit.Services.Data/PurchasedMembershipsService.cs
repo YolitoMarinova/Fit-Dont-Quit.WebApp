@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FitDontQuit.Data.Common.Repositories;
 using FitDontQuit.Data.Models;
 using FitDontQuit.Services.Models.PurchasedMemberships;
+using FitDontQuit.Services.Mapping;
 
 namespace FitDontQuit.Services.Data
 {
@@ -29,6 +31,11 @@ namespace FitDontQuit.Services.Data
 
             await this.purchasedMembershipRepository.AddAsync(purchasedMembership);
             await this.purchasedMembershipRepository.SaveChangesAsync();
+        }
+
+        public PurchaseUserViewModel GetByUser(ApplicationUser user)
+        {
+            return this.purchasedMembershipRepository.All().Where(x => x.UserId == user.Id).To<PurchaseUserViewModel>().FirstOrDefault();
         }
     }
 }
