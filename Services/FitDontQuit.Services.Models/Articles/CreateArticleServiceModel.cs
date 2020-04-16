@@ -1,6 +1,6 @@
 ﻿namespace FitDontQuit.Services.Models.Articles
 {
-    public class ArticleServiceInputModel
+    public class CreateArticleServiceModel
     {
         public string Title { get; set; }
 

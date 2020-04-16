@@ -7,7 +7,7 @@
 
     public interface IArticlesService
     {
-        Task CreateAsync(ArticleServiceInputModel articleServiceModel);
+        Task CreateAsync(CreateArticleServiceModel articleModel);
 
         Task EditAsync(int id, ArticleServiceInputModel articleServiceModel);
 
