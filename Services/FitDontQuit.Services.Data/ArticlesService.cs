@@ -18,7 +18,7 @@
             this.articlesRepository = articlesRepository;
         }
 
-        public async Task CreateAsync(ArticleServiceInputModel articleModel)
+        public async Task CreateAsync(CreateArticleServiceModel articleModel)
         {
             var article = new Article
             {
@@ -31,7 +31,7 @@
             await this.articlesRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, ArticleServiceInputModel articleModel)
+        public async Task EditAsync(int id, EditArticleServiceModel articleModel)
         {
             var article = this.articlesRepository.All().Where(a => a.Id == id).FirstOrDefault();
 

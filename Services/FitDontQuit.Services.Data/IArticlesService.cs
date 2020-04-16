@@ -9,7 +9,7 @@
     {
         Task CreateAsync(CreateArticleServiceModel articleModel);
 
-        Task EditAsync(int id, ArticleServiceInputModel articleServiceModel);
+        Task EditAsync(int id, EditArticleServiceModel articleModel);
 
         IEnumerable<T> GettAll<T>();
 
