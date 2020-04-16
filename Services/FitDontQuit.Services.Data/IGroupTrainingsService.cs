@@ -7,14 +7,14 @@
 
     public interface IGroupTrainingsService
     {
-        Task CreateAsync(GroupTrainingServiceInputModel groupTrainingModel);
+        Task CreateAsync(CreateGroupTrainingServiceModel groupTrainingModel);
 
-        Task EditAsync(int id, GroupTrainingServiceInputModel groupTrainingModel);
+        Task EditAsync(int id, EditGroupTrainingServiceModel groupTrainingModel);
+
+        Task DeleteAsync(int id);
 
         IEnumerable<T> GettAll<T>();
 
         T GetById<T>(int id);
-
-        Task DeleteAsync(int id);
     }
 }

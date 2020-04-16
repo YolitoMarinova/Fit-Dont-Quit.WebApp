@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class GroupTrainingServiceInputModel
+    public class CreateGroupTrainingServiceModel
     {
         public string Name { get; set; }
 

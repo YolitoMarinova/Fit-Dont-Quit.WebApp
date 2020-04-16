@@ -18,7 +18,7 @@
             this.groupTrainingsRepository = groupTrainingsRepository;
         }
 
-        public async Task CreateAsync(GroupTrainingServiceInputModel groupTrainingModel)
+        public async Task CreateAsync(CreateGroupTrainingServiceModel groupTrainingModel)
         {
             var groupTraining = new GroupTraining
             {
@@ -33,7 +33,7 @@
             await this.groupTrainingsRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, GroupTrainingServiceInputModel groupTrainingModel)
+        public async Task EditAsync(int id, EditGroupTrainingServiceModel groupTrainingModel)
         {
             var groupTraining = this.groupTrainingsRepository.All().Where(gt => gt.Id == id).FirstOrDefault();
 
