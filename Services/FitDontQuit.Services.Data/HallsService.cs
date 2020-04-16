@@ -18,7 +18,7 @@
             this.hallsRepository = hallsRepository;
         }
 
-        public async Task CreateAsync(HallServiceInputModel hallModel)
+        public async Task CreateAsync(CreateHallServiceModel hallModel)
         {
             var hall = new Hall
             {
@@ -30,7 +30,7 @@
             await this.hallsRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, HallServiceInputModel hallModel)
+        public async Task EditAsync(int id, EditHallServiceModel hallModel)
         {
             var hall = this.hallsRepository.All().Where(h => h.Id == id).FirstOrDefault();
 

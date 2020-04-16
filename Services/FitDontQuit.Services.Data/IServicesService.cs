@@ -7,9 +7,9 @@
 
     public interface IServicesService
     {
-        Task CreateAsync(ServiceServiceInputModel serviceModel);
+        Task CreateAsync(CreateServiceInputModel serviceModel);
 
-        Task EditAsync(int id, ServiceServiceInputModel serviceModel);
+        Task EditAsync(int id, EditServiceServiceModel serviceModel);
 
         IEnumerable<T> GettAll<T>();
 

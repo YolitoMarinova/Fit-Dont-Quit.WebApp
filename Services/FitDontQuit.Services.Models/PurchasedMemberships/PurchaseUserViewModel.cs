@@ -1,9 +1,10 @@
 ﻿namespace FitDontQuit.Services.Models.PurchasedMemberships
 {
     using System;
+
     using AutoMapper;
+
     using FitDontQuit.Data.Models;
-    using FitDontQuit.Data.Models.Enums;
     using FitDontQuit.Services.Mapping;
 
     public class PurchaseUserViewModel : IMapFrom<PurchasedMembership>, IHaveCustomMappings

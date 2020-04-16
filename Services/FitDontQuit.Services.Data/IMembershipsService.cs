@@ -7,9 +7,9 @@
 
     public interface IMembershipsService
     {
-        Task CreateAsync(MembershipServiceInputModel membershipModel);
+        Task CreateAsync(CreateMembershipInputModel membershipModel);
 
-        Task EditAsync(int id, MembershipServiceInputModel membershipModel);
+        Task EditAsync(int id, EditMembershipInputModel membershipModel);
 
         IEnumerable<T> GettAll<T>();
 

@@ -1,12 +1,8 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FitDontQuit.Services.Models.PurchasedMemberships
+﻿namespace FitDontQuit.Services.Models.PurchasedMemberships
 {
-    public class PurchasedMembershipInputServiceModel : IMapTo<PurchasedMembership>
+    using System;
+
+    public class PurchasedMembershipInputServiceModel
     {
         public string UserId { get; set; }
 

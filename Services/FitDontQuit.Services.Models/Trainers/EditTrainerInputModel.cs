@@ -1,6 +1,6 @@
 ﻿namespace FitDontQuit.Services.Models.Trainers
 {
-    public class TrainerServiceInputModel
+    public class EditTrainerInputModel
     {
         public string FirstName { get; set; }
 

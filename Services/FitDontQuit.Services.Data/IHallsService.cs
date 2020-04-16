@@ -7,9 +7,9 @@
 
     public interface IHallsService
     {
-        Task CreateAsync(HallServiceInputModel hallModel);
+        Task CreateAsync(CreateHallServiceModel hallModel);
 
-        Task EditAsync(int id, HallServiceInputModel hallModel);
+        Task EditAsync(int id, EditHallServiceModel hallModel);
 
         IEnumerable<T> GettAll<T>();
 

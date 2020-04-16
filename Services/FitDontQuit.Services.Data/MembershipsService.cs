@@ -18,7 +18,7 @@
             this.membershipRepository = membershipRepository;
         }
 
-        public async Task CreateAsync(MembershipServiceInputModel membershipModel)
+        public async Task CreateAsync(CreateMembershipInputModel membershipModel)
         {
             var membership = new Membership
             {
@@ -34,7 +34,7 @@
             await this.membershipRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, MembershipServiceInputModel membershipModel)
+        public async Task EditAsync(int id, EditMembershipInputModel membershipModel)
         {
             var membership = this.membershipRepository.All().Where(m => m.Id == id).FirstOrDefault();
 

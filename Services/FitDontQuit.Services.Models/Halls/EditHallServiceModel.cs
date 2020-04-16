@@ -1,6 +1,6 @@
 ﻿namespace FitDontQuit.Services.Models.Halls
 {
-    public class HallServiceInputModel
+    public class EditHallServiceModel
     {
         public string Name { get; set; }
 

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FitDontQuit.Data.Common.Repositories;
-using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Models.PurchasedMemberships;
-using FitDontQuit.Services.Mapping;
-
-namespace FitDontQuit.Services.Data
+﻿namespace FitDontQuit.Services.Data
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Data.Common.Repositories;
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.PurchasedMemberships;
+
     public class PurchasedMembershipsService : IPurchasedMembershipsService
     {
         private readonly IDeletableEntityRepository<PurchasedMembership> purchasedMembershipRepository;

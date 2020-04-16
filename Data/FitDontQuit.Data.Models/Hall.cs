@@ -21,8 +21,6 @@
         [Range(SeatsMinCount, SeatsMaxCount)]
         public int SeatsCount { get; set; }
 
-        public bool IsFree { get; set; }
-
         public virtual IEnumerable<GroupTraining> GroupTrainings { get; set; }
     }
 }

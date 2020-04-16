@@ -18,7 +18,7 @@
             this.servicesRepository = servicesRepository;
         }
 
-        public async Task CreateAsync(ServiceServiceInputModel serviceModel)
+        public async Task CreateAsync(CreateServiceInputModel serviceModel)
         {
             var service = new Service
             {
@@ -30,7 +30,7 @@
             await this.servicesRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, ServiceServiceInputModel serviceModel)
+        public async Task EditAsync(int id, EditServiceServiceModel serviceModel)
         {
             var service = this.servicesRepository.All().Where(s => s.Id == id).FirstOrDefault();
 

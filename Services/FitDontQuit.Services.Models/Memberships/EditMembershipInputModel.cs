@@ -1,10 +1,8 @@
 ﻿namespace FitDontQuit.Services.Models.Memberships
 {
-
-
     using FitDontQuit.Data.Models.Enums;
 
-    public class MembershipServiceInputModel
+    public class EditMembershipInputModel
     {
         public string Name { get; set; }
 

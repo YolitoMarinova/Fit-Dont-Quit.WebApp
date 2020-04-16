@@ -8,9 +8,9 @@
 
     public interface ITrainersService
     {
-        Task CreateAsync(TrainerServiceInputModel trainerModel);
+        Task CreateAsync(CreateTrainerInputModel trainerModel);
 
-        Task EditAsync(int id, TrainerServiceInputModel trainerModel);
+        Task EditAsync(int id, EditTrainerInputModel trainerModel);
 
         IEnumerable<T> GettAll<T>();
 
