@@ -10,7 +10,7 @@
     {
         Task CreateAsync(CreateTrainerInputModel trainerModel);
 
-        Task EditAsync(int id, EditTrainerInputModel trainerModel);
+        Task EditAsync(int id, EditTrainerInputServiceModel trainerModel);
 
         IEnumerable<T> GettAll<T>();
 

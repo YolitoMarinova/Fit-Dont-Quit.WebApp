@@ -8,9 +8,9 @@
 
     using static FitDontQuit.Common.AttributesConstraints.Hall;
 
-    public class HallInputModel : IMapTo<HallServiceInputModel>, IMapFrom<HallServiceOutputModel>
+    public class CreateHallModel : IMapTo<CreateHallServiceModel>
     {
-        [Required(ErrorMessage ="Please write hall name.")]
+        [Required(ErrorMessage = "Please write hall name.")]
         [StringLength(NameMaxLenght, ErrorMessage = "Name should be maximum 100 symbols.")]
         public string Name { get; set; }
 

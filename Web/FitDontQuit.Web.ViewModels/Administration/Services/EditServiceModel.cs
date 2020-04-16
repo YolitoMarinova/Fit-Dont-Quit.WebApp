@@ -8,7 +8,7 @@
 
     using static FitDontQuit.Common.AttributesConstraints.Service;
 
-    public class ServiceInputModel : IMapTo<ServiceServiceInputModel>, IMapFrom<ServiceServiceOutputModel>
+    public class EditServiceModel : IMapFrom<ServiceServiceOutputModel>, IMapTo<EditServiceServiceModel>
     {
         [Required]
         [MaxLength(NameMaxLenght)]

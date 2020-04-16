@@ -1,4 +1,4 @@
-﻿@model FitDontQuit.Web.ViewModels.Trainers.EditTrainerInputModel
+﻿@model FitDontQuit.Web.ViewModels.Trainers.EditTrainerModel
 @{
     this.ViewData["Title"] = "Eidt trainer";
      var professions = Model.Professions.ToList().Select(x => new SelectListItem(x.Id.ToString(), x.Name));

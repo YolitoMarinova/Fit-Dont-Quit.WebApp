@@ -109,6 +109,8 @@
                 return this.BadRequest();
             }
 
+            var a = startDate.AddDays((int)membership.Duration);
+
             if (startDate.AddDays((int)membership.Duration) != endDate)
             {
                 return this.BadRequest();

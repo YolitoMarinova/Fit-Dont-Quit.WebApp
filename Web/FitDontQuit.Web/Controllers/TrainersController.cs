@@ -1,19 +1,17 @@
-﻿using FitDontQuit.Services.Data;
-using FitDontQuit.Web.ViewModels.Trainers;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FitDontQuit.Common;
-using FitDontQuit.Web.ViewModels.Professions;
-using FitDontQuit.Services;
-using FitDontQuit.Services.Models.Trainers;
-using FitDontQuit.Services.Mapping;
-
-namespace FitDontQuit.Web.Controllers
+﻿namespace FitDontQuit.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Common;
+    using FitDontQuit.Services;
+    using FitDontQuit.Services.Data;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Trainers;
+    using FitDontQuit.Web.ViewModels.Professions;
+    using FitDontQuit.Web.ViewModels.Trainers;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     public class TrainersController : BaseController
     {
         private readonly ITrainersService trainersService;
@@ -43,7 +41,7 @@ namespace FitDontQuit.Web.Controllers
 
         public IActionResult Edit(int id)
         {
-            var trainer = this.trainersService.GetById<EditTrainerInputModel>(id);
+            var trainer = this.trainersService.GetById<EditTrainerModel>(id);
 
             var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
 
@@ -54,7 +52,7 @@ namespace FitDontQuit.Web.Controllers
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, EditTrainerInputModel inputModel)
+        public async Task<IActionResult> Edit(int id, EditTrainerModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -66,7 +64,7 @@ namespace FitDontQuit.Web.Controllers
                 inputModel.ImageUrl = await this.cloudinaryService.UploadAsync(inputModel.Image, inputModel.Image.FileName);
             }
 
-            var trainerServiceModel = AutoMapperConfig.MapperInstance.Map<TrainerServiceInputModel>(inputModel);
+            var trainerServiceModel = AutoMapperConfig.MapperInstance.Map<EditTrainerInputServiceModel>(inputModel);
 
             await this.trainersService.EditAsync(id, trainerServiceModel);
 

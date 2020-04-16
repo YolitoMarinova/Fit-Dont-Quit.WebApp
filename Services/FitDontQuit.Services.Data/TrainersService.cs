@@ -36,7 +36,7 @@
             await this.trainersRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(int id, EditTrainerInputModel trainerModel)
+        public async Task EditAsync(int id, EditTrainerInputServiceModel trainerModel)
         {
             var trainer = this.trainersRepository.All().Where(t => t.Id == id).FirstOrDefault();
 

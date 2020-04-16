@@ -1,5 +1,5 @@
 ﻿@using static FitDontQuit.Common.EnumHelper
-@model FitDontQuit.Web.ViewModels.Administration.Memberships.MembershipInputModel
+@model FitDontQuit.Web.ViewModels.Administration.Memberships.CreateMembershipModel
 @{
     ViewData["Title"] = "Create";
     var durations = Model.Durations.ToList().Select(x => new SelectListItem(x.GetDisplayName(), x.ToString()));

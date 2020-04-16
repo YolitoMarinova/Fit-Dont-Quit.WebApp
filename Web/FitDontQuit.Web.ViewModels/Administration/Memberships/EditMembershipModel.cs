@@ -10,7 +10,7 @@
 
     using static FitDontQuit.Common.AttributesConstraints.Membership;
 
-    public class MembershipInputModel : IMapTo<MembershipServiceInputModel>, IMapFrom<MembershipServiceOutputModel>
+    public class EditMembershipModel : IMapFrom<MembershipServiceOutputModel>, IMapTo<EditMembershipInputModel>
     {
         [Required]
         [MaxLength(NameMaxLenght)]

@@ -32,7 +32,7 @@
             var peopleLimits = (AmountOfPeopleLimit[])Enum.GetValues(typeof(AmountOfPeopleLimit));
             var visitsLimits = (VisitLimit[])Enum.GetValues(typeof(VisitLimit));
 
-            var viewModel = new MembershipInputModel
+            var viewModel = new CreateMembershipModel
             {
                 Durations = durations,
                 AmountOfPeopleLimits = peopleLimits,
@@ -43,14 +43,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(MembershipInputModel inputModel)
+        public async Task<IActionResult> Create(CreateMembershipModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(inputModel);
             }
 
-            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceInputModel>(inputModel);
+            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<CreateMembershipInputModel>(inputModel);
             await this.membershipsService.CreateAsync(membershipServiceModel);
 
             return this.RedirectToAction("Index");
@@ -58,15 +58,16 @@
 
         public IActionResult Edit(int id)
         {
-            var membership = this.membershipsService.GetById<MembershipInputModel>(id);
-            var durations = (Duration[])Enum.GetValues(typeof(Duration));
-            var peopleLimits = (AmountOfPeopleLimit[])Enum.GetValues(typeof(AmountOfPeopleLimit));
-            var visitsLimits = (VisitLimit[])Enum.GetValues(typeof(VisitLimit));
+            var membership = this.membershipsService.GetById<EditMembershipModel>(id);
 
             if (membership == null)
             {
                 return this.NotFound();
             }
+
+            var durations = (Duration[])Enum.GetValues(typeof(Duration));
+            var peopleLimits = (AmountOfPeopleLimit[])Enum.GetValues(typeof(AmountOfPeopleLimit));
+            var visitsLimits = (VisitLimit[])Enum.GetValues(typeof(VisitLimit));
 
             membership.Durations = durations;
             membership.AmountOfPeopleLimits = peopleLimits;
@@ -76,14 +77,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, MembershipInputModel membershipModel)
+        public async Task<IActionResult> Edit(int id, EditMembershipModel membershipModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(membershipModel);
             }
 
-            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<MembershipServiceInputModel>(membershipModel);
+            var membershipServiceModel = AutoMapperConfig.MapperInstance.Map<EditMembershipInputModel>(membershipModel);
             await this.membershipsService.EditAsync(id, membershipServiceModel);
 
             return this.RedirectToAction("Index");

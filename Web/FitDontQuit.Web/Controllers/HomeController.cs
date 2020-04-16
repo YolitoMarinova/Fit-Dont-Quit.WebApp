@@ -2,6 +2,7 @@
 {
     using System.Diagnostics;
     using System.Linq;
+
     using FitDontQuit.Services.Data;
     using FitDontQuit.Web.ViewModels;
     using FitDontQuit.Web.ViewModels.Trainers;

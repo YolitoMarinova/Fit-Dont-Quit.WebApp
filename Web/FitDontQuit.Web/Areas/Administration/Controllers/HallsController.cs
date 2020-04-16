@@ -30,14 +30,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(HallInputModel inputModel)
+        public async Task<IActionResult> Create(CreateHallModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(inputModel);
             }
 
-            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceInputModel>(inputModel);
+            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<CreateHallServiceModel>(inputModel);
             await this.hallsService.CreateAsync(hallServiceModel);
 
             return this.Redirect("Index");
@@ -45,7 +45,7 @@
 
         public IActionResult Edit(int id)
         {
-            var hall = this.hallsService.GetById<HallInputModel>(id);
+            var hall = this.hallsService.GetById<EditHallModel>(id);
 
             if (hall == null)
             {
@@ -56,14 +56,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, HallInputModel hallModel)
+        public async Task<IActionResult> Edit(int id, EditHallModel hallModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(hallModel);
             }
 
-            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<HallServiceInputModel>(hallModel);
+            var hallServiceModel = AutoMapperConfig.MapperInstance.Map<EditHallServiceModel>(hallModel);
             await this.hallsService.EditAsync(id, hallServiceModel);
 
             return this.RedirectToAction("Index");

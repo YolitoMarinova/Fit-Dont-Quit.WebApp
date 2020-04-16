@@ -31,14 +31,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ServiceInputModel inputModel)
+        public async Task<IActionResult> Create(CreateServiceModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(inputModel);
             }
 
-            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceInputModel>(inputModel);
+            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<CreateServiceInputModel>(inputModel);
             await this.servicesService.CreateAsync(serviceServiceModel);
 
             return this.RedirectToAction("Index");
@@ -46,7 +46,7 @@
 
         public IActionResult Edit(int id)
         {
-            var service = this.servicesService.GetById<ServiceInputModel>(id);
+            var service = this.servicesService.GetById<EditServiceModel>(id);
 
             if (service == null)
             {
@@ -57,14 +57,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, ServiceInputModel serviceModel)
+        public async Task<IActionResult> Edit(int id, EditServiceModel serviceModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(serviceModel);
             }
 
-            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<ServiceServiceInputModel>(serviceModel);
+            var serviceServiceModel = AutoMapperConfig.MapperInstance.Map<EditServiceServiceModel>(serviceModel);
             await this.servicesService.EditAsync(id, serviceServiceModel);
 
             return this.RedirectToAction("Index");
