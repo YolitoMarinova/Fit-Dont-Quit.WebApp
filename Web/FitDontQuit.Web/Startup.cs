@@ -8,6 +8,7 @@
     using FitDontQuit.Data.Models;
     using FitDontQuit.Data.Repositories;
     using FitDontQuit.Data.Seeding;
+    using FitDontQuit.Services;
     using FitDontQuit.Services.Data;
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Messaging;
@@ -69,6 +70,7 @@
             services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<ITrainersService, TrainersService>();
             services.AddTransient<IPurchasedMembershipsService, PurchasedMembershipsService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
 
             Account account = new Account(
                               this.configuration["Cloudinary:Name"],

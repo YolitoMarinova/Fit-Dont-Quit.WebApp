@@ -44,7 +44,10 @@
             trainer.LastName = trainerModel.LastName;
             trainer.Description = trainerModel.Description;
             trainer.Age = trainerModel.Age;
-            trainer.ImageUrl = trainerModel.ImageUrl;
+            if (trainerModel.ImageUrl != null)
+            {
+                trainer.ImageUrl = trainerModel.ImageUrl;
+            }
             trainer.InstagramUrl = trainerModel.InstagramUrl;
             trainer.PhoneNumber = trainerModel.PhoneNumber;
             trainer.ProfessionId = trainerModel.ProfessionId;
