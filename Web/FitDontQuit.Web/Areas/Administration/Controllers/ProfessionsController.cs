@@ -71,16 +71,22 @@ namespace FitDontQuit.Web.Areas.Administration.Controllers
             return this.RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var profession = this.professionsService.GetById<ProfessionDeleteModel>(id);
+            var professionModel = this.professionsService.GetById<DeleteProfessionModel>(id);
 
-            if (profession == null)
+            if (professionModel == null)
             {
                 return this.NotFound();
             }
 
-            await this.professionsService.DeleteAsync(id);
+            return this.View(professionModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteProfessionModel professionModel)
+        {
+            await this.professionsService.DeleteAsync(professionModel.Id);
 
             return this.RedirectToAction("Index");
         }

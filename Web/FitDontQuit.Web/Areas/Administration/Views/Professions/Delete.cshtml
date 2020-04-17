@@ -1,0 +1,11 @@
+﻿@model FitDontQuit.Web.ViewModels.Administration.Professions.DeleteProfessionModel
+@{
+    this.ViewData["Title"] = "Delete profession";
+}
+<section class="admin-section">
+    <form asp-action="Delete" method="post">
+        <p>Are you sure you want to delete @Model.Name profession?</p>
+        <input type="button" class="btn btn-secondary" value="Back" onclick="history.back()" />
+        <input type="submit" class="btn btn-danger" value="Delete" />
+    </form>
+</section>

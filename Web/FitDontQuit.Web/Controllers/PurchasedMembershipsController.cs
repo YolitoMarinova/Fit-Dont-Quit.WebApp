@@ -34,6 +34,13 @@
 
         public async Task<IActionResult> Buy(int id)
         {
+            var membership = this.membershipsService.GetById<PurchasedMembershipModel>(id);
+
+            if (membership == null)
+            {
+                return this.NotFound();
+            }
+
             var user = await this.userManager.GetUserAsync(this.User);
 
             var membershipByUser = this.purchasedMembershipsService.GetByUser(user);
@@ -43,26 +50,16 @@
                 return this.RedirectToAction("Renew");
             }
 
-            var membership = this.membershipsService.GetById<PurchasedMembershipModel>(id);
-
-            if (membership == null)
-            {
-                return this.NotFound();
-            }
-
             var model = new BuyInputModel
             {
-                UserId = user.Id,
-                MembershipId = id,
+                Id = id,
             };
-
-            this.ViewBag.id = id;
 
             return this.View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Buy(int id, string userId, BuyInputModel purchasedMembershipModel)
+        public async Task<IActionResult> Buy(BuyInputModel purchasedMembershipModel)
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
@@ -75,53 +72,27 @@
 
             if (!this.ModelState.IsValid)
             {
-                purchasedMembershipModel.MembershipId = id;
-                purchasedMembershipModel.UserId = userId;
-
                 return this.View(purchasedMembershipModel);
             }
 
-            var membership = this.membershipsService.GetById<PurchasedMembershipModel>(id);
+            var membership = this.membershipsService.GetById<PurchasedMembershipModel>(purchasedMembershipModel.Id);
 
             if (membership == null)
             {
                 return this.BadRequest();
             }
 
-            if (userId == null)
-            {
-                return this.BadRequest();
-            }
-
-            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
-
-            DateTime startDate;
-
-            if (!DateTime.TryParse(purchasedMembershipModel.StartDate, culture, DateTimeStyles.None, out startDate))
-            {
-                return this.BadRequest();
-            }
-
-            DateTime endDate;
-
-            if (!DateTime.TryParse(purchasedMembershipModel.EndDate, culture, DateTimeStyles.None, out endDate))
-            {
-                return this.BadRequest();
-            }
-
-            var a = startDate.AddDays((int)membership.Duration);
-
-            if (startDate.AddDays((int)membership.Duration) != endDate)
+            if (purchasedMembershipModel.StartDate < DateTime.Now)
             {
                 return this.BadRequest();
             }
 
             var purchase = new PurchasedMembershipInputServiceModel
             {
-                MembershipId = id,
-                UserId = userId,
-                StartDate = startDate,
-                EndDate = endDate,
+                MembershipId = purchasedMembershipModel.Id,
+                UserId = user.Id,
+                StartDate = purchasedMembershipModel.StartDate,
+                EndDate = purchasedMembershipModel.StartDate.AddDays((int)membership.Duration),
             };
 
             var serviceModel = AutoMapperConfig.MapperInstance.Map<PurchasedMembershipInputServiceModel>(purchase);

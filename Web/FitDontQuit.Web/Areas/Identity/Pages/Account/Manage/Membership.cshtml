@@ -8,30 +8,40 @@
 <h4>@ViewData["Title"]</h4>
 <div class="row">
     <div class="col-md-8 order-md-2 mb-4 mt-5">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your membership</span>
-        </h4>
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">@Model.Name</h6>
-                    <small class="text-muted">Days: @Model.MembershipDuration</small>
-                </div>
-                <span class="text-muted">@Model.Price BGN</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">From: </h6>
-                    <small class="text-muted">@Model.StartDate.ToShortDateString()</small>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">To: </h6>
-                    <small class="text-muted">@Model.EndDate.ToShortDateString()</small>
-                </div>
-            </li>
-        </ul>
+        @if (Model.Name != null)
+        {
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your membership</span>
+            </h4>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">@Model.Name</h6>
+                        <small class="text-muted">Days: @Model.MembershipDuration</small>
+                    </div>
+                    <span class="text-muted">@Model.Price BGN</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">From: </h6>
+                        <small class="text-muted">@Model.StartDate.ToShortDateString()</small>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">To: </h6>
+                        <small class="text-muted">@Model.EndDate.ToShortDateString()</small>
+                    </div>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">You dont't have membership yet.</span>
+            </h4>
+            <a class="custom custom-button" asp-area="" asp-controller="Memberships" asp-action="Index">Get membership now!</a>
+        }
     </div>
 </div>
 

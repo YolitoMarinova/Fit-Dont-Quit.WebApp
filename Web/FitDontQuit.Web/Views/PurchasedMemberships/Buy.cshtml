@@ -9,13 +9,8 @@
 @{
     this.ViewData["Title"] = "Buy membership";
 
-    var parametars = new Dictionary<string, string>
-    {
-        { "userId", @Model.UserId },
-    };
-
     ApplicationUser user = await this.UserManager.GetUserAsync(this.User);
-    PurchasedMembershipModel membership = this.membershipService.GetById<PurchasedMembershipModel>(@Model.MembershipId);
+    PurchasedMembershipModel membership = this.membershipService.GetById<PurchasedMembershipModel>(@Model.Id);
 }
 
 <section class="buy-section">
@@ -45,19 +40,14 @@
                 </div>
             </div>
 
-            <form method="post" asp-controller="PurchasedMemberships" asp-action="Buy" asp-all-route-data="@parametars">
+            <form method="post" asp-controller="PurchasedMemberships" asp-action="Buy">
                 <div class="row mb-5">
                     <div class="col-md-6">
                         <label asp-for="StartDate"></label>
                         <small class="text-muted"> (mm-dd-yyyy)</small>
-                        <input type="text" id="startDate" asp-for="StartDate" class="form-control" autocomplete="off" />
+                        @*input type get date values in format: 2013-01-08*@
+                        <input type="date" value="@DateTime.Today.ToString("yyyy-MM-dd")" min="@DateTime.Today.ToString("yyyy-MM-dd")" asp-for="StartDate" class="form-control" />
                         <span asp-validation-for="StartDate" class="text-danger"></span>
-                    </div>
-                    <div class="col-md-6">
-                        <label asp-for="EndDate"></label>
-                        <small class="text-muted"> (mm-dd-yyyy)</small>
-                        <input type="text" id="endDate" asp-for="EndDate" class="form-control" value="" readonly />
-                        <span asp-validation-for="EndDate" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -135,7 +125,7 @@
 
 
 
-<script>
+@*<script>
                 var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
                 $('#startDate').datepicker({
                     uiLibrary: 'bootstrap4',
@@ -169,4 +159,4 @@
                         $('#endDate').val(outputDate);
                     }
                 });
-</script>
+</script>*@

@@ -90,16 +90,22 @@
             return this.RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var membership = this.membershipsService.GetById<MembershipDeleteModel>(id);
+            var membershipModel = this.membershipsService.GetById<DeleteMembershipModel>(id);
 
-            if (membership == null)
+            if (membershipModel == null)
             {
                 return this.NotFound();
             }
 
-            await this.membershipsService.DeleteAsync(id);
+            return this.View(membershipModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteMembershipModel membershipModel)
+        {
+            await this.membershipsService.DeleteAsync(membershipModel.Id);
 
             return this.RedirectToAction("Index");
         }

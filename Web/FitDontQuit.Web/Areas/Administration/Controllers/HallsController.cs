@@ -69,16 +69,22 @@
             return this.RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var hall = this.hallsService.GetById<HallDeleteModel>(id);
+            var hallModel = this.hallsService.GetById<DeleteHallModel>(id);
 
-            if (hall == null)
+            if (hallModel == null)
             {
                 return this.NotFound();
             }
 
-            await this.hallsService.DeleteAsync(id);
+            return this.View(hallModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteHallModel hallModel)
+        {
+            await this.hallsService.DeleteAsync(hallModel.Id);
 
             return this.RedirectToAction("Index");
         }

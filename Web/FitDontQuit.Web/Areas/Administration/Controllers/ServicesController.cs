@@ -70,16 +70,22 @@
             return this.RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var service = this.servicesService.GetById<ServiceDeleteModel>(id);
+            var serviceModel = this.servicesService.GetById<DeleteServiceModel>(id);
 
-            if (service == null)
+            if (serviceModel == null)
             {
                 return this.NotFound();
             }
 
-            await this.servicesService.DeleteAsync(id);
+            return this.View(serviceModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteServiceModel serviceModel)
+        {
+            await this.servicesService.DeleteAsync(serviceModel.Id);
 
             return this.RedirectToAction("Index");
         }

@@ -40,6 +40,11 @@ namespace FitDontQuit.Web.Areas.Identity.Pages.Account.Manage
         {
             var purchase = this.purchasedMembershipsService.GetByUser(user);
 
+            if (purchase == null)
+            {
+                return;
+            }
+
             this.Name = purchase.MembershipName;
             this.Price = purchase.MembershipPrice;
             this.StartDate = purchase.StartDate;
