@@ -38,6 +38,39 @@
         }
 
         [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
+        public IActionResult Create()
+        {
+            var trainerModel = new CreateTrainerModel();
+
+            var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+
+            trainerModel.Professions = professions;
+
+            return this.View(trainerModel);
+        }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateTrainerModel trainerModel)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(trainerModel);
+            }
+
+            if (trainerModel.Image != null)
+            {
+                trainerModel.ImageUrl = await this.cloudinaryService.UploadAsync(trainerModel.Image, trainerModel.Image.FileName);
+            }
+
+            var serviceModel = AutoMapperConfig.MapperInstance.Map<CreateTrainerInputModel>(trainerModel);
+
+            await this.trainersService.CreateAsync(serviceModel);
+
+            return this.RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
 
         public IActionResult Edit(int id)
         {
@@ -71,9 +104,26 @@
             return this.RedirectToAction("Index");
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         public IActionResult Delete(int id)
         {
-            return this.View();
+            var trainerModel = this.trainersService.GetById<DeleteTrainerModel>(id);
+
+            if (trainerModel == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(trainerModel);
+        }
+
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteTrainerModel trainerModel)
+        {
+            await this.trainersService.DeleteAsync(trainerModel.Id);
+
+            return this.RedirectToAction("Index");
         }
     }
 }

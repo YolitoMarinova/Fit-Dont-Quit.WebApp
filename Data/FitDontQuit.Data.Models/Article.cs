@@ -15,8 +15,12 @@
         [Required]
         public string Content { get; set; }
 
-        public int TrainerId { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
 
-        public virtual Trainer Trainer { get; set; }
+        [Required]
+        public string UserId { get; set; }
+
+        public ApplicationUser User { get; set; }
     }
 }

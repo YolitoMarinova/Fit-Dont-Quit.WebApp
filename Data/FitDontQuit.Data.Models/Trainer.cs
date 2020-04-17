@@ -12,7 +12,6 @@
         public Trainer()
         {
             this.GroupTrainings = new HashSet<GroupTraining>();
-            this.Articles = new HashSet<Article>();
         }
 
         [Required]
@@ -31,6 +30,7 @@
         public string Description { get; set; }
 
         [Required]
+        [StringLength(MaxPhoneLenght)]
         public string PhoneNumber { get; set; }
 
         public string InstagramUrl { get; set; }
@@ -42,7 +42,5 @@
         public virtual Profession Profession { get; set; }
 
         public virtual IEnumerable<GroupTraining> GroupTrainings { get; set; }
-
-        public virtual IEnumerable<Article> Articles { get; set; }
     }
 }

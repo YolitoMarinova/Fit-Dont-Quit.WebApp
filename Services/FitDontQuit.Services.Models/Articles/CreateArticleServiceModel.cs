@@ -1,4 +1,6 @@
-﻿namespace FitDontQuit.Services.Models.Articles
+﻿using FitDontQuit.Data.Models;
+
+namespace FitDontQuit.Services.Models.Articles
 {
     public class CreateArticleServiceModel
     {
@@ -6,6 +8,8 @@
 
         public string Content { get; set; }
 
-        public int TrainerId { get; set; }
+        public string ImageUrl { get; set; }
+
+        public ApplicationUser User { get; set; }
     }
 }

@@ -1,0 +1,63 @@
+﻿@using FitDontQuit.Data.Models
+@using Microsoft.AspNetCore.Identity
+@using FitDontQuit.Common
+@model IEnumerable<FitDontQuit.Web.ViewModels.Articles.ArticleInListViewModel>
+@inject UserManager<ApplicationUser> userManager
+@{
+    this.ViewData["Title"] = "Blog";
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="../../img/breadcrumb/classes-breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h2>Blog</h2>
+                    <div class="breadcrumb-option">
+                        <a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a>
+                        <span>Blog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Blog Section Begin -->
+<section class="blog-section spad">
+    <div class="container">
+        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <a asp-controller="Articles" asp-action="Create"><i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            @foreach (var article in @Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-item">
+                        <img src="@article.ImageUrl" alt="">
+                        <div class="blog-widget">
+                            <div class="bw-date">@article.CreatedOn</div>
+                            <div class="bw-date">@article.User.UserName</div>
+                            <a href="#" class="tag">#Gym</a>
+                        </div>
+                        <h4><a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">@article.Title</a></h4>
+                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
+                        {
+                            <h4><a asp-controller="Articles" asp-action="Edit" asp-route-id="@article.Id">Edit</a></h4>
+                            <h4><a asp-controller="Articles" asp-action="Delete" asp-route-id="@article.Id">Delete</a></h4>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->

@@ -21,6 +21,7 @@ namespace FitDontQuit.Data.Models
             this.GroupTrainings = new HashSet<UsersGroupTrainings>();
             this.PurchasedMemberships = new HashSet<PurchasedMembership>();
             this.PurchasedServices = new HashSet<PurchasedServices>();
+            this.Articles = new HashSet<Article>();
         }
 
         [Required]
@@ -52,5 +53,7 @@ namespace FitDontQuit.Data.Models
         public virtual IEnumerable<PurchasedMembership> PurchasedMemberships { get; set; }
 
         public virtual IEnumerable<PurchasedServices> PurchasedServices { get; set; }
+
+        public virtual IEnumerable<Article> Articles { get; set; }
     }
 }

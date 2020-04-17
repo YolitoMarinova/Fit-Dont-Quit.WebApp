@@ -13,7 +13,11 @@
 
         public string Content { get; set; }
 
-        public Trainer Trainer { get; set; }
+        public string ImageUrl { get; set; }
+
+        public string UserId { get; set; }
+
+        public ApplicationUser User { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

@@ -6,6 +6,6 @@
 
         public string Content { get; set; }
 
-        public int TrainerId { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

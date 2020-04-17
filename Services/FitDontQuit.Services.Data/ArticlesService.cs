@@ -24,7 +24,8 @@
             {
                 Title = articleModel.Title,
                 Content = articleModel.Content,
-                TrainerId = articleModel.TrainerId,
+                User = articleModel.User,
+                ImageUrl = articleModel.ImageUrl,
             };
 
             await this.articlesRepository.AddAsync(article);
@@ -37,7 +38,6 @@
 
             article.Title = articleModel.Title;
             article.Content = articleModel.Content;
-            article.TrainerId = articleModel.TrainerId;
 
             await this.articlesRepository.SaveChangesAsync();
         }

@@ -58,6 +58,9 @@
             public const int MinimumAge = 16;
             public const int MaximumAge = 120;
 
+            public const int MinPhoneLenght = 5;
+            public const int MaxPhoneLenght = 15;
+
             public const int DescriptionMaxLenght = 100;
         }
     }
