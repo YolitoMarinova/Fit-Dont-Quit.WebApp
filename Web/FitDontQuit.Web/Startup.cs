@@ -70,6 +70,7 @@
             services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<ITrainersService, TrainersService>();
             services.AddTransient<IPurchasedMembershipsService, PurchasedMembershipsService>();
+            services.AddTransient<IClassesService, ClassesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
 
             Account account = new Account(

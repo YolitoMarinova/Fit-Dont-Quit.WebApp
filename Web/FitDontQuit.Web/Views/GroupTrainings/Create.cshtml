@@ -1,0 +1,32 @@
+﻿@model FitDontQuit.Web.ViewModels.GroupTrainings.CreateGroupTrainingModel
+@{
+    this.ViewData["Title"] = "Create class";
+}
+<section class="admin-section">
+    <h1>Create</h1>
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="container">
+            <div class="input-group-prepend mb-5">
+                <input type="file" name="Image" asp-for="Image" />
+            </div>
+            <div class="col-md-12 order-md-1">
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Description</span>
+                    </div>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <hr />
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</section>

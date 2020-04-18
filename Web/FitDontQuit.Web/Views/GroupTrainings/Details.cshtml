@@ -1,0 +1,45 @@
+﻿@using FitDontQuit.Common
+@model FitDontQuit.Web.ViewModels.GroupTrainings.DetailsViewModel
+@{
+    this.ViewData["Title"] = Model.Name;
+}
+<!-- Blog Details Hero Section Begin -->
+<section class="blog-details-hero set-bg" data-setbg="@Model.ImageUrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bd-hero-text">
+                    <span>@Model.Name</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Details Hero Section End -->
+<!-- Blog Details Section Begin -->
+<section class="blog-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="bd-text">
+                    <div class="bd-more-text">
+                        <div class="bm-item">
+                            <p>
+                                @Model.Description
+                            </p>
+                        </div>
+                        <div>
+                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
+                            {
+                                <h4><a asp-controller="GroupTrainings" asp-action="Edit" asp-route-id="@Model.Id">Edit</a></h4>
+                                <h4><a asp-controller="GroupTrainings" asp-action="Delete" asp-route-id="@Model.Id">Delete</a></h4>
+                            }
+                            <button type="button" class="btn btn-secondary" onclick="history.back()">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest Blog Section End -->

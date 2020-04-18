@@ -1,14 +1,13 @@
-﻿using FitDontQuit.Data.Common.Models;
-using FitDontQuit.Data.Models.Enums;
+﻿using FitDontQuit.Data.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using static FitDontQuit.Common.AttributesConstraints.Class;
 
-namespace FitDontQuit.Data.Models
+namespace FitDontQuit.Services.Models.Classes
 {
-    public class Class : BaseDeletableModel<int>
+    public class CreateClassServiceModel
     {
         public Hour StartHour { get; set; }
 
@@ -21,10 +20,6 @@ namespace FitDontQuit.Data.Models
 
         public int GroupTrainingId { get; set; }
 
-        public GroupTraining GroupTraining { get; set; }
-
         public int TrainerId { get; set; }
-
-        public virtual Trainer Trainer { get; set; }
     }
 }

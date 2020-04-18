@@ -58,10 +58,7 @@
                 return this.View(trainerModel);
             }
 
-            if (trainerModel.Image != null)
-            {
-                trainerModel.ImageUrl = await this.cloudinaryService.UploadAsync(trainerModel.Image, trainerModel.Image.FileName);
-            }
+            trainerModel.ImageUrl = await this.cloudinaryService.UploadAsync(trainerModel.Image, trainerModel.Image.FileName);
 
             var serviceModel = AutoMapperConfig.MapperInstance.Map<CreateTrainerInputModel>(trainerModel);
 

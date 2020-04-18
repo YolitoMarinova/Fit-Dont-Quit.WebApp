@@ -50,10 +50,7 @@ namespace FitDontQuit.Web.Controllers
                 return this.View(articleModel);
             }
 
-            if (articleModel.Image != null)
-            {
-                articleModel.ImageUrl = await this.cloudinaryService.UploadAsync(articleModel.Image, articleModel.Image.FileName);
-            }
+            articleModel.ImageUrl = await this.cloudinaryService.UploadAsync(articleModel.Image, articleModel.Image.FileName);
 
             var user = await this.userManager.GetUserAsync(this.User);
 
