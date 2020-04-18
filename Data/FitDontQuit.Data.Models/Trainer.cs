@@ -11,7 +11,7 @@
     {
         public Trainer()
         {
-            this.GroupTrainings = new HashSet<GroupTraining>();
+            this.Classes = new HashSet<Class>();
         }
 
         [Required]
@@ -41,6 +41,6 @@
 
         public virtual Profession Profession { get; set; }
 
-        public virtual IEnumerable<GroupTraining> GroupTrainings { get; set; }
+        public virtual IEnumerable<Class> Classes { get; set; }
     }
 }

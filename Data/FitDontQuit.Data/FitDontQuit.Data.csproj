@@ -11,6 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200418152735_AddImageUrlToGroupTrainings.cs" />
+    <Compile Remove="Migrations\20200418152735_AddImageUrlToGroupTrainings.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 

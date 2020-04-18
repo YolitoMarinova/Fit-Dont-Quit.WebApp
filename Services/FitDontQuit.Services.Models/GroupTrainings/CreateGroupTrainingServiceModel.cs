@@ -8,10 +8,6 @@
 
         public string Description { get; set; }
 
-        public DateTime DateTime { get; set; }
-
-        public int HallId { get; set; }
-
-        public int TrainerId { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

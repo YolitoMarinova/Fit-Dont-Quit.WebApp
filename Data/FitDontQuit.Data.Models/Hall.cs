@@ -9,18 +9,11 @@
 
     public class Hall : BaseDeletableModel<int>
     {
-        public Hall()
-        {
-            this.GroupTrainings = new HashSet<GroupTraining>();
-        }
-
         [Required]
         [MaxLength(NameMaxLenght)]
         public string Name { get; set; }
 
         [Range(SeatsMinCount, SeatsMaxCount)]
         public int SeatsCount { get; set; }
-
-        public virtual IEnumerable<GroupTraining> GroupTrainings { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using FitDontQuit.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FitDontQuit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200418152541_EditGrouupTrainings")]
+    partial class EditGrouupTrainings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,7 +196,7 @@ namespace FitDontQuit.Data.Migrations
                     b.ToTable("Articles");
                 });
 
-            modelBuilder.Entity("FitDontQuit.Data.Models.Class", b =>
+            modelBuilder.Entity("FitDontQuit.Data.Models.GroupTraining", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,39 +206,11 @@ namespace FitDontQuit.Data.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<int>("DayOfWeek")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EndHour")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GroupTrainingId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StartHour")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrainerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupTrainingId");
-
-                    b.HasIndex("TrainerId");
-
-                    b.ToTable("Classes");
-                });
-
-            modelBuilder.Entity("FitDontQuit.Data.Models.GroupTraining", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
@@ -245,9 +219,11 @@ namespace FitDontQuit.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("EndHour")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HallId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -260,9 +236,19 @@ namespace FitDontQuit.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("StartHour")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrainerId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("HallId");
+
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("TrainerId");
 
                     b.ToTable("GroupTrainings");
                 });
@@ -584,6 +570,21 @@ namespace FitDontQuit.Data.Migrations
                     b.ToTable("Trainers");
                 });
 
+            modelBuilder.Entity("FitDontQuit.Data.Models.UsersGroupTrainings", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("GroupTrainingId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "GroupTrainingId");
+
+                    b.HasIndex("GroupTrainingId");
+
+                    b.ToTable("UsersGroupTrainings");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -697,16 +698,16 @@ namespace FitDontQuit.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FitDontQuit.Data.Models.Class", b =>
+            modelBuilder.Entity("FitDontQuit.Data.Models.GroupTraining", b =>
                 {
-                    b.HasOne("FitDontQuit.Data.Models.GroupTraining", "GroupTraining")
-                        .WithMany("Classes")
-                        .HasForeignKey("GroupTrainingId")
+                    b.HasOne("FitDontQuit.Data.Models.Hall", "Hall")
+                        .WithMany("GroupTrainings")
+                        .HasForeignKey("HallId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FitDontQuit.Data.Models.Trainer", "Trainer")
-                        .WithMany("Classes")
+                        .WithMany("GroupTrainings")
                         .HasForeignKey("TrainerId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -747,6 +748,21 @@ namespace FitDontQuit.Data.Migrations
                     b.HasOne("FitDontQuit.Data.Models.Profession", "Profession")
                         .WithMany("Trainers")
                         .HasForeignKey("ProfessionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FitDontQuit.Data.Models.UsersGroupTrainings", b =>
+                {
+                    b.HasOne("FitDontQuit.Data.Models.GroupTraining", "GroupTraining")
+                        .WithMany()
+                        .HasForeignKey("GroupTrainingId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FitDontQuit.Data.Models.ApplicationUser", "User")
+                        .WithMany("GroupTrainings")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

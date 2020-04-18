@@ -21,6 +21,12 @@
             public const int NameMaxLenght = 50;
         }
 
+        public static class Class
+        {
+            public const int CapacityMinCount = 5;
+            public const int CapacityMaxCount = 300;
+        }
+
         public static class Hall
         {
             public const int NameMaxLenght = 100;

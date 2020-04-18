@@ -3,6 +3,7 @@
     using System;
 
     using FitDontQuit.Data.Models;
+    using FitDontQuit.Data.Models.Enums;
     using FitDontQuit.Services.Mapping;
 
     public class GroupTrainingServiceOutputModel : IMapFrom<GroupTraining>
@@ -13,11 +14,7 @@
 
         public string Description { get; set; }
 
-        public DateTime DateTime { get; set; }
-
-        public int HallId { get; set; }
-
-        public int TrainerId { get; set; }
+        public string ImageUrl { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

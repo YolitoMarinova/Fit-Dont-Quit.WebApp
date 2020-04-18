@@ -1,4 +1,5 @@
-﻿@using static FitDontQuit.Common.EnumHelper
+﻿@using FitDontQuit.Common
+@using static FitDontQuit.Common.EnumHelper
 @model IEnumerable<FitDontQuit.Web.ViewModels.Memberships.MembershipViewModel>
 @{
     this.ViewData["Title"] = "Memberships";
@@ -81,7 +82,7 @@
             <div class="col-lg-6">
                 <div class="footer-banner-item set-bg" data-setbg="../../img/footer-banner/footer-banner-2.jpg">
                     <span>contact us</span>
-                    <h2>09 746 204</h2>
+                    <h2>@GlobalConstants.FitnessPhoneNumber</h2>
                     <p>If you trust us on your journey they not disappoint you!</p>
                     <a asp-controller="Contacts" asp-action="Index" class="primary-btn">Get Started</a>
                 </div>

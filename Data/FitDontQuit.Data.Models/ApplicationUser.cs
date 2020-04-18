@@ -18,7 +18,6 @@ namespace FitDontQuit.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
-            this.GroupTrainings = new HashSet<UsersGroupTrainings>();
             this.PurchasedMemberships = new HashSet<PurchasedMembership>();
             this.PurchasedServices = new HashSet<PurchasedServices>();
             this.Articles = new HashSet<Article>();
@@ -47,8 +46,6 @@ namespace FitDontQuit.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
-
-        public virtual IEnumerable<UsersGroupTrainings> GroupTrainings { get; set; }
 
         public virtual IEnumerable<PurchasedMembership> PurchasedMemberships { get; set; }
 

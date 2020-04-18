@@ -4,14 +4,16 @@ using FitDontQuit.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FitDontQuit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200418162818_AddClasses")]
+    partial class AddClasses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,6 +247,9 @@ namespace FitDontQuit.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("HallId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -261,6 +266,8 @@ namespace FitDontQuit.Data.Migrations
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HallId");
 
                     b.HasIndex("IsDeleted");
 
@@ -710,6 +717,13 @@ namespace FitDontQuit.Data.Migrations
                         .HasForeignKey("TrainerId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FitDontQuit.Data.Models.GroupTraining", b =>
+                {
+                    b.HasOne("FitDontQuit.Data.Models.Hall", null)
+                        .WithMany("GroupTrainings")
+                        .HasForeignKey("HallId");
                 });
 
             modelBuilder.Entity("FitDontQuit.Data.Models.PurchasedMembership", b =>

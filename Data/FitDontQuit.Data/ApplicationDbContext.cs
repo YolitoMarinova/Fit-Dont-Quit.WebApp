@@ -30,6 +30,8 @@
 
         public DbSet<GroupTraining> GroupTrainings { get; set; }
 
+        public DbSet<Class> Classes { get; set; }
+
         public DbSet<Hall> Halls { get; set; }
 
         public DbSet<Membership> Memberships { get; set; }
@@ -41,8 +43,6 @@
         public DbSet<PurchasedServices> PurchasedServices { get; set; }
 
         public DbSet<Profession> Professions { get; set; }
-
-        public DbSet<UsersGroupTrainings> UsersGroupTrainings { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 
@@ -92,9 +92,6 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
-
-            builder.Entity<UsersGroupTrainings>()
-                .HasKey(ut => new { ut.UserId, ut.GroupTrainingId });
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)

@@ -24,9 +24,7 @@
             {
                 Name = groupTrainingModel.Name,
                 Description = groupTrainingModel.Description,
-                DateTime = groupTrainingModel.DateTime,
-                HallId = groupTrainingModel.HallId,
-                TrainerId = groupTrainingModel.TrainerId,
+                ImageUrl = groupTrainingModel.ImageUrl,
             };
 
             await this.groupTrainingsRepository.AddAsync(groupTraining);
@@ -39,9 +37,11 @@
 
             groupTraining.Name = groupTrainingModel.Name;
             groupTraining.Description = groupTrainingModel.Description;
-            groupTraining.DateTime = groupTrainingModel.DateTime;
-            groupTraining.HallId = groupTrainingModel.HallId;
-            groupTraining.TrainerId = groupTrainingModel.TrainerId;
+
+            if (groupTrainingModel.ImageUrl != null)
+            {
+                groupTraining.ImageUrl = groupTrainingModel.ImageUrl;
+            }
 
             await this.groupTrainingsRepository.SaveChangesAsync();
         }
