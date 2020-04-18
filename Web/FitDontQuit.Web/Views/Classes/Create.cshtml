@@ -1,0 +1,47 @@
+﻿@using FitDontQuit.Data.Models.Enums
+@model FitDontQuit.Web.ViewModels.Classes.CreateClassModel
+@{
+    this.ViewData["Title"] = "Create class";
+}
+<section class="admin-section">
+    <h1>Create</h1>
+    <form method="post" asp-action="Create">
+        <div class="container">
+            <div class="col-md-12 order-md-1">
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Start hour | End hour</span>
+                    </div>
+                    <div>
+                        <label asp-for="StartHour"></label>
+                        <select asp-for="StartHour" asp-items="@(new SelectList(Enum.GetValues(typeof(Hour)), "Id", "Name"))" class="form-control"></select>
+                        <span asp-validation-for="StartHour" class="text-danger"></span>
+                    </div>
+                    <input asp-for="StartHour" class="form-control" />
+                    <span asp-validation-for="StartHour" class="text-danger"></span>
+                    <input asp-for="EndHour" class="form-control" />
+                    <span asp-validation-for="EndHour" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Day</span>
+                    </div>
+                    <input asp-for="DayOfWeek" class="form-control" maxlength="100" />
+                    <span asp-validation-for="DayOfWeek" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="GroupTrainingId"></label>
+                    <select asp-for="GroupTrainingId" asp-items="@(new SelectList(Model.GroupTrainings.ToList(), "Id", "Name"))" class="form-control"></select>
+                    <span asp-validation-for="GroupTrainingId" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="TrainerId"></label>
+                    <select asp-for="TrainerId" asp-items="@(new SelectList(Model.Trainers.ToList(), "Id", "Name"))" class="form-control"></select>
+                    <span asp-validation-for="TrainerId" class="text-danger"></span>
+                </div>
+                <hr />
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</section>
