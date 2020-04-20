@@ -1,4 +1,4 @@
-﻿@model FitDontQuit.Web.ViewModels.Trainers.AllTrainersViewModel
+﻿@model FitDontQuit.Web.ViewModels.AboutUs.AboutUsViewModel
 @{
     this.ViewData["Title"] = "About us";
 }
@@ -85,11 +85,11 @@
             <div class="col-lg-12">
                 <div class="about-counter-text">
                     <div class="single-counter">
-                        <h1 class="counter-num count">98</h1>
-                        <p>Programs</p>
+                        <h1 class="counter-num count">@Model.ClassesCount</h1>
+                        <p>Classes</p>
                     </div>
                     <div class="single-counter">
-                        <h1 class="counter-num count">3</h1>
+                        <h1 class="counter-num count">1</h1>
                         <p>Locations</p>
                     </div>
                     <div class="single-counter">
@@ -98,8 +98,8 @@
                         <p>Members</p>
                     </div>
                     <div class="single-counter">
-                        <h1 class="counter-num count">34</h1>
-                        <p>Coaches</p>
+                        <h1 class="counter-num count">@Model.TrainersCount</h1>
+                        <p>Trainers</p>
                     </div>
                 </div>
             </div>
@@ -130,4 +130,4 @@
 </section>
 <!-- Gym Award Section End -->
 <partial name="BannerSectionPartial" />
-<partial name="TopThreeTrainersPartial" />
+<partial name="TopThreeTrainersPartial" for="@Model.Trainers" />

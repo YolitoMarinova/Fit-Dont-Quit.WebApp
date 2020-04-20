@@ -67,5 +67,14 @@
 
             return articlesT;
         }
+
+        public IEnumerable<T> GettThreeLatest<T>()
+        {
+            var articles = this.articlesRepository.All().OrderByDescending(x => x.CreatedOn).Take(3).To<ArticleServiceOutputModel>();
+
+            var articlesT = articles.To<T>().ToList();
+
+            return articlesT;
+        }
     }
 }

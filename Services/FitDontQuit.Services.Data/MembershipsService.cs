@@ -73,5 +73,14 @@
 
             return membershipsT;
         }
+
+        public IEnumerable<T> GetByName<T>(string[] names, int count)
+        {
+            var memberships = this.membershipRepository.All().Where(x => names.Contains(x.Name)).To<MembershipServiceOutputModel>().Take(count);
+
+            var membershipsT = memberships.To<T>().ToList();
+
+            return membershipsT;
+        }
     }
 }

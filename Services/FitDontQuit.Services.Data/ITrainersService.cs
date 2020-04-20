@@ -16,5 +16,7 @@
         T GetById<T>(int id);
 
         Task DeleteAsync(int id);
+
+        int Count();
     }
 }

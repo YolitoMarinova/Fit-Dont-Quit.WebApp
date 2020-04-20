@@ -2,24 +2,25 @@
 @{ 
     this.ViewData["Title"] = "Delete trainer";
 }
-
-    <form asp-controller="Trainers" asp-action="Delete" method="post">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">@Model.FirstName @Model.LastName</h5>
-                <small>@Model.Age</small>
-                <p class="card-text">@Model.Description</p>
+    <section class="section">
+        <form asp-controller="Trainers" asp-action="Delete" method="post">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.FirstName @Model.LastName</h5>
+                    <small>@Model.Age</small>
+                    <p class="card-text">@Model.Description</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@Model.ProfessionName</li>
+                    <li class="list-group-item">@Model.PhoneNumber</li>
+                    <li class="list-group-item"><a href="@Model.InstagramUrl" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                </ul>
+                <div class="card-body">
+                    <p>Are you sure you want to delete this trainer?</p>
+                    <input type="button" class="btn btn-secondary" value="Back" onclick="history.back()" />
+                    <input type="submit" class="btn btn-danger" value="Delete" />
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">@Model.ProfessionName</li>
-                <li class="list-group-item">@Model.PhoneNumber</li>
-                <li class="list-group-item"><a href="@Model.InstagramUrl" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            </ul>
-            <div class="card-body">
-                <p>Are you sure you want to delete this trainer?</p>
-                <input type="button" class="btn btn-secondary" value="Back" onclick="history.back()" />
-                <input type="submit" class="btn btn-danger" value="Delete" />
-            </div>
-        </div>
-    </form>
+        </form>
+    </section>

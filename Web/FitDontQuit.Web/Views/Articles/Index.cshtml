@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <a asp-controller="Articles" asp-action="Create"><i class="fa fa-plus"></i></a>
+                        <a asp-controller="Articles" asp-action="Create"><i class="fa fa-plus fa-lg"> Create new article</i></a>
                     </div>
                 </div>
             </div>
@@ -48,12 +48,14 @@
                             <div class="bw-date">@article.User.UserName</div>
                             <a href="#" class="tag">#Gym</a>
                         </div>
-                        <h4><a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">@article.Title</a></h4>
-                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
-                        {
-                            <h4><a asp-controller="Articles" asp-action="Edit" asp-route-id="@article.Id">Edit</a></h4>
-                            <h4><a asp-controller="Articles" asp-action="Delete" asp-route-id="@article.Id">Delete</a></h4>
-                        }
+                        <h4>
+                            <a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">@article.Title</a>
+                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
+                            {
+                                <a asp-controller="Articles" asp-action="Edit" asp-route-id="@article.Id"><i class="fa fa-edit fa-lg"></i></a>
+                                <a asp-controller="Articles" asp-action="Delete" asp-route-id="@article.Id"><i class="fa fa-remove fa-lg"></i></a>
+                            }
+                        </h4>
                     </div>
                 </div>
             }

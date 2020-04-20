@@ -4,16 +4,18 @@
      var professions = Model.Professions.ToList().Select(x => new SelectListItem(x.Id.ToString(), x.Name));
 }
 
-<section class="admin-section">
+<section class="section">
     <h1>Edit</h1>
 
     @*<div class="row mb-5">
         <div class="col-md-6">*@
-    <form method="post" asp-action="Edit" enctype="multipart/form-data">
-        <img src="@Model.ImageUrl" />
-        <input type="file" name="Image" asp-for="Image" />
+    <form method="post" asp-action="Edit" enctype="multipart/form-data">       
         <div class="container">
             <div class="col-md-12 order-md-1">
+                <div class="input-group mb-4">
+                    <img src="@Model.ImageUrl" />
+                    <input type="file" name="Image" asp-for="Image" />
+                </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text">First name | Last name | Age</span>
@@ -36,7 +38,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Phone number</span>
                     </div>
-                    <input asp-for="PhoneNumber" class="form-control" />
+                    <input asp-for="PhoneNumber" class="form-control" maxlength="13" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="input-group mb-4">

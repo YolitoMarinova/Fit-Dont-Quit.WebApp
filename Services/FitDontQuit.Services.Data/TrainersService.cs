@@ -81,5 +81,10 @@
 
             return trainersT;
         }
+
+        public int Count()
+        {
+            return this.trainersRepository.All().Count();
+        }
     }
 }

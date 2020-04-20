@@ -3,7 +3,7 @@
     this.ViewData["Title"] = "Delete article";
 }
 
-<section class="admin-section">
+<section class="section">
     <form asp-action="Delete" method="post">
         <p>Are you sure you want to delete @Model.Title article?</p>
         <input type="button" class="btn btn-secondary" value="Back" onclick="history.back()" />

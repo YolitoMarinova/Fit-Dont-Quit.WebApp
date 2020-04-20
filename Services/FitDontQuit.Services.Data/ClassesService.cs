@@ -73,5 +73,10 @@
 
             return classesT;
         }
+
+        public int Count()
+        {
+            return this.classRepository.All().Count();
+        }
     }
 }

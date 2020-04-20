@@ -4,7 +4,7 @@
 }
 
 
-<section class="admin-section">
+<section class="section">
     <h1>Create</h1>
     <form method="post" asp-action="Create" enctype="multipart/form-data">
         <div class="container">
@@ -23,10 +23,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Content</span>
                     </div>
-                    <textarea asp-for="Content" class="form-control" maxlength="100"></textarea>
+                    <textarea asp-for="Content" class="form-control"></textarea>
                     <span asp-validation-for="Content" class="text-danger"></span>
                 </div>
                 <hr />
+                <input type="button" class="btn btn-secondary" value="Back" onclick="history.back()" />
                 <input type="submit" class="btn btn-primary" />
             </div>
         </div>

@@ -13,6 +13,8 @@
 
         IEnumerable<T> GettAll<T>();
 
+        IEnumerable<T> GettThreeLatest<T>();
+
         T GetById<T>(int id);
 
         Task DeleteAsync(int id);

@@ -1,4 +1,4 @@
-﻿@model FitDontQuit.Web.ViewModels.Trainers.AllTrainersViewModel
+﻿@model FitDontQuit.Web.ViewModels.Home.IndexViewModel
 @using FitDontQuit.Common
 @{
     this.ViewData["Title"] = "Home Page";
@@ -11,9 +11,9 @@
             <div class="col-lg-8">
                 <div class="hero-text">
                     <span>FITNESS ELEMENTS</span>
-                    <h1>BMI CALCULATOR</h1>
-                    <p>Gutim comes packed with the user-friendly BMI Calculator<br /> shortcode which lets</p>
-                    <a href="#" class="primary-btn">Read More</a>
+                    <h1>WELCOME TO FIT DONT QOUT</h1>
+                    <p>Get best offer<br /> and start training now!</p>
+                    <a asp-controller="Memberships" asp-action="Index" class="primary-btn">See More</a>
                 </div>
             </div>
         </div>
@@ -36,16 +36,17 @@
                 <div class="about-text">
                     <h2>Story About Us</h2>
                     <p class="first-para">
-                        Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aenean pretium
-                        sollicitudin, nascetur auci elit consequat ipsutissem niuis sed odio sit amet nibh vulputate
-                        cursus a amet.
+                        Our vision is to change the look of the sport in Bulgaria. 
+                        For us, this is not an activity inherent only for the most devoted, 
+                        but a part of modern life, for which everyone can find will and strength. 
+                        The time spent in Fit Don't Quit is a time spent in caring for yourself.
                     </p>
                     <p class="second-para">
-                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, gravida
-                        quam semper libero sit amet. Etiam rhoncus. Maecenas tempus, tellus eget condimentum
-                        rhoncus, gravida quam semper libero sit amet.
+                        The Lifestyle Club is both a stress-relieving home and a home where everyone can find support 
+                        for their own purposes and dreams. Perhaps they are slimming or toughening, proper eating and meditation, 
+                        and perhaps just relaxing in the warm pool or talking to a friend in the pause of an intense group workout.
                     </p>
-                    <a asp-controller="Home" asp-action="AboutUs" class="primary-btn">Read More</a>
+                    <a asp-controller="AboutUs" asp-action="Index" class="primary-btn">Read More</a>
                 </div>
             </div>
         </div>
@@ -107,78 +108,8 @@
     </div>
 </section>
 <!-- Services Section End -->
-<!-- Classes Section Begin -->
-<section class="classes-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>UNLIMITED CLASSES</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row classes-slider owl-carousel">
-            <div class="col-lg-4">
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-1.jpg">
-                    <div class="si-text">
-                        <h4>Yoga</h4>
-                        <span><i class="fa fa-user"></i> Ryan Knight</span>
-                    </div>
-                </div>
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-4.jpg">
-                    <div class="si-text">
-                        <h4>Karate</h4>
-                        <span><i class="fa fa-user"></i> Kevin McCormick</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-2.jpg">
-                    <div class="si-text">
-                        <h4>Running</h4>
-                        <span><i class="fa fa-user"></i> Randy Rivera</span>
-                    </div>
-                </div>
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-5.jpg">
-                    <div class="si-text">
-                        <h4>Dance</h4>
-                        <span><i class="fa fa-user"></i> Russell Lane</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-3.jpg">
-                    <div class="si-text">
-                        <h4>Personal Training</h4>
-                        <span><i class="fa fa-user"></i> Cole Robertson</span>
-                    </div>
-                </div>
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-6.jpg">
-                    <div class="si-text">
-                        <h4>Weight Loss</h4>
-                        <span><i class="fa fa-user"></i> Ryan Scott</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-7.jpg">
-                    <div class="si-text">
-                        <h4>Personal Training</h4>
-                        <span><i class="fa fa-user"></i> Cole Robertson</span>
-                    </div>
-                </div>
-                <div class="single-class-item set-bg" data-setbg="img/classes/classes-8.jpg">
-                    <div class="si-text">
-                        <h4>Weight Loss</h4>
-                        <span><i class="fa fa-user"></i> Ryan Scott</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Classes Section End -->
-<partial name="TopThreeTrainersPartial" />
+<partial name="AllClassesPartial" for="@Model.Classes" />
+<partial name="TopThreeTrainersPartial" for="@Model.Trainers" />
 <!-- Testimonial Section Begin -->
 <section class="testimonial-section spad">
     <div class="container">
@@ -194,12 +125,12 @@
                 <div class="testimonial-slider owl-carousel">
                     <div class="testimonial-item">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Meet Jake, a 24 year old Rebel from the UK who lost over 70 pounds (32 kg) in 9 months!
+                            Jake, like many new Rebels, once lived an entirely sedentary lifestyle.
+                            But then Jake found FitDontQuit Fitness, began strength training, and rediscovered his self confidence.
                         </p>
                         <div class="ti-pic">
-                            <img src="img/testimonial/testimonial-1.jpg" alt="">
+                            <img src="https://res.cloudinary.com/fit-dont-quit/image/upload/v1587412834/images_blcj6o.jpg" alt="">
                             <div class="quote">
                                 <img src="img/testimonial/quote-left.png" alt="">
                             </div>
@@ -211,12 +142,29 @@
                     </div>
                     <div class="testimonial-item">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            When she was 46 years old, Wendy Mills set a goal: to be her absolute fittest by her 50th birthday.
+                            "I knew I would have to lose about 100 pounds!" she says. "So I started setting smaller goals,
+                            like giving up fast food or going for a walk." Taking it slowly, she lost the first 55 pounds.
                         </p>
                         <div class="ti-pic">
-                            <img src="img/testimonial/testimonial-1.jpg" alt="">
+                            <img src="https://res.cloudinary.com/fit-dont-quit/image/upload/v1587412834/success-stories-kt_qzvk7u.jpg" alt="">
+                            <div class="quote">
+                                <img src="img/testimonial/quote-left.png" alt="">
+                            </div>
+                        </div>
+                        <div class="ti-author">
+                            <h4>Patrick Cortez</h4>
+                            <span>Leader</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>
+                            Paula Hannah used to come up with any and every excuse to get out of a workout. 
+                            "The most ridiculous one was that I didn't want to mess up my hair!" she says. 
+                            But at 227 pounds and with severe asthma, Paula knew the excuses had to stop.
+                        </p>
+                        <div class="ti-pic">
+                            <img src="https://res.cloudinary.com/fit-dont-quit/image/upload/v1587412834/0f19438ec62542b8358fad68b183610b_l53vsu.jpg" alt="">
                             <div class="quote">
                                 <img src="img/testimonial/quote-left.png" alt="">
                             </div>
@@ -233,156 +181,14 @@
 </section>
 <!-- Testimonial Section End -->
 <partial name="BannerSectionPartial" />
-<!-- Membership Section Begin -->
-<section class="membership-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>MEMBERSHIP PLANS</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="membership-item">
-                    <div class="mi-title">
-                        <h4>Basic</h4>
-                        <div class="triangle"></div>
-                    </div>
-                    <h2 class="mi-price">$17<span>/01 mo</span></h2>
-                    <ul>
-                        <li>
-                            <p>Duration</p>
-                            <span>12 months</span>
-                        </li>
-                        <li>
-                            <p>Personal trainer</p>
-                            <span>00 person</span>
-                        </li>
-                        <li>
-                            <p>Amount of people</p>
-                            <span>01 person</span>
-                        </li>
-                        <li>
-                            <p>Number of visits</p>
-                            <span>Unlimited</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="primary-btn membership-btn">Start Now</a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="membership-item">
-                    <div class="mi-title">
-                        <h4>Standard</h4>
-                        <div class="triangle"></div>
-                    </div>
-                    <h2 class="mi-price">$57<span>/01 mo</span></h2>
-                    <ul>
-                        <li>
-                            <p>Duration</p>
-                            <span>12 months</span>
-                        </li>
-                        <li>
-                            <p>Personal trainer</p>
-                            <span>01 person</span>
-                        </li>
-                        <li>
-                            <p>Amount of people</p>
-                            <span>01 person</span>
-                        </li>
-                        <li>
-                            <p>Number of visits</p>
-                            <span>Unlimited</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="primary-btn membership-btn">Start Now</a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="membership-item">
-                    <div class="mi-title">
-                        <h4>Premium</h4>
-                        <div class="triangle"></div>
-                    </div>
-                    <h2 class="mi-price">$98<span>/01 mo</span></h2>
-                    <ul>
-                        <li>
-                            <p>Duration</p>
-                            <span>12 months</span>
-                        </li>
-                        <li>
-                            <p>Personal trainer</p>
-                            <span>01 person</span>
-                        </li>
-                        <li>
-                            <p>Amount of people</p>
-                            <span>01 person</span>
-                        </li>
-                        <li>
-                            <p>Number of visits</p>
-                            <span>Unlimited</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="primary-btn membership-btn">Start Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Membership Section End -->
+<partial name="MembershipPartial" for="@Model.Memberships"/>
 
 @if (this.User.Identity.IsAuthenticated == false)
 {
     <partial name="RegisterNowPartial" />
 }
+<partial name="LatestThreeArticlesPartial" for="@Model.Articles" />
 
-<!-- Latest Blog Section Begin -->
-<section class="latest-blog-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Latest Blog</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog-item">
-                    <img src="img/blog/blog-1.jpg" alt="">
-                    <div class="blog-widget">
-                        <div class="bw-date">February 17, 2019</div>
-                        <a href="#" class="tag">#Gym</a>
-                    </div>
-                    <h4><a href="#">10 States At Risk of Rural Hospital Closures</a></h4>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog-item">
-                    <img src="img/blog/blog-2.jpg" alt="">
-                    <div class="blog-widget">
-                        <div class="bw-date">February 17, 2019</div>
-                        <a href="#" class="tag">#Sport</a>
-                    </div>
-                    <h4><a href="#">Diver who helped save Thai soccer team</a></h4>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog-item">
-                    <img src="img/blog/blog-3.jpg" alt="">
-                    <div class="blog-widget">
-                        <div class="bw-date">February 17, 2019</div>
-                        <a href="#" class="tag">#Body</a>
-                    </div>
-                    <h4><a href="#">Man gets life in prison for stabbing</a></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Latest Blog Section End -->
 <!-- Footer Banner Section Begin -->
 <section class="footer-banner">
     <div class="container-fluid">

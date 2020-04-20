@@ -1,0 +1,58 @@
+﻿@using FitDontQuit.Common
+@using static FitDontQuit.Common.EnumHelper
+@model IEnumerable<FitDontQuit.Web.ViewModels.Memberships.MembershipPartilViewModel>
+
+<!-- Membership Section Begin -->
+<section class="membership-section spad">
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>MEMBERSHIP PLANS</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var membership in Model)
+            {
+                <div class="col-lg-4">
+
+                    <div class="membership-item">
+                        <div class="mi-title">
+                            <h4>@membership.Name</h4>
+                            <div class="triangle"></div>
+                        </div>
+                        <h2 class="mi-price">@membership.Price BGN@*.<span>/01 mo</span>*@</h2>
+                        <ul>
+                            <li>
+                                <p>Duration</p>
+                                <span>@membership.Duration.GetDisplayName()</span>
+                            </li>
+                            <li>
+                                <p>Personal trainer</p>
+                                @if (membership.HaveATrainer == true)
+                                {
+                                    <span>Include in price</span>
+                                }
+                                else
+                                {
+                                    <span>Not include in price</span>
+                                }
+                            </li>
+                            <li>
+                                <p>Amount of people</p>
+                                <span>@membership.AmountOfPeopleLimit.GetDisplayName() person</span>
+                            </li>
+                            <li>
+                                <p>Number of visits</p>
+                                <span>@membership.VisitLimit.GetDisplayName()</span>
+                            </li>
+                        </ul>
+                        <a class="primary-btn membership-btn" asp-controller="PurchasedMemberships" asp-action="Buy" asp-route-id="@membership.Id">Start Now</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Membership Section End -->

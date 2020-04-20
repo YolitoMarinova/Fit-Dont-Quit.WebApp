@@ -1,5 +1,4 @@
-﻿@using FitDontQuit.Common;
-@model FitDontQuit.Web.ViewModels.Trainers.AllTrainersViewModel
+﻿@model IEnumerable<FitDontQuit.Web.ViewModels.Trainers.TopTrainerViewModel>
 
 <!-- Trainer Section Begin -->
 <section class="trainer-section spad">
@@ -12,20 +11,13 @@
             </div>
         </div>
         <div class="row">
-            @foreach (var trainer in Model.Trainers)
+            @foreach (var trainer in Model)
             {
                 <div class="col-lg-4 col-md-6 mb-5 m">
                     <div class="single-trainer-item">
                         <img src="@trainer.ImageUrl" alt="TrainerImage">
                         <div class="trainer-text">
-                            <h5>
-                                @trainer.FirstName @trainer.LastName
-                                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
-                                {
-                                    <a asp-controller="Trainers" asp-action="Edit" asp-route-id="@trainer.Id"><i class="fa fa-edit"></i></a>
-                                    <i class="fa fa-remove"></i>
-                                }
-                            </h5>
+                            <h5>@trainer.FirstName @trainer.LastName</h5>
                             <span>@trainer.ProfessionName</span><br /><br />
                             <small>@trainer.Age age</small>
                             <p>@trainer.Description</p>

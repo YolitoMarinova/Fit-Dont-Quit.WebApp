@@ -15,6 +15,8 @@
 
         T GetById<T>(int id);
 
+        IEnumerable<T> GetByName<T>(string[] names, int count);
+
         Task DeleteAsync(int id);
     }
 }

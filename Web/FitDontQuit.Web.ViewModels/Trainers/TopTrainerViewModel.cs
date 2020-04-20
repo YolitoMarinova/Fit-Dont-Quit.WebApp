@@ -3,10 +3,8 @@
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Trainers;
 
-    public class TrainerViewModel : IMapFrom<TrainerServiceOutputModel>
+    public class TopTrainerViewModel : IMapFrom<TrainerServiceOutputModel>
     {
-        public int Id { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
