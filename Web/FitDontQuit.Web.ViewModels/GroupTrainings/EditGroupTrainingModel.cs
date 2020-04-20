@@ -1,14 +1,13 @@
-﻿using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.GroupTrainings;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using static FitDontQuit.Common.AttributesConstraints.GroupTraining;
-
-namespace FitDontQuit.Web.ViewModels.GroupTrainings
+﻿namespace FitDontQuit.Web.ViewModels.GroupTrainings
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.GroupTrainings;
+    using Microsoft.AspNetCore.Http;
+
+    using static FitDontQuit.Common.AttributesConstraints.GroupTraining;
+
     public class EditGroupTrainingModel : IMapFrom<GroupTrainingServiceOutputModel>, IMapTo<EditGroupTrainingServiceModel>
     {
         [Required]

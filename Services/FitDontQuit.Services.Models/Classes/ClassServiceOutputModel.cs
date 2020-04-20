@@ -1,14 +1,13 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Data.Models.Enums;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.GroupTrainings;
-using FitDontQuit.Services.Models.Trainers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FitDontQuit.Services.Models.Classes
+﻿namespace FitDontQuit.Services.Models.Classes
 {
+    using System;
+
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Data.Models.Enums;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.GroupTrainings;
+    using FitDontQuit.Services.Models.Trainers;
+
     public class ClassServiceOutputModel : IMapFrom<Class>
     {
         public int Id { get; set; }

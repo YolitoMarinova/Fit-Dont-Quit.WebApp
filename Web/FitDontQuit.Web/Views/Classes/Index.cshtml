@@ -1,4 +1,5 @@
-﻿@using FitDontQuit.Common
+﻿@using FitDontQuit.Data.Models.Enums
+@using FitDontQuit.Common
 @model FitDontQuit.Web.ViewModels.Classes.ClassesIndexViewModel
 @{
     this.ViewData["Title"] = "Classes";
@@ -81,6 +82,16 @@
                         }
                     </ul>
                 </div>
+                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title">
+                                <a asp-controller="Classes" asp-action="Create"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
         <div class="row">
@@ -100,173 +111,145 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="workout-time">10.00</td>
-                                <td class="hover-bg ts-item" data-tsmeta="gym">
-                                    <h6>Gym</h6>
-                                    <span>10.00 - 11.00</span>
-                                    <div class="trainer-name">
-                                        <a asp-controller="Classes" asp-action="Create">Create</a>
-                                        John Smith
-                                    </div>
-                                    <span>Hall: Yoga</span><br />
-                                    <span>Free space: 20</span>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="yoga">
-                                    <h6>Yoga</h6>
-                                    <span>10.00 - 12.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="body">
-                                    <h6>Body</h6>
-                                    <span>10.00 - 12.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="cardio">
-                                    <h6>Cardio</h6>
-                                    <span>10.00 - 11.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="workout-time">14.00</td>
-                                <td></td>
-                                <td class="hover-bg ts-item">
-                                    <h6>Running</h6>
-                                    <span>14.00 - 16.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item">
-                                    <h6>Box</h6>
-                                    <span>14.00 - 15.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="gym">
-                                    <h6>Gym</h6>
-                                    <span>14.00 - 16.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td class="workout-time">16.00</td>
-                                <td class="hover-bg ts-item" data-tsmeta="cardio">
-                                    <h6>Cardio</h6>
-                                    <span>16.00 - 18.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="gym">
-                                    <h6>Gym</h6>
-                                    <span>16.00 - 19.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="yoga">
-                                    <h6>Yoga</h6>
-                                    <span>16.00 - 18.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="gym">
-                                    <h6>Gym</h6>
-                                    <span>16.00 - 20.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="workout-time">18.00</td>
-                                <td class="hover-bg ts-item">
-                                    <h6>Box</h6>
-                                    <span>18.00 - 22.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td class="hover-bg ts-item" data-tsmeta="body">
-                                    <h6>Body</h6>
-                                    <span>18.00 - 20.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="crossfit">
-                                    <h6>Crossfit</h6>
-                                    <span>18.00 - 21.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="cardio">
-                                    <h6>Cardio</h6>
-                                    <span>18.00 - 22.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td class="workout-time">20.00</td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="gym">
-                                    <h6>Gym</h6>
-                                    <span>20.00 - 12.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td class="hover-bg ts-item" data-tsmeta="body">
-                                    <h6>Body</h6>
-                                    <span>20.00 - 21.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="cardio">
-                                    <h6>Cardio</h6>
-                                    <span>20.00 - 22.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="hover-bg ts-item" data-tsmeta="crossfit">
-                                    <h6>Crossfit</h6>
-                                    <span>20.00 - 21.00</span>
-                                    <div class="trainer-name">
-                                        John Smith
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach (int hour in Enum.GetValues(typeof(Hour)))
+                            {
+
+
+                                @if (Model.Classes.Where(x => (int)x.StartHour == hour).Any() == true)
+                                {
+                                    <tr>
+
+                                        <td class="workout-time">@hour.00</td>
+
+                                        @if (Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Monday).FirstOrDefault() != null)
+                                        {
+                                            var gp = Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Monday).FirstOrDefault();
+
+                                            <td class="hover-bg ts-item" data-tsmeta="@gp.GroupTraining.Name">
+                                                <h6>@gp.GroupTraining.Name</h6>
+                                                <span>@((int)gp.StartHour).00 - @((int)gp.EndHour).00</span>
+                                                <div class="trainer-name">
+                                                    @gp.Trainer.Name
+                                                </div>
+                                                <span>Day: @gp.DayOfWeek</span><br />
+                                                <span>Capacity: @gp.Capacity</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+
+                                        @if (Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Tuesday).FirstOrDefault() != null)
+                                        {
+                                            var gp = Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Tuesday).FirstOrDefault();
+
+                                            <td class="hover-bg ts-item" data-tsmeta="@gp.GroupTraining.Name">
+                                                <h6>@gp.GroupTraining.Name</h6>
+                                                <span>@((int)gp.StartHour).00 - @((int)gp.EndHour).00</span>
+                                                <div class="trainer-name">
+                                                    @gp.Trainer.Name
+                                                </div>
+                                                <span>Day: @gp.DayOfWeek</span><br />
+                                                <span>Capacity: @gp.Capacity</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Wednesday).FirstOrDefault() != null)
+                                        {
+                                            var gp = Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Wednesday).FirstOrDefault();
+
+                                            <td class="hover-bg ts-item" data-tsmeta="@gp.GroupTraining.Name">
+                                                <h6>@gp.GroupTraining.Name</h6>
+                                                <span>@((int)gp.StartHour).00 - @((int)gp.EndHour).00</span>
+                                                <div class="trainer-name">
+                                                    @gp.Trainer.Name
+                                                </div>
+                                                <span>Day: @gp.DayOfWeek</span><br />
+                                                <span>Capacity: @gp.Capacity</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+
+                                        @if (Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Thursday).FirstOrDefault() != null)
+                                        {
+                                            var gp = Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Thursday).FirstOrDefault();
+
+                                            <td class="hover-bg ts-item" data-tsmeta="@gp.GroupTraining.Name">
+                                                <h6>@gp.GroupTraining.Name</h6>
+                                                <span>@((int)gp.StartHour).00 - @((int)gp.EndHour).00</span>
+                                                <div class="trainer-name">
+                                                    @gp.Trainer.Name
+                                                </div>
+                                                <span>Day: @gp.DayOfWeek</span><br />
+                                                <span>Capacity: @gp.Capacity</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+
+                                        @if (Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Friday).FirstOrDefault() != null)
+                                        {
+                                            var gp = Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Friday).FirstOrDefault();
+
+                                            <td class="hover-bg ts-item" data-tsmeta="@gp.GroupTraining.Name">
+                                                <h6>@gp.GroupTraining.Name</h6>
+                                                <span>@((int)gp.StartHour).00 - @((int)gp.EndHour).00</span>
+                                                <div class="trainer-name">
+                                                    @gp.Trainer.Name
+                                                </div>
+                                                <span>Day: @gp.DayOfWeek</span><br />
+                                                <span>Capacity: @gp.Capacity</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        } @if (Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Saturday).FirstOrDefault() != null)
+                                        {
+                                            var gp = Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Saturday).FirstOrDefault();
+
+                                            <td class="hover-bg ts-item" data-tsmeta="@gp.GroupTraining.Name">
+                                                <h6>@gp.GroupTraining.Name</h6>
+                                                <span>@((int)gp.StartHour).00 - @((int)gp.EndHour).00</span>
+                                                <div class="trainer-name">
+                                                    @gp.Trainer.Name
+                                                </div>
+                                                <span>Day: @gp.DayOfWeek</span><br />
+                                                <span>Capacity: @gp.Capacity</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        @if (Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Sunday).FirstOrDefault() != null)
+                                        {
+                                            var gp = Model.Classes.Where(x => (int)x.StartHour == hour && x.DayOfWeek == DayOfWeek.Sunday).FirstOrDefault();
+
+                                            <td class="hover-bg ts-item" data-tsmeta="@gp.GroupTraining.Name">
+                                                <h6>@gp.GroupTraining.Name</h6>
+                                                <span>@((int)gp.StartHour).00 - @((int)gp.EndHour).00</span>
+                                                <div class="trainer-name">@gp.Trainer.Name</div>
+                                                <span>Day: @gp.DayOfWeek</span><br />
+                                                <span>Capacity: @gp.Capacity</span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                    </tr> 
+                                }
+                            }
                         </tbody>
                     </table>
                 </div>

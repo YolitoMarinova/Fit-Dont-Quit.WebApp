@@ -1,15 +1,13 @@
-﻿using FitDontQuit.Services.Data;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.Professions;
-using FitDontQuit.Web.ViewModels.Administration.Professions;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FitDontQuit.Web.Areas.Administration.Controllers
+﻿namespace FitDontQuit.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Services.Data;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Professions;
+    using FitDontQuit.Web.ViewModels.Administration.Professions;
+    using Microsoft.AspNetCore.Mvc;
+
     public class ProfessionsController : AdministrationController
     {
         private readonly IProfessionsService professionsService;

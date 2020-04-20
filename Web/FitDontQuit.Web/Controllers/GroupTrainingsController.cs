@@ -1,18 +1,17 @@
-﻿using FitDontQuit.Web.ViewModels.GroupTrainings;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FitDontQuit.Common;
-using FitDontQuit.Services.Data;
-using FitDontQuit.Services;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.GroupTrainings;
-
-namespace FitDontQuit.Web.Controllers
+﻿namespace FitDontQuit.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Common;
+    using FitDontQuit.Services;
+    using FitDontQuit.Services.Data;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.GroupTrainings;
+    using FitDontQuit.Web.ViewModels.GroupTrainings;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
     public class GroupTrainingsController : BaseController
     {

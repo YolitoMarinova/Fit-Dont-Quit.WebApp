@@ -1,11 +1,8 @@
-﻿using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.GroupTrainings;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FitDontQuit.Web.ViewModels.GroupTrainings
+﻿namespace FitDontQuit.Web.ViewModels.GroupTrainings
 {
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.GroupTrainings;
+
     public class DetailsViewModel : IMapFrom<GroupTrainingServiceOutputModel>
     {
         public int Id { get; set; }

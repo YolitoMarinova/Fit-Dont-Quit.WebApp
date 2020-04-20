@@ -1,12 +1,12 @@
-﻿using FitDontQuit.Data.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using static FitDontQuit.Common.AttributesConstraints.Class;
-
-namespace FitDontQuit.Services.Models.Classes
+﻿namespace FitDontQuit.Services.Models.Classes
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Data.Models.Enums;
+
+    using static FitDontQuit.Common.AttributesConstraints.Class;
+
     public class CreateClassServiceModel
     {
         public Hour StartHour { get; set; }

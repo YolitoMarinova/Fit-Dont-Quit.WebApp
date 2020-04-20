@@ -3,7 +3,6 @@
     using System;
 
     using FitDontQuit.Data.Models;
-    using FitDontQuit.Data.Models.Enums;
     using FitDontQuit.Services.Mapping;
 
     public class GroupTrainingServiceOutputModel : IMapFrom<GroupTraining>

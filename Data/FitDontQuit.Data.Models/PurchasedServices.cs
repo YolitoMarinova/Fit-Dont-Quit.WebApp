@@ -1,6 +1,5 @@
 ﻿namespace FitDontQuit.Data.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
     using FitDontQuit.Data.Common.Models;

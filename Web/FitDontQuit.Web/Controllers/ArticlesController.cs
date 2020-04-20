@@ -1,20 +1,18 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Data;
-using FitDontQuit.Web.ViewModels.Articles;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FitDontQuit.Common;
-using FitDontQuit.Services;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.Articles;
-
-namespace FitDontQuit.Web.Controllers
+﻿namespace FitDontQuit.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Common;
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services;
+    using FitDontQuit.Services.Data;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Articles;
+    using FitDontQuit.Web.ViewModels.Articles;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     public class ArticlesController : BaseController
     {
         private readonly IArticlesService articlesService;

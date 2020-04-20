@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using FitDontQuit.Services.Models.Professions;
     using FitDontQuit.Services.Models.Trainers;
 
     public interface ITrainersService

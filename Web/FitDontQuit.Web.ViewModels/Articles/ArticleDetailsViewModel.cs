@@ -1,12 +1,11 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.Articles;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FitDontQuit.Web.ViewModels.Articles
+﻿namespace FitDontQuit.Web.ViewModels.Articles
 {
+    using System;
+
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Articles;
+
     public class ArticleDetailsViewModel : IMapFrom<ArticleServiceOutputModel>
     {
         public string Title { get; set; }

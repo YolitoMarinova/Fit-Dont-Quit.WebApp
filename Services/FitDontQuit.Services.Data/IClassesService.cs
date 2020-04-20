@@ -1,11 +1,10 @@
-﻿using FitDontQuit.Services.Models.Classes;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FitDontQuit.Services.Data
+﻿namespace FitDontQuit.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using FitDontQuit.Services.Models.Classes;
+
     public interface IClassesService
     {
         Task CreateAsync(CreateClassServiceModel classModel);

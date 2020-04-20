@@ -1,15 +1,16 @@
-﻿using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.Trainers;
-using FitDontQuit.Web.ViewModels.Professions;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using static FitDontQuit.Common.AttributesConstraints.Trainer;
-
-namespace FitDontQuit.Web.ViewModels.Trainers
+﻿namespace FitDontQuit.Web.ViewModels.Trainers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Trainers;
+    using FitDontQuit.Web.ViewModels.Professions;
+    using Microsoft.AspNetCore.Http;
+
+    using static FitDontQuit.Common.AttributesConstraints.Trainer;
+
     public class CreateTrainerModel : IMapTo<CreateTrainerInputModel>
     {
         [Required]

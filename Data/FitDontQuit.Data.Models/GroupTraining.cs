@@ -1,11 +1,9 @@
 ﻿namespace FitDontQuit.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using FitDontQuit.Data.Common.Models;
-    using FitDontQuit.Data.Models.Enums;
 
     using static FitDontQuit.Common.AttributesConstraints.GroupTraining;
 

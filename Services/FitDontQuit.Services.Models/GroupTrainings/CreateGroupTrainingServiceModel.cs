@@ -1,7 +1,5 @@
 ﻿namespace FitDontQuit.Services.Models.GroupTrainings
 {
-    using System;
-
     public class CreateGroupTrainingServiceModel
     {
         public string Name { get; set; }

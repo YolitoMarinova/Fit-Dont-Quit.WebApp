@@ -1,6 +1,7 @@
 ﻿namespace FitDontQuit.Web
 {
     using System.Reflection;
+
     using CloudinaryDotNet;
     using FitDontQuit.Data;
     using FitDontQuit.Data.Common;
@@ -12,7 +13,7 @@
     using FitDontQuit.Services.Data;
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Messaging;
-    using FitDontQuit.Services.Models.Halls;
+    using FitDontQuit.Services.Models.Articles;
     using FitDontQuit.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
@@ -61,7 +62,6 @@
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
             services.AddTransient<ISettingsService, SettingsService>();
-            services.AddTransient<IHallsService, HallsService>();
             services.AddTransient<IMembershipsService, MembershipsService>();
             services.AddTransient<IServicesService, ServicesService>();
             services.AddTransient<IProfessionsService, ProfessionService>();
@@ -86,7 +86,7 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly, typeof(CreateHallServiceModel).GetTypeInfo().Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly, typeof(CreateArticleServiceModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())

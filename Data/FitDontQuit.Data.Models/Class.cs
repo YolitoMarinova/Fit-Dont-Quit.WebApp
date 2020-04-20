@@ -1,13 +1,13 @@
-﻿using FitDontQuit.Data.Common.Models;
-using FitDontQuit.Data.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using static FitDontQuit.Common.AttributesConstraints.Class;
-
-namespace FitDontQuit.Data.Models
+﻿namespace FitDontQuit.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Data.Common.Models;
+    using FitDontQuit.Data.Models.Enums;
+
+    using static FitDontQuit.Common.AttributesConstraints.Class;
+
     public class Class : BaseDeletableModel<int>
     {
         public Hour StartHour { get; set; }

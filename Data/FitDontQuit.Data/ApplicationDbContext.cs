@@ -32,8 +32,6 @@
 
         public DbSet<Class> Classes { get; set; }
 
-        public DbSet<Hall> Halls { get; set; }
-
         public DbSet<Membership> Memberships { get; set; }
 
         public DbSet<PurchasedMembership> PurchasedMemberships { get; set; }

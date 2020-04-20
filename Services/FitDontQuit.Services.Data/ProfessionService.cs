@@ -56,7 +56,6 @@
         {
             var professions = this.professionRepository.All().To<ProfessionServiceOutputModel>();
 
-
             var professionsT = professions.To<T>().ToList();
 
             return professionsT;

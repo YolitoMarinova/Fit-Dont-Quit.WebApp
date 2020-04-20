@@ -1,15 +1,14 @@
-﻿using FitDontQuit.Data.Models;
-using FitDontQuit.Services.Mapping;
-using FitDontQuit.Services.Models.Articles;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using static FitDontQuit.Common.AttributesConstraints.Article;
-
-namespace FitDontQuit.Web.ViewModels.Articles
+﻿namespace FitDontQuit.Web.ViewModels.Articles
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using FitDontQuit.Data.Models;
+    using FitDontQuit.Services.Mapping;
+    using FitDontQuit.Services.Models.Articles;
+    using Microsoft.AspNetCore.Http;
+
+    using static FitDontQuit.Common.AttributesConstraints.Article;
+
     public class CreateArticleModel : IMapTo<CreateArticleServiceModel>
     {
         [Required]

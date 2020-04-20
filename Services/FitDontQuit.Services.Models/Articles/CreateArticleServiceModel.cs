@@ -1,7 +1,7 @@
-﻿using FitDontQuit.Data.Models;
-
-namespace FitDontQuit.Services.Models.Articles
+﻿namespace FitDontQuit.Services.Models.Articles
 {
+    using FitDontQuit.Data.Models;
+
     public class CreateArticleServiceModel
     {
         public string Title { get; set; }
