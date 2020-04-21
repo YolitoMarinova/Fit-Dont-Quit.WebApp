@@ -9,10 +9,14 @@
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Articles;
     using FitDontQuit.Web.ViewModels.Articles;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    using static FitDontQuit.Common.ErrorMessages;
+
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
     public class ArticlesController : BaseController
     {
         private readonly IArticlesService articlesService;
@@ -26,6 +30,7 @@
             this.userManager = userManager;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var articles = this.articlesService.GettAll<ArticleInListViewModel>();
@@ -33,18 +38,25 @@
             return this.View(articles);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         public IActionResult Create()
         {
             return this.View();
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Create(CreateArticleModel articleModel)
         {
             if (!this.ModelState.IsValid)
             {
+                return this.View(articleModel);
+            }
+
+            if (articleModel.Image.ContentType != "image/jpeg"
+                && articleModel.Image.ContentType != "image/png"
+                && articleModel.Image.ContentType != "svg+xml")
+            {
+                this.ModelState.AddModelError(string.Empty, InvalidImageType);
+
                 return this.View(articleModel);
             }
 
@@ -78,7 +90,6 @@
             return this.View(article);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, EditArticleModel inputModel)
         {
@@ -89,6 +100,15 @@
 
             if (inputModel.Image != null)
             {
+                if (inputModel.Image.ContentType != "image/jpeg"
+                && inputModel.Image.ContentType != "image/png"
+                && inputModel.Image.ContentType != "svg+xml")
+                {
+                    this.ModelState.AddModelError(string.Empty, InvalidImageType);
+
+                    return this.View(inputModel);
+                }
+
                 inputModel.ImageUrl = await this.cloudinaryService.UploadAsync(inputModel.Image, inputModel.Image.FileName);
             }
 
@@ -96,10 +116,9 @@
 
             await this.articlesService.EditAsync(id, articleServiceModel);
 
-            return this.RedirectToAction("Index");
+            return this.RedirectToAction("Details", new { id = id });
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         public IActionResult Delete(int id)
         {
             var articleModel = this.articlesService.GetById<DeleteArticleModel>(id);
@@ -112,23 +131,32 @@
             return this.View(articleModel);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Delete(DeleteArticleModel articleModel)
         {
+            if (articleModel == null)
+            {
+                return this.BadRequest();
+            }
+
             await this.articlesService.DeleteAsync(articleModel.Id);
 
             return this.RedirectToAction("Index");
         }
 
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             var articleModel = this.articlesService.GetById<ArticleDetailsViewModel>(id);
+
+            var latestThree = this.articlesService.GettThreeLatest<LatestArticleViewModel>();
 
             if (articleModel == null)
             {
                 return this.NotFound();
             }
+
+            articleModel.ThreeLatestAricles = latestThree;
 
             return this.View(articleModel);
         }

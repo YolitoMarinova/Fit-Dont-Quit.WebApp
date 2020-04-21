@@ -1,0 +1,17 @@
+﻿@model FitDontQuit.Web.ViewModels.Classes.DeleteClassModel
+@{
+    this.ViewData["Title"] = "Delete class";
+}
+
+<section class="section">
+    <form asp-action="Delete" method="post">
+        <p>Are you sure you want to delete these class?</p>
+        <p>@Model.GroupTraining.Name</p>
+        <p>@((int)Model.StartHour).00 - @((int)Model.EndHour).00</p>
+        <p>@Model.Trainer.Name</p>
+        <p>@Model.DayOfWeek</p>
+        <p>@Model.Capacity capacity</p>
+        <input type="button" class="btn btn-secondary" value="Back" onclick="history.back()" />
+        <input type="submit" class="btn btn-danger" value="Delete" />
+    </form>
+</section>

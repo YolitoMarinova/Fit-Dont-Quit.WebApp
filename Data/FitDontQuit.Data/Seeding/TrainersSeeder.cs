@@ -15,6 +15,12 @@
                 return;
             }
 
+            var firstProfession = dbContext.Professions.FirstOrDefault(p => p.Name == "Personal trainer");
+            var secondProfession = dbContext.Professions.FirstOrDefault(p => p.Name == "Zumba trainer");
+            var thirdProfession = dbContext.Professions.FirstOrDefault(p => p.Name == "Yoga guru");
+            var fourthProfession = dbContext.Professions.FirstOrDefault(p => p.Name == "Kick box trainer");
+            var fifthProfession = dbContext.Professions.FirstOrDefault(p => p.Name == "Pilates trainer");
+
             Trainer firstTrainer = new Trainer
             {
                 FirstName = "Georgi",
@@ -24,7 +30,7 @@
                 PhoneNumber = "+359000000000",
                 ImageUrl = "https://res.cloudinary.com/fit-dont-quit/image/upload/v1586948316/Trainers/trainer-1_b3elaq.jpg",
                 InstagramUrl = "https://www.instagram.com/?hl=bg",
-                ProfessionId = 2,
+                ProfessionId = firstProfession.Id,
             };
 
             Trainer secondTrainer = new Trainer
@@ -36,7 +42,7 @@
                 PhoneNumber = "+359000000000",
                 ImageUrl = "https://res.cloudinary.com/fit-dont-quit/image/upload/v1586948316/Trainers/trainer-3_mlvfip.jpg",
                 InstagramUrl = "https://www.instagram.com/?hl=bg",
-                ProfessionId = 3,
+                ProfessionId = secondProfession.Id,
             };
 
             Trainer thirdTrainer = new Trainer
@@ -48,7 +54,7 @@
                 PhoneNumber = "+359000000000",
                 ImageUrl = "https://res.cloudinary.com/fit-dont-quit/image/upload/v1586948316/Trainers/trainer-2_q09z17.jpg",
                 InstagramUrl = "https://www.instagram.com/?hl=bg",
-                ProfessionId = 2,
+                ProfessionId = thirdProfession.Id,
             };
 
             Trainer fourthTrainer = new Trainer
@@ -60,7 +66,7 @@
                 PhoneNumber = "+359000000000",
                 ImageUrl = "https://res.cloudinary.com/fit-dont-quit/image/upload/v1586948316/Trainers/trainer-3_mlvfip.jpg",
                 InstagramUrl = "https://www.instagram.com/?hl=bg",
-                ProfessionId = 3,
+                ProfessionId = fourthProfession.Id,
             };
 
             Trainer fiveTrainer = new Trainer
@@ -72,7 +78,7 @@
                 PhoneNumber = "+359000000000",
                 ImageUrl = "https://res.cloudinary.com/fit-dont-quit/image/upload/v1586948316/Trainers/trainer-2_q09z17.jpg",
                 InstagramUrl = "https://www.instagram.com/?hl=bg",
-                ProfessionId = 2,
+                ProfessionId = fifthProfession.Id,
             };
 
             await dbContext.Trainers.AddAsync(firstTrainer);

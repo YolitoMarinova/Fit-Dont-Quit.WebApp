@@ -1,4 +1,5 @@
-﻿@model FitDontQuit.Web.ViewModels.Articles.ArticleDetailsViewModel
+﻿@using FitDontQuit.Common
+@model FitDontQuit.Web.ViewModels.Articles.ArticleDetailsViewModel
 @{
     this.ViewData["Title"] = "Article detail";
 }
@@ -8,7 +9,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bd-hero-text">
-                    <span>CAMERA</span>
+                    @*<span>CAMERA</span>*@
                     <h2>@Model.Title</h2>
                 </div>
             </div>
@@ -21,17 +22,29 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
+                <h4>
+                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
+                    {
+                        <a asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-edit fa-lg"></i></a>
+                        <a asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id"><i class="fa fa-remove fa-lg"></i></a>
+                    }
+                </h4>
+                <br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
                 <div class="bd-text">
                     <div class="bd-more-text">
                         <div class="bm-item">
                             <p>
-                                @Model.Content
+                                @Html.Raw(Model.Content)
                             </p>
                         </div>
                     </div>
                     <hr />
                     <div class="mb-3">
-                        <label>From:</label><small> @Model.CreatedOn</small>                       
+                        <label>From:</label><small> @Model.CreatedOn</small>
                     </div>
                     <div class="tag-share">
                         <div class="tags">
@@ -64,46 +77,4 @@
     </div>
 </section>
 <!-- Blog Details Section End -->
-<!-- Latest Blog Section Begin -->
-<section class="latest-blog-section recommend spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Recommended</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="single-blog-item">
-                    <img src="img/blog/blog-1.jpg" alt="">
-                    <div class="blog-widget">
-                        <div class="bw-date">February 17, 2019</div>
-                        <a href="#" class="tag">#Gym</a>
-                    </div>
-                    <h4><a href="#">10 States At Risk of Rural Hospital Closures</a></h4>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog-item">
-                    <img src="img/blog/blog-2.jpg" alt="">
-                    <div class="blog-widget">
-                        <div class="bw-date">February 17, 2019</div>
-                        <a href="#" class="tag">#Sport</a>
-                    </div>
-                    <h4><a href="#">Diver who helped save Thai soccer team</a></h4>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-blog-item">
-                    <img src="img/blog/blog-3.jpg" alt="">
-                    <div class="blog-widget">
-                        <div class="bw-date">February 17, 2019</div>
-                        <a href="#" class="tag">#Body</a>
-                    </div>
-                    <h4><a href="#">Man gets life in prison for stabbing</a></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Latest Blog Section End -->
+<partial name="LatestThreeArticlesPartial" for="@Model.ThreeLatestAricles" />

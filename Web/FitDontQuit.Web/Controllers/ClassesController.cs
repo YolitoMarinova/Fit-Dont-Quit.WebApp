@@ -5,12 +5,15 @@
 
     using FitDontQuit.Common;
     using FitDontQuit.Services.Data;
+    using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Classes;
     using FitDontQuit.Web.ViewModels.Classes;
     using FitDontQuit.Web.ViewModels.GroupTrainings;
     using FitDontQuit.Web.ViewModels.Trainers;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
+    using static FitDontQuit.Common.ErrorMessages.Class;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
     public class ClassesController : BaseController
@@ -72,7 +75,7 @@
                 classModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
                 classModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
 
-                this.ModelState.AddModelError(string.Empty, "End hour should be after start hour!");
+                this.ModelState.AddModelError(string.Empty, InvalidHours);
 
                 return this.View(classModel);
             }
@@ -84,22 +87,104 @@
                 classModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
                 classModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
 
-                this.ModelState.AddModelError(string.Empty, "There is alredy class in this time and day.");
+                this.ModelState.AddModelError(string.Empty, DayAndTimeIsTakenError);
 
                 return this.View(classModel);
             }
 
-            var serviceModel = new CreateClassServiceModel
-            {
-                StartHour = classModel.StartHour,
-                EndHour = classModel.EndHour,
-                DayOfWeek = classModel.DayOfWeek,
-                Capacity = classModel.Capacity,
-                GroupTrainingId = classModel.GroupTrainingId,
-                TrainerId = classModel.TrainerId,
-            };
+            var serviceModel = AutoMapperConfig.MapperInstance.Map<CreateClassServiceModel>(classModel);
 
             await this.classesService.CreateAsync(serviceModel);
+
+            return this.RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var viewModel = this.classesService.GetById<EditClassModel>(id);
+
+            if (viewModel == null)
+            {
+                return this.NotFound();
+            }
+
+            var groupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
+            var trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+
+            viewModel.GroupTrainings = groupTrainings;
+            viewModel.Trainers = trainers;
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditClassModel editClassModel)
+        {
+            var model = this.classesService.GetById<EditClassModel>(id);
+
+            if (model == null)
+            {
+                return this.BadRequest();
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                editClassModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
+                editClassModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+
+                return this.View(editClassModel);
+            }
+
+            if (editClassModel.EndHour <= editClassModel.StartHour)
+            {
+                editClassModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
+                editClassModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+
+                this.ModelState.AddModelError(string.Empty, InvalidHours);
+
+                return this.View(editClassModel);
+            }
+
+            var classes = this.classesService.GettAll<ClassInListViewModel>();
+
+            if (classes.Any(x => x.StartHour == editClassModel.StartHour && x.DayOfWeek == editClassModel.DayOfWeek))
+            {
+                editClassModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
+                editClassModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+
+                this.ModelState.AddModelError(string.Empty, DayAndTimeIsTakenError);
+
+                return this.View(editClassModel);
+            }
+
+            var editServiceModel = AutoMapperConfig.MapperInstance.Map<EditClassServiceModel>(editClassModel);
+
+            await this.classesService.EditAsync(id, editServiceModel);
+
+            return this.RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var viewModel = this.classesService.GetById<DeleteClassModel>(id);
+
+            if (viewModel == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteClassModel deleteClassModel)
+        {
+            if (deleteClassModel == null)
+            {
+                return this.BadRequest();
+            }
+
+            await this.classesService.DeleteAsync(deleteClassModel.Id);
 
             return this.RedirectToAction("Index");
         }

@@ -12,6 +12,9 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    using static FitDontQuit.Common.ErrorMessages;
+
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
     public class TrainersController : BaseController
     {
         private readonly ITrainersService trainersService;
@@ -25,6 +28,7 @@
             this.cloudinaryService = cloudinaryService;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var trainers = this.trainersService.GettAll<TrainerViewModel>();
@@ -37,24 +41,36 @@
             return this.View(model);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         public IActionResult Create()
         {
-            var trainerModel = new CreateTrainerModel();
-
             var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
 
-            trainerModel.Professions = professions;
+            var trainerModel = new CreateTrainerModel
+            {
+                Professions = professions,
+            };
 
             return this.View(trainerModel);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Create(CreateTrainerModel trainerModel)
         {
             if (!this.ModelState.IsValid)
             {
+                var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+
+                trainerModel.Professions = professions;
+
+                return this.View(trainerModel);
+            }
+
+            if (trainerModel.Image.ContentType != "image/jpeg"
+               && trainerModel.Image.ContentType != "image/png"
+               && trainerModel.Image.ContentType != "svg+xml")
+            {
+                this.ModelState.AddModelError(string.Empty, InvalidImageType);
+
                 return this.View(trainerModel);
             }
 
@@ -67,11 +83,14 @@
             return this.RedirectToAction("Index");
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
-
         public IActionResult Edit(int id)
         {
             var trainer = this.trainersService.GetById<EditTrainerModel>(id);
+
+            if (trainer == null)
+            {
+                return this.NotFound();
+            }
 
             var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
 
@@ -86,11 +105,28 @@
         {
             if (!this.ModelState.IsValid)
             {
+                var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+
+                inputModel.Professions = professions;
+
                 return this.View(inputModel);
             }
 
             if (inputModel.Image != null)
             {
+                if (inputModel.Image.ContentType != "image/jpeg"
+                   && inputModel.Image.ContentType != "image/png"
+                   && inputModel.Image.ContentType != "svg+xml")
+                {
+                    this.ModelState.AddModelError(string.Empty, InvalidImageType);
+
+                    var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+
+                    inputModel.Professions = professions;
+
+                    return this.View(inputModel);
+                }
+
                 inputModel.ImageUrl = await this.cloudinaryService.UploadAsync(inputModel.Image, inputModel.Image.FileName);
             }
 
@@ -101,7 +137,7 @@
             return this.RedirectToAction("Index");
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
+
         public IActionResult Delete(int id)
         {
             var trainerModel = this.trainersService.GetById<DeleteTrainerModel>(id);
@@ -114,10 +150,14 @@
             return this.View(trainerModel);
         }
 
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Delete(DeleteTrainerModel trainerModel)
         {
+            if (trainerModel == null)
+            {
+                return this.NotFound();
+            }
+
             await this.trainersService.DeleteAsync(trainerModel.Id);
 
             return this.RedirectToAction("Index");

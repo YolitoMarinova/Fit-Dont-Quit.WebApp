@@ -6,6 +6,7 @@
     <h1>Create</h1>
     <form method="post" asp-action="Create" enctype="multipart/form-data">
         <div class="container">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="input-group-prepend mb-5">
                 <input type="file" name="Image" asp-for="Image" />
             </div>
@@ -21,7 +22,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Description</span>
                     </div>
-                    <input asp-for="Description" class="form-control" />
+                    <textarea asp-for="Description" class="form-control"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <hr />
@@ -30,3 +31,13 @@
         </div>
     </form>
 </section>
+
+<script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "image paste table link code media"
+        ]
+    });
+</script>

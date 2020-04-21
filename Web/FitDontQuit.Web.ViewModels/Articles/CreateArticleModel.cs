@@ -12,7 +12,7 @@
     public class CreateArticleModel : IMapTo<CreateArticleServiceModel>
     {
         [Required]
-        [MaxLength(TitlemaxLenght)]
+        [StringLength(maximumLength: TitleMaxLenght, MinimumLength = TitleMinLenght)]
         public string Title { get; set; }
 
         [Required]

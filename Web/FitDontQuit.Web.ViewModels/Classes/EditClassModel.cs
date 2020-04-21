@@ -13,7 +13,7 @@
 
     using static FitDontQuit.Common.AttributesConstraints.Class;
 
-    public class CreateClassModel : IMapTo<CreateClassServiceModel>
+    public class EditClassModel : IMapFrom<ClassServiceOutputModel>, IMapTo<EditClassServiceModel>
     {
         [DisplayName("Start hour")]
         public Hour StartHour { get; set; }

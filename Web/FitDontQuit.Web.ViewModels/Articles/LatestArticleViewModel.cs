@@ -6,7 +6,7 @@
     using FitDontQuit.Services.Mapping;
     using FitDontQuit.Services.Models.Articles;
 
-    public class HomeArticleViewModel : IMapFrom<ArticleServiceOutputModel>
+    public class LatestArticleViewModel : IMapFrom<ArticleServiceOutputModel>
     {
         public int Id { get; set; }
 

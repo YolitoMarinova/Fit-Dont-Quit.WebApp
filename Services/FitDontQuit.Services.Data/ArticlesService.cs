@@ -39,6 +39,11 @@
             article.Title = articleModel.Title;
             article.Content = articleModel.Content;
 
+            if (articleModel.ImageUrl != null)
+            {
+                article.ImageUrl = articleModel.ImageUrl;
+            }
+
             await this.articlesRepository.SaveChangesAsync();
         }
 

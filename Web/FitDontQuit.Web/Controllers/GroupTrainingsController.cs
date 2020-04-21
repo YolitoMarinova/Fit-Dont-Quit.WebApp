@@ -12,6 +12,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    using static FitDontQuit.Common.ErrorMessages;
+
     [Authorize(Roles = GlobalConstants.AdministratorRoleName + "," + GlobalConstants.ModeratorRoleName)]
     public class GroupTrainingsController : BaseController
     {
@@ -34,6 +36,15 @@
         {
             if (!this.ModelState.IsValid)
             {
+                return this.View(groupTrainingModel);
+            }
+
+            if (groupTrainingModel.Image.ContentType != "image/jpeg"
+                && groupTrainingModel.Image.ContentType != "image/png"
+                && groupTrainingModel.Image.ContentType != "svg+xml")
+            {
+                this.ModelState.AddModelError(string.Empty, InvalidImageType);
+
                 return this.View(groupTrainingModel);
             }
 
@@ -68,6 +79,15 @@
 
             if (inputModel.Image != null)
             {
+                if (inputModel.Image.ContentType != "image/jpeg"
+               && inputModel.Image.ContentType != "image/png"
+               && inputModel.Image.ContentType != "svg+xml")
+                {
+                    this.ModelState.AddModelError(string.Empty, InvalidImageType);
+
+                    return this.View(inputModel);
+                }
+
                 inputModel.ImageUrl = await this.cloudinaryService.UploadAsync(inputModel.Image, inputModel.Image.FileName);
             }
 
@@ -93,6 +113,11 @@
         [HttpPost]
         public async Task<IActionResult> Delete(DeleteGroupTrainingModel groupTrainingModel)
         {
+            if (groupTrainingModel == null)
+            {
+                return this.NotFound();
+            }
+
             await this.groupTrainingsService.DeleteAsync(groupTrainingModel.Id);
 
             return this.RedirectToAction("Index", "Classes");

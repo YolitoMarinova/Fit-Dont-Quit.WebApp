@@ -50,6 +50,8 @@
                         </div>
                         <h4>
                             <a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">@article.Title</a>
+                        </h4>
+                        <h4>
                             @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
                             {
                                 <a asp-controller="Articles" asp-action="Edit" asp-route-id="@article.Id"><i class="fa fa-edit fa-lg"></i></a>

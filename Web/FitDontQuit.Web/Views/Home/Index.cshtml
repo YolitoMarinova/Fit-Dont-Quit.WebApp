@@ -12,7 +12,7 @@
                 <div class="hero-text">
                     <span>FITNESS ELEMENTS</span>
                     <h1>WELCOME TO FIT DONT QOUT</h1>
-                    <p>Get best offer<br /> and start training now!</p>
+                    <p>Get best offer and start training now!</p>
                     <a asp-controller="Memberships" asp-action="Index" class="primary-btn">See More</a>
                 </div>
             </div>
@@ -182,11 +182,6 @@
 <!-- Testimonial Section End -->
 <partial name="BannerSectionPartial" />
 <partial name="MembershipPartial" for="@Model.Memberships"/>
-
-@if (this.User.Identity.IsAuthenticated == false)
-{
-    <partial name="RegisterNowPartial" />
-}
 <partial name="LatestThreeArticlesPartial" for="@Model.Articles" />
 
 <!-- Footer Banner Section Begin -->

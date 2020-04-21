@@ -33,7 +33,6 @@
 /*----------------------------------------*/
 
 html, body {
-    height: 100% !important;
     font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
@@ -155,7 +154,7 @@ ul, ol {
 
 .custom-button {
     background-color: white;
-    color: black;
+    color: white !important;
     border-left: 2px solid #eb3c5a;
     border-right: 2px solid #f67831;
     -webkit-box-sizing: border-box;
@@ -592,6 +591,10 @@ ul, ol {
     margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
+
+    .user-section .jumbotron {
+        background: #f5f4f4;
+    }
 
     .user-section a {
         color: orangered;
@@ -1242,11 +1245,11 @@ ul, ol {
         margin-bottom: 55px;
     }
 
-    .latest-blog-section.recommend {
+    .latest-blog-section.latest {
         padding-top: 0;
     }
 
-        .latest-blog-section.recommend h3 {
+        .latest-blog-section.latest h3 {
             font-weight: 600;
             color: #111111;
             text-transform: uppercase;
@@ -1741,6 +1744,7 @@ ul, ol {
     .single-blog-item img {
         min-width: 100%;
         margin-bottom: 30px;
+        height: 250px;
     }
 
     .single-blog-item .blog-widget {
@@ -1782,7 +1786,7 @@ ul, ol {
 }
 
     .bd-hero-text span {
-        font-size: 12px;
+        font-size: 30px;
         color: #ffffff;
         text-transform: uppercase;
         background: #f15d44;

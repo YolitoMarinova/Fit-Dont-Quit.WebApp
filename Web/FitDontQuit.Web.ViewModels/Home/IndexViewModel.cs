@@ -13,7 +13,7 @@
 
         public IEnumerable<MembershipPartilViewModel> Memberships { get; set; }
 
-        public IEnumerable<HomeArticleViewModel> Articles { get; set; }
+        public IEnumerable<LatestArticleViewModel> Articles { get; set; }
 
         public GroupTrainingInListViewModel[] Classes { get; set; }
     }

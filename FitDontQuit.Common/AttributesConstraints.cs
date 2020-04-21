@@ -13,7 +13,8 @@
 
         public static class Article
         {
-            public const int TitlemaxLenght = 100;
+            public const int TitleMinLenght = 3;
+            public const int TitleMaxLenght = 100;
         }
 
         public static class GroupTraining

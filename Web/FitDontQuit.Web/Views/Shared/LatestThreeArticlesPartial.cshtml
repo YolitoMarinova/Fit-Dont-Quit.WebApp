@@ -1,8 +1,12 @@
-﻿@model IEnumerable<FitDontQuit.Web.ViewModels.Articles.HomeArticleViewModel>
-
+﻿@model IEnumerable<FitDontQuit.Web.ViewModels.Articles.LatestArticleViewModel>
 <!-- Blog Section Begin -->
-<section class="blog-section spad">
+<section class="latest-blog-section latest spad">
     <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Latest</h3>
+            </div>
+        </div>
         <div class="row">
             @foreach (var article in Model)
             {

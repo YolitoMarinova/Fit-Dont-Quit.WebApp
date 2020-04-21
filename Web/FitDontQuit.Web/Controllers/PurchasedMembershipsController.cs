@@ -15,6 +15,8 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    using static FitDontQuit.Common.ErrorMessages.PurchasedMembership;
+
     [Authorize]
     public class PurchasedMembershipsController : BaseController
     {
@@ -75,14 +77,16 @@
                 return this.View(purchasedMembershipModel);
             }
 
+            if (purchasedMembershipModel.StartDate < DateTime.Now)
+            {
+                this.ModelState.AddModelError(string.Empty, InvalidStartDate);
+
+                return this.View(purchasedMembershipModel);
+            }
+
             var membership = this.membershipsService.GetById<PurchasedMembershipModel>(purchasedMembershipModel.Id);
 
             if (membership == null)
-            {
-                return this.BadRequest();
-            }
-
-            if (purchasedMembershipModel.StartDate < DateTime.Now)
             {
                 return this.BadRequest();
             }
@@ -95,9 +99,7 @@
                 EndDate = purchasedMembershipModel.StartDate.AddDays((int)membership.Duration),
             };
 
-            var serviceModel = AutoMapperConfig.MapperInstance.Map<PurchasedMembershipInputServiceModel>(purchase);
-
-            await this.purchasedMembershipsService.CreateAsync(serviceModel);
+            await this.purchasedMembershipsService.CreateAsync(purchase);
 
             return this.RedirectToAction("ThankYou");
         }

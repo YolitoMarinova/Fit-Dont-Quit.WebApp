@@ -11,13 +11,12 @@
     public class EditArticleModel : IMapFrom<ArticleServiceOutputModel>, IMapTo<EditArticleServiceModel>
     {
         [Required]
-        [MaxLength(TitlemaxLenght)]
+        [StringLength(maximumLength: TitleMaxLenght, MinimumLength = TitleMinLenght)]
         public string Title { get; set; }
 
         [Required]
         public string Content { get; set; }
 
-        [Required]
         public IFormFile Image { get; set; }
 
         public string ImageUrl { get; set; }

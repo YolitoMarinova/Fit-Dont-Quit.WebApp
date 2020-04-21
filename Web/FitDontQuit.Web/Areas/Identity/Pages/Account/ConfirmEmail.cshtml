@@ -6,3 +6,17 @@
 
 <h1>@ViewData["Title"]</h1>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<section class="user-section">
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Thank You for register!</h1>
+        <p class="lead">Have a great time with us.</p>
+        <hr>
+        <p>
+            Having trouble? <a asp-area="" asp-controller="Contacts" asp-action="Index">Contact us</a>
+        </p>
+        <p class="lead">
+            <a class="custom custom-button" asp-area="Identity" asp-controller="Account" asp-action="Login">Continue to log in.</a>
+        </p>
+    </div>
+</section>

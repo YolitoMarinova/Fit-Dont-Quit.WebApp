@@ -38,7 +38,7 @@
 
             var memberships = this.membershipsService.GetByName<MembershipPartilViewModel>(new string[] { "One week challenge", "Basic", "Special" }, 3).ToList();
 
-            var latestArticles = this.articlesService.GettThreeLatest<HomeArticleViewModel>();
+            var latestArticles = this.articlesService.GettThreeLatest<LatestArticleViewModel>();
 
             var classes = this.groupTrainingService.GettAll<GroupTrainingInListViewModel>().ToArray();
 

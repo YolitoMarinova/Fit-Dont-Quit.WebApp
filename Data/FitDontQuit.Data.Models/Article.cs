@@ -9,7 +9,7 @@
     public class Article : BaseDeletableModel<int>
     {
         [Required]
-        [MaxLength(TitlemaxLenght)]
+        [MaxLength(TitleMaxLenght)]
         public string Title { get; set; }
 
         [Required]

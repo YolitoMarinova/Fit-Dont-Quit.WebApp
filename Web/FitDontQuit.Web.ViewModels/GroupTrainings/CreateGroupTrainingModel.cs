@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Http;
 
     using static FitDontQuit.Common.AttributesConstraints.GroupTraining;
+    using static FitDontQuit.Common.ErrorMessages.GroupTraining;
 
     public class CreateGroupTrainingModel : IMapTo<CreateGroupTrainingServiceModel>
     {
@@ -19,7 +20,7 @@
 
         public string ImageUrl { get; set; }
 
-        [Required(ErrorMessage = "Image is required!")]
+        [Required(ErrorMessage = ImageIsRequired)]
         public IFormFile Image { get; set; }
     }
 }

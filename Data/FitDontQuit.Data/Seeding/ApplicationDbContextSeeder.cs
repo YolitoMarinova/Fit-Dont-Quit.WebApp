@@ -30,7 +30,12 @@
                               new UsersSeeder(),
                               new AdministratorsSeeder(),
                               new ModeratorsSeeder(),
+                              new ProfessionsSeeder(),
                               new TrainersSeeder(),
+                              new MembershipsSeeder(),
+                              new ArticlesSeeder(),
+                              new GroupTrainingsSeeder(),
+                              new ClassesSeeder(),
                           };
 
             foreach (var seeder in seeders)

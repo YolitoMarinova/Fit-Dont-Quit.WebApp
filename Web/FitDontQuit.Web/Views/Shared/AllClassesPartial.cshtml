@@ -15,14 +15,14 @@
                 <div class="col-lg-4">
                     <div class="single-class-item set-bg" data-setbg="@Model[i].ImageUrl">
                         <div class="si-text">
-                            <h4>@Model[i].Name</h4>
+                            <h4><a asp-controller="GroupTrainings" asp-action="Details" asp-route-id="@Model[i].Id">@Model[i].Name</a></h4>
                         </div>
                     </div>
                     @if (i + 1 < Model.Count())
                     {
                         <div class="single-class-item set-bg" data-setbg="@Model[i + 1].ImageUrl">
                             <div class="si-text">
-                                <h4>"@Model[i + 1].Name"</h4>
+                                <h4><a asp-controller="GroupTrainings" asp-action="Details" asp-route-id="@Model[i+1].Id">@Model[i+1].Name</a></h4>
                             </div>
                         </div>
                     }

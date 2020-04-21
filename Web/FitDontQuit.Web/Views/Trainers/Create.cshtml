@@ -9,8 +9,9 @@
 
     @*<div class="row mb-5">
         <div class="col-md-6">*@
-    <form method="post" asp-action="Create" enctype="multipart/form-data">       
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
         <div class="container">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="col-md-12 order-md-1">
                 <div class="input-group mb-4">
                     <input type="file" name="Image" asp-for="Image" />

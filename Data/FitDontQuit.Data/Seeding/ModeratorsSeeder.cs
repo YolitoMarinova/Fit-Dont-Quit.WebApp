@@ -12,7 +12,7 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            var user = dbContext.Users.FirstOrDefault(u => u.FirstName == "Georgi");
+            var user = dbContext.Users.FirstOrDefault(u => u.UserName == "Gochko91");
             var role = dbContext.Roles.FirstOrDefault(r => r.Name == ModeratorRoleName);
 
             var exist = dbContext.UserRoles.Any(ur => ur.UserId == user.Id && ur.RoleId == role.Id);
