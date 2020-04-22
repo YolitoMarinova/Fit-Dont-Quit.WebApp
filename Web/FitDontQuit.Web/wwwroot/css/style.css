@@ -100,6 +100,10 @@ ul, ol {
     padding: 0;
     margin: 0;
 }
+
+.cookies{
+    margin-top: 95px;
+}
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -576,7 +580,6 @@ ul, ol {
 .section {
     background: #f5f4f4;
     padding-top: 250px;
-    margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
 
@@ -588,7 +591,6 @@ ul, ol {
     height: 100%;
     background: #f5f4f4;
     padding-top: 250px;
-    margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
 
@@ -631,7 +633,6 @@ ul, ol {
 .admin-section {
     background: #f5f4f4;
     padding-top: 250px;
-    margin: -135px 150px -135px;
     padding-bottom: 170px;
 }
 
@@ -2181,6 +2182,18 @@ ul, ol {
 /*-------------------------------- Respinsive Media Styles --------------------------------*/
 
 @media only screen and (min-width: 1200px) {
+
+    .section {
+        margin: -135px 150px -135px;
+    }
+
+    .admin-section {
+        margin: -135px 150px -135px;
+    }
+
+    .user-section {
+        margin: -135px 150px -135px;
+    }
 
     .nav-menu .mainmenu ul li {
         margin-right: 12px;

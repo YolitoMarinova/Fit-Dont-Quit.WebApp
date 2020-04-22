@@ -105,9 +105,12 @@
             </div>
         </div>
     </header>
-
-    <partial name="_CookieConsentPartial" />
-    @this.RenderBody()
+    <section>
+        <div class="cookies">
+            <partial name="_CookieConsentPartial" />
+        </div>
+        @this.RenderBody()
+    </section>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
