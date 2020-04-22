@@ -4,30 +4,35 @@
 }
 
 <section class="section">
-    <h1>Edit</h1>
     <form method="post" asp-action="Edit" enctype="multipart/form-data">
         <div class="container">
             <div class="col-md-12 order-md-1">
                 <div class="input-group mb-4">
+                    <h3>@this.ViewData["Title"]</h3>
+                </div>
+                <div class="input-group mb-4">
                     <img src="@Model.ImageUrl" />
+                </div>
+                <div class="input-group mb-4">
                     <input type="file" name="Image" asp-for="Image" />
                 </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Name</span>
+                        <label asp-for="Name" class="input-group-text"></label>
                     </div>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Description</span>
+                        <label asp-for="Description" class="input-group-text"></label>
                     </div>
                     <textarea asp-for="Description" class="form-control"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <hr />
-                <input type="submit" class="btn btn-primary" />
+                <input type="button" class="btn btn-secondary p-2" value="Back" onclick="history.back()" />
+                <input type="submit" class="btn btn-primary p-2" />
             </div>
         </div>
     </form>
@@ -39,6 +44,7 @@
         selector: "textarea",
         plugins: [
             "image paste table link code media"
-        ]
+        ],
+        width: "3000"
     });
 </script>

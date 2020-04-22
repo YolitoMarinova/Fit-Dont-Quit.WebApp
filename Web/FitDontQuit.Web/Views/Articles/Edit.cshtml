@@ -3,37 +3,44 @@
     this.ViewData["Title"] = "Edit article";
 }
 
-<section class="section">
-    <h1>Edit</h1>
-    <form method="post" asp-action="Edit" enctype="multipart/form-data">
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <section class="section">
         <div class="container">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="col-md-12 order-md-1">
-                <div class="input-group mb-4">
-                    <img src="@Model.ImageUrl" />
-                    <input type="file" name="Image" asp-for="Image" class="form-control" />
+                <div class="input-group md-7 mb-4">
+                    <h3>@this.ViewData["Title"]</h3>
                 </div>
                 <div class="input-group mb-4">
+                    <span class="border border-dark">
+                        <img src="@Model.ImageUrl" />
+                    </span>
+                </div>
+                <div class="input-group mb-4">
+                    <input type="file" name="Image" asp-for="Image" />
+                </div>
+
+                <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><label asp-for="Title"></label></span>
+                        <label asp-for="Title" class="input-group-text"></label>
                     </div>
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><label asp-for="Content"></label></span>
+                        <label asp-for="Content" class="input-group-text"></label>
                     </div>
                     <textarea asp-for="Content" class="form-control"></textarea>
                     <span asp-validation-for="Content" class="text-danger"></span>
                 </div>
                 <hr />
-                <input type="button" class="btn btn-secondary" value="Back" onclick="history.back()" />
-                <input type="submit" class="btn btn-primary" />
+                <input type="submit" class="btn btn-secondary p-2" value="Back" onclick="history.back()" />
+                <input type="submit" class="btn btn-primary p-2" />
             </div>
         </div>
-    </form>
-</section>
+    </section>
+</form>
 
 <script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -41,6 +48,7 @@
         selector: "textarea",
         plugins: [
             "image paste table link code media"
-        ]
+        ],
+        width: "3000"
     });
 </script>

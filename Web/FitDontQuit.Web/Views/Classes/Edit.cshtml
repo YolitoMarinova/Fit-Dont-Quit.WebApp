@@ -6,50 +6,69 @@
     var hours = Enum.GetValues(typeof(Hour));
 }
 <section class="section">
-    <h1>Edit</h1>
     <form method="post" asp-action="Edit">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div>
-            <label asp-for="StartHour"></label>
-            <select asp-for="StartHour" class="form-control">
-                @foreach (int hour in hours)
-                {
-                    <option value="@hour">@hour : 00</option>
-                }
-            </select>
-            <span asp-validation-for="StartHour" class="text-danger"></span>
+        <div class="container">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="col-md-12 order-md-1">
+                <div class="input-group mb-4">
+                    <h3>@this.ViewData["Title"]</h3>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <label asp-for="StartHour" class="input-group-text"></label>
+                    </div>
+                    <select asp-for="StartHour" class="form-control">
+                        @foreach (int hour in hours)
+                        {
+                            <option value="@hour">@hour : 00</option>
+                        }
+                    </select>
+                    <span asp-validation-for="StartHour" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <label asp-for="EndHour" class="input-group-text"></label>
+                    </div>
+                    <select asp-for="EndHour" class="form-control">
+                        @foreach (int hour in hours)
+                        {
+                            <option value="@hour">@hour : 00</option>
+                        }
+                    </select>
+                    <span asp-validation-for="EndHour" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <label asp-for="DayOfWeek" class="input-group-text"></label>
+                    </div>
+                    <select asp-for="DayOfWeek" asp-items="Html.GetEnumSelectList<DayOfWeek>()" class="form-control"></select>
+                    <span asp-validation-for="DayOfWeek" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <label asp-for="Capacity" class="input-group-text"></label>
+                    </div>
+                    <input asp-for="Capacity" class="form-control" />
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <label asp-for="GroupTrainingId" class="input-group-text"></label>
+                    </div>
+                    <select asp-for="GroupTrainingId" asp-items="@(new SelectList(Model.GroupTrainings.ToList(), "Id", "Name"))" class="form-control"></select>
+                    <span asp-validation-for="GroupTrainingId" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <label asp-for="TrainerId" class="input-group-text"></label>
+                    </div>
+                    <select asp-for="TrainerId" asp-items="@(new SelectList(Model.Trainers.ToList(), "Id", "Name"))" class="form-control"></select>
+                    <span asp-validation-for="TrainerId" class="text-danger"></span>
+                </div>
+                <hr />
+                <input type="button" class="btn btn-secondary p-2" value="Back" onclick="history.back()" />
+                <input type="submit" class="btn btn-primary p-2" />
+            </div>
         </div>
-        <div>
-            <label asp-for="EndHour"></label>
-            <select asp-for="EndHour" class="form-control">
-                @foreach (int hour in hours)
-                {
-                    <option value="@hour">@hour : 00</option>
-                }
-            </select>
-            <span asp-validation-for="EndHour" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="DayOfWeek"></label>
-            <select asp-for="DayOfWeek" asp-items="Html.GetEnumSelectList<DayOfWeek>()" class="form-control"></select>
-            <span asp-validation-for="DayOfWeek" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="Capacity"></label>
-            <input asp-for="Capacity" class="form-control" />
-            <span asp-validation-for="Capacity" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="GroupTrainingId"></label>
-            <select asp-for="GroupTrainingId" asp-items="@(new SelectList(Model.GroupTrainings.ToList(), "Id", "Name"))" class="form-control"></select>
-            <span asp-validation-for="GroupTrainingId" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="TrainerId"></label>
-            <select asp-for="TrainerId" asp-items="@(new SelectList(Model.Trainers.ToList(), "Id", "Name"))" class="form-control"></select>
-            <span asp-validation-for="TrainerId" class="text-danger"></span>
-        </div>
-        <hr />
-        <input type="submit" class="btn btn-primary" />
     </form>
 </section>

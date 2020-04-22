@@ -5,20 +5,21 @@
 }
 
 <section class="section">
-    <h1>Create</h1>
-
-    @*<div class="row mb-5">
-        <div class="col-md-6">*@
     <form method="post" asp-action="Create" enctype="multipart/form-data">
         <div class="container">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="col-md-12 order-md-1">
                 <div class="input-group mb-4">
+                    <h3>@this.ViewData["Title"]</h3>
+                </div>
+                <div class="input-group mb-4">
                     <input type="file" name="Image" asp-for="Image" />
                 </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">First name | Last name | Age</span>
+                        <label asp-for="FirstName" class="input-group-text"></label>
+                        <label asp-for="LastName" class="input-group-text"></label>
+                        <label asp-for="Age" class="input-group-text"></label>
                     </div>
                     <input asp-for="FirstName" class="form-control" />
                     <span asp-validation-for="FirstName" class="text-danger"></span>
@@ -29,32 +30,35 @@
                 </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Description</span>
+                        <label asp-for="Description" class="input-group-text"></label>
                     </div>
                     <input asp-for="Description" class="form-control" maxlength="100" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Phone number</span>
+                        <label asp-for="PhoneNumber" class="input-group-text"></label>
                     </div>
                     <input asp-for="PhoneNumber" class="form-control" maxlength="13" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Instagram link</span>
+                        <label asp-for="InstagramUrl" class="input-group-text"></label>
                     </div>
                     <input asp-for="InstagramUrl" class="form-control" />
                     <span asp-validation-for="InstagramUrl" class="text-danger"></span>
                 </div>
                 <div>
-                    <label asp-for="ProfessionId"></label>
+                    <div class="input-group-prepend">
+                        <label asp-for="ProfessionId" class="input-group-text"></label>
+                    </div>
                     <select asp-for="ProfessionId" asp-items="@(new SelectList(Model.Professions.ToList(), "Id", "Name"))" class="form-control"></select>
                     <span asp-validation-for="ProfessionId" class="text-danger"></span>
                 </div>
                 <hr />
-                <input type="submit" class="btn btn-primary" />
+                <input type="button" class="btn btn-secondary p-2" value="Back" onclick="history.back()" />
+                <input type="submit" class="btn btn-primary p-2" />
             </div>
         </div>
     </form>
