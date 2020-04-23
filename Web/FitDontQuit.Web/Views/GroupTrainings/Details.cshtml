@@ -31,12 +31,17 @@
                         <div>
                             @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.ModeratorRoleName))
                             {
-                                <h4><a asp-controller="GroupTrainings" asp-action="Edit" asp-route-id="@Model.Id">Edit</a></h4>
-                                <h4><a asp-controller="GroupTrainings" asp-action="Delete" asp-route-id="@Model.Id">Delete</a></h4>
+                                <h4><a asp-controller="GroupTrainings" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-edit fa-lg">Edit</i></a></h4>
+                                <h4><a asp-controller="GroupTrainings" asp-action="Delete" asp-route-id="@Model.Id"><i class="fa fa-remove fa-lg">Delete</i></a></h4>
                             }
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <a class="custom custom-button" asp-controller="Classes" asp-action="Index">Go to calendar <i class="fa fa-calendar"></i></a>
             </div>
         </div>
     </div>

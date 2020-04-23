@@ -1,5 +1,4 @@
-﻿@model FitDontQuit.Web.ViewModels.Home.IndexViewModel
-@using FitDontQuit.Common
+﻿@using FitDontQuit.Common
 @{
     this.ViewData["Title"] = "Home Page";
 }
@@ -108,8 +107,8 @@
     </div>
 </section>
 <!-- Services Section End -->
-<partial name="AllClassesPartial" for="@Model.Classes" />
-<partial name="TopThreeTrainersPartial" for="@Model.Trainers" />
+<vc:group-trainings></vc:group-trainings>
+<vc:three-trainers></vc:three-trainers>
 <!-- Testimonial Section Begin -->
 <section class="testimonial-section spad">
     <div class="container">
@@ -181,8 +180,8 @@
 </section>
 <!-- Testimonial Section End -->
 <partial name="BannerSectionPartial" />
-<partial name="MembershipPartial" for="@Model.Memberships"/>
-<partial name="LatestThreeArticlesPartial" for="@Model.Articles" />
+<vc:three-memberships></vc:three-memberships>
+<vc:latest-three-articles></vc:latest-three-articles>
 
 <!-- Footer Banner Section Begin -->
 <section class="footer-banner">
