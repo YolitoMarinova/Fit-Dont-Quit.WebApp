@@ -101,7 +101,7 @@ ul, ol {
     margin: 0;
 }
 
-.cookies{
+.cookies {
     margin-top: 95px;
 }
 /*---------------------
@@ -583,6 +583,15 @@ ul, ol {
     padding-bottom: 170px;
 }
 
+.error-section {
+    background: #f5f4f4;
+    padding-top: 250px;
+    padding-bottom: 500px;
+}
+
+    .error-section .jumbotron {
+        background: #f5f4f4;
+    }
 /*----------------------
     User Section
 ----------------------*/
@@ -2182,6 +2191,10 @@ ul, ol {
 /*-------------------------------- Respinsive Media Styles --------------------------------*/
 
 @media only screen and (min-width: 1200px) {
+
+    .error-section {
+        margin: -135px 150px -135px;
+    }
 
     .section {
         margin: -135px 150px -135px;
