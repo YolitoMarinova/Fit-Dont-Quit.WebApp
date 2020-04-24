@@ -11,7 +11,7 @@
 
         Task EditAsync(int id, EditTrainerInputServiceModel trainerModel);
 
-        IEnumerable<T> GettAll<T>();
+        IEnumerable<T> GetAll<T>();
 
         T GetById<T>(int id);
 

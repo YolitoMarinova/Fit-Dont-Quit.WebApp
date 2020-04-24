@@ -73,7 +73,7 @@
             return trainerT;
         }
 
-        public IEnumerable<T> GettAll<T>()
+        public IEnumerable<T> GetAll<T>()
         {
             var trainers = this.trainersRepository.All().To<TrainerServiceOutputModel>();
 

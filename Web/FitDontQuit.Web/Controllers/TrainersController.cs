@@ -31,7 +31,7 @@
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var trainers = this.trainersService.GettAll<TrainerViewModel>();
+            var trainers = this.trainersService.GetAll<TrainerViewModel>();
 
             var model = new AllTrainersViewModel
             {
@@ -43,7 +43,7 @@
 
         public IActionResult Create()
         {
-            var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+            var professions = this.professionsService.GetAll<TrainerProfessionsViewModel>();
 
             var trainerModel = new CreateTrainerModel
             {
@@ -58,7 +58,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+                var professions = this.professionsService.GetAll<TrainerProfessionsViewModel>();
 
                 trainerModel.Professions = professions;
 
@@ -92,7 +92,7 @@
                 return this.NotFound();
             }
 
-            var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+            var professions = this.professionsService.GetAll<TrainerProfessionsViewModel>();
 
             trainer.Professions = professions;
 
@@ -105,7 +105,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+                var professions = this.professionsService.GetAll<TrainerProfessionsViewModel>();
 
                 inputModel.Professions = professions;
 
@@ -120,7 +120,7 @@
                 {
                     this.ModelState.AddModelError(string.Empty, InvalidImageType);
 
-                    var professions = this.professionsService.GettAll<TrainerProfessionsViewModel>();
+                    var professions = this.professionsService.GetAll<TrainerProfessionsViewModel>();
 
                     inputModel.Professions = professions;
 
@@ -136,7 +136,6 @@
 
             return this.RedirectToAction("Index");
         }
-
 
         public IActionResult Delete(int id)
         {

@@ -149,14 +149,10 @@
         {
             var articleModel = this.articlesService.GetById<ArticleDetailsViewModel>(id);
 
-            var latestThree = this.articlesService.GettThreeLatest<LatestArticleViewModel>();
-
             if (articleModel == null)
             {
                 return this.NotFound();
             }
-
-            articleModel.ThreeLatestAricles = latestThree;
 
             return this.View(articleModel);
         }

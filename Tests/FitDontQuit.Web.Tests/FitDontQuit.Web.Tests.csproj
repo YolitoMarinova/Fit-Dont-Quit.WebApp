@@ -13,9 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.2" />
     <PackageReference Include="Cloudinary.Core" Version="1.31.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -30,6 +32,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Web\FitDontQuit.Web\FitDontQuit.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ControllersTests\" />
   </ItemGroup>
 
 </Project>

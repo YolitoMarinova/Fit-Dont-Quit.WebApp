@@ -38,7 +38,7 @@
                     <div class="bd-more-text">
                         <div class="bm-item">
                             <p>
-                                @Html.Raw(Model.Content)
+                                @Html.Raw(Model.SanitizedContent)
                             </p>
                         </div>
                     </div>
@@ -77,4 +77,4 @@
     </div>
 </section>
 <!-- Blog Details Section End -->
-<partial name="LatestThreeArticlesPartial" for="@Model.ThreeLatestAricles" />
+<vc:latest-three-articles></vc:latest-three-articles>

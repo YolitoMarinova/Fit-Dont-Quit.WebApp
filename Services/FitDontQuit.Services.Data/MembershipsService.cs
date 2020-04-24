@@ -65,7 +65,7 @@
             return membershipT;
         }
 
-        public IEnumerable<T> GettAll<T>()
+        public IEnumerable<T> GetAll<T>()
         {
             var memberships = this.membershipRepository.All().To<MembershipServiceOutputModel>();
 
@@ -74,9 +74,9 @@
             return membershipsT;
         }
 
-        public IEnumerable<T> GetByName<T>(string[] names, int count)
+        public IEnumerable<T> GetByNames<T>(string[] names)
         {
-            var memberships = this.membershipRepository.All().Where(x => names.Contains(x.Name)).To<MembershipServiceOutputModel>().Take(count);
+            var memberships = this.membershipRepository.All().Where(x => names.Contains(x.Name)).To<MembershipServiceOutputModel>();
 
             var membershipsT = memberships.To<T>().ToList();
 

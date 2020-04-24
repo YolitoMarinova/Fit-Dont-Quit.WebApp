@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FitDontQuit.Data\FitDontQuit.Data.csproj" />
     <ProjectReference Include="..\..\Services\FitDontQuit.Services.Data\FitDontQuit.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Web\FitDontQuit.Web.ViewModels\FitDontQuit.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

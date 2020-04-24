@@ -19,7 +19,7 @@
         public IViewComponentResult Invoke()
         {
             var memberships = this.membershipsService
-                .GetByName<MembershipPartilViewModel>(new string[] { "One week challenge", "Basic", "Special" }, 3)
+                .GetByNames<MembershipPartilViewModel>(new string[] { "One week challenge", "Basic", "Special" })
                 .ToList();
 
             return this.View(memberships);

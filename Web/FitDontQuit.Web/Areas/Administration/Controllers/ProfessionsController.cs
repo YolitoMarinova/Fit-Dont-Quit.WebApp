@@ -19,7 +19,7 @@
 
         public IActionResult Index()
         {
-            var professions = this.professionsService.GettAll<ProfessionViewModel>();
+            var professions = this.professionsService.GetAll<ProfessionViewModel>();
 
             return this.View(professions);
         }

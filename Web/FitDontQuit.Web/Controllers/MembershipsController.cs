@@ -19,7 +19,7 @@
 
         public IActionResult Index()
         {
-            var memberships = this.membershipsService.GettAll<MembershipViewModel>().ToList();
+            var memberships = this.membershipsService.GetAll<MembershipViewModel>().ToList();
 
             return this.View(memberships);
         }

@@ -18,7 +18,7 @@
 
         public IViewComponentResult Invoke()
         {
-            var trainers = this.trainersService.GettAll<TopTrainerViewModel>().ToList().Take(3);
+            var trainers = this.trainersService.GetAll<TopTrainerViewModel>().ToList().Take(3);
 
             return this.View(trainers);
         }

@@ -52,7 +52,7 @@
             return professionT;
         }
 
-        public IEnumerable<T> GettAll<T>()
+        public IEnumerable<T> GetAll<T>()
         {
             var professions = this.professionRepository.All().To<ProfessionServiceOutputModel>();
 

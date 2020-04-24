@@ -48,7 +48,7 @@
         public IActionResult Create()
         {
             var groupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-            var trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+            var trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
             var viewModel = new CreateClassModel
             {
@@ -65,7 +65,7 @@
             if (!this.ModelState.IsValid)
             {
                 classModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-                classModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+                classModel.Trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
                 return this.View(classModel);
             }
@@ -73,7 +73,7 @@
             if (classModel.EndHour <= classModel.StartHour)
             {
                 classModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-                classModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+                classModel.Trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
                 this.ModelState.AddModelError(string.Empty, InvalidHours);
 
@@ -85,7 +85,7 @@
             if (classes.Any(x => x.StartHour == classModel.StartHour && x.DayOfWeek == classModel.DayOfWeek))
             {
                 classModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-                classModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+                classModel.Trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
                 this.ModelState.AddModelError(string.Empty, DayAndTimeIsTakenError);
 
@@ -109,7 +109,7 @@
             }
 
             var groupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-            var trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+            var trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
             viewModel.GroupTrainings = groupTrainings;
             viewModel.Trainers = trainers;
@@ -130,7 +130,7 @@
             if (!this.ModelState.IsValid)
             {
                 editClassModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-                editClassModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+                editClassModel.Trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
                 return this.View(editClassModel);
             }
@@ -138,7 +138,7 @@
             if (editClassModel.EndHour <= editClassModel.StartHour)
             {
                 editClassModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-                editClassModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+                editClassModel.Trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
                 this.ModelState.AddModelError(string.Empty, InvalidHours);
 
@@ -150,7 +150,7 @@
             if (classes.Any(x => x.StartHour == editClassModel.StartHour && x.DayOfWeek == editClassModel.DayOfWeek))
             {
                 editClassModel.GroupTrainings = this.groupTrainingsService.GettAll<ClassGroupTrainingInListViewModel>();
-                editClassModel.Trainers = this.trainersService.GettAll<ClassTrainersInListViewModel>();
+                editClassModel.Trainers = this.trainersService.GetAll<ClassTrainersInListViewModel>();
 
                 this.ModelState.AddModelError(string.Empty, DayAndTimeIsTakenError);
 
