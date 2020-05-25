@@ -8,7 +8,7 @@ Web app that allows fitness owners to manage their business by:
 -- group trainings and schedule
 -- blog articles section
 
---If you want to see more of the functionality you cant log with admim account:
+--If you want to see more of the functionality you can log with admim account:
 
 -- username: Yolito
 
