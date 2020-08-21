@@ -41,7 +41,7 @@
             </div>
 
             <form method="post" asp-controller="PurchasedMemberships" asp-action="Buy">
-                <div asp-validation-summary="All" class="text-danger"></div>
+                
                 <div class="row mb-5">
                     <div class="col-md-6">
                         <label asp-for="StartDate"></label>
@@ -124,40 +124,43 @@
     </div>
 </section>
 
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
 
 
 @*<script>
-                var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-                $('#startDate').datepicker({
-                    uiLibrary: 'bootstrap4',
-                    iconsLibrary: 'fontawesome',
-                    format: 'm-d-yyyy',
-                    altField   : '#alternate',
-                    minDate: today,
-                    showOtherMonths: true,
-                    change: function (e) {
-                        var dateInput = document.getElementById('startDate').value;
+                    var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+                    $('#startDate').datepicker({
+                        uiLibrary: 'bootstrap4',
+                        iconsLibrary: 'fontawesome',
+                        format: 'm-d-yyyy',
+                        altField   : '#alternate',
+                        minDate: today,
+                        showOtherMonths: true,
+                        change: function (e) {
+                            var dateInput = document.getElementById('startDate').value;
 
 
-                        var newdate = new Date(dateInput);
+                            var newdate = new Date(dateInput);
 
-                        //newdate.setDate(newdate.getDate());
+                            //newdate.setDate(newdate.getDate());
 
-                        var duration = @((int)membership.Duration);
+                            var duration = @((int)membership.Duration);
 
-                        var day = newdate.getDate() + duration;
-                        var month = newdate.getMonth() + 1;
-                        var year = newdate.getFullYear();
+                            var day = newdate.getDate() + duration;
+                            var month = newdate.getMonth() + 1;
+                            var year = newdate.getFullYear();
 
-                        var incrementedDate = new Date(year, month, day);
+                            var incrementedDate = new Date(year, month, day);
 
-                        var incrementDay = incrementedDate.getDate();
-                        var incrementMonth = incrementedDate.getMonth();
-                        var incrementYear = incrementedDate.getFullYear();
+                            var incrementDay = incrementedDate.getDate();
+                            var incrementMonth = incrementedDate.getMonth();
+                            var incrementYear = incrementedDate.getFullYear();
 
-                          var outputDate = incrementMonth + '-' + incrementDay + '-' + incrementYear;
+                              var outputDate = incrementMonth + '-' + incrementDay + '-' + incrementYear;
 
-                        $('#endDate').val(outputDate);
-                    }
-                });
-</script>*@
+                            $('#endDate').val(outputDate);
+                        }
+                    });
+    </script>*@

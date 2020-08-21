@@ -77,13 +77,6 @@
                 return this.View(purchasedMembershipModel);
             }
 
-            if (purchasedMembershipModel.StartDate < DateTime.Now)
-            {
-                this.ModelState.AddModelError(string.Empty, InvalidStartDate);
-
-                return this.View(purchasedMembershipModel);
-            }
-
             var membership = this.membershipsService.GetById<PurchasedMembershipModel>(purchasedMembershipModel.Id);
 
             if (membership == null)
